@@ -27,7 +27,7 @@ export function SiteFooter() {
               <div>
                 <span className="font-medium text-gray-700">邮箱：</span>
                 <a
-                  className="hover:text-brand-600"
+                  className="transition hover:text-brand-600"
                   href={`mailto:${siteConfig.contact.email}`}
                 >
                   {siteConfig.contact.email}
@@ -36,21 +36,22 @@ export function SiteFooter() {
               <div>
                 <span className="font-medium text-gray-700">电话：</span>
                 <a
-                  className="hover:text-brand-600"
+                  className="transition hover:text-brand-600"
                   href={`tel:${siteConfig.contact.phone}`}
                 >
                   {siteConfig.contact.phone}
                 </a>
               </div>
             </address>
-            <div className="mt-5 flex flex-wrap gap-3">
+            <div className="mt-5 flex flex-wrap gap-2.5">
               {siteConfig.social.map((s) => (
                 <Link
                   key={s.href}
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="touch-target rounded-lg border border-gray-200 bg-white px-3 text-xs font-medium text-gray-700 transition hover:border-brand-300 hover:text-brand-600"
+                  aria-label={`访问 FlyAI 的${s.label}主页（在新标签页打开）`}
+                  className="h-9 min-w-0 px-3 inline-flex items-center text-xs font-medium text-gray-600 transition hover:text-brand-600"
                 >
                   {s.label}
                 </Link>
