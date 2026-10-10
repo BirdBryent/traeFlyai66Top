@@ -103,7 +103,7 @@ export default function RootLayout({
           跳转到主内容
         </a>
         <SiteHeader />
-        <main id="main" role="main" className="min-h-[60vh]">
+        <main id="main" role="main" className="min-h-[60vh] pt-11">
           {children}
         </main>
         <SiteFooter />
