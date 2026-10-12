@@ -84,7 +84,6 @@ export default function HomePage() {
       <Breadcrumb items={[{ label: '首页', href: '/' }]} jsonLdOnly />
 
       <PageHero
-        hideEyebrow
         center
         h1={[
           'FlyAI 生成式引擎优化（GEO）',

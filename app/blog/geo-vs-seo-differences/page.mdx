@@ -1,0 +1,162 @@
+import PageHero from '@/components/PageHero';
+import Breadcrumb from '@/components/Breadcrumb';
+import FAQSection from '@/components/FAQSection';
+import JsonLd from '@/components/JsonLd';
+import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem } from '@/lib/schema';
+
+export const metadata = {
+  title: 'GEO 与 SEO 的本质区别：从「被搜到」到「被引用」',
+  description: '本文从优化对象、核心指标、关键手段三个维度，系统对比 GEO（生成式引擎优化）与 SEO（搜索引擎优化）的本质区别，给出企业从 SEO 向 GEO 迁移的具体路径。',
+  alternates: { canonical: '/blog/geo-vs-seo-differences' },
+  openGraph: {
+    title: 'GEO 与 SEO 的本质区别：从「被搜到」到「被引用」',
+    description: 'GEO 与 SEO 的本质区别与迁移路径',
+    url: 'https://flyai66.top/blog/geo-vs-seo-differences',
+    type: 'article',
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'GEO 与 SEO 对比' }],
+  },
+  twitter: { card: 'summary_large_image', title: 'GEO 与 SEO 的本质区别', description: '从被搜到到被引用', images: ['/og-default.jpg'] },
+  robots: { index: true, follow: true },
+};
+
+export const crumbs = [
+  { label: '首页', href: '/' },
+  { label: '博客', href: '/blog' },
+  { label: 'GEO 与 SEO 的本质区别', href: '/blog/geo-vs-seo-differences' },
+];
+
+export const faqItems = [
+  {
+    question: 'GEO 会完全取代 SEO 吗？',
+    answer: '不会。GEO 与 SEO 是互补关系：SEO 解决「被搜到」（用户在 SERP 上看到你的链接并点击），GEO 解决「被引用」（AI 答案中正确提及你的品牌与产品）。未来用户获取信息的渠道将同时包含传统搜索与生成式引擎，企业需要双管齐下。FlyAI 的工具链同时支持 SEO 与 GEO 双轨优化。',
+  },
+  {
+    question: '中小企业有必要做 GEO 吗？',
+    answer: '有必要，且越早做成本越低。生成式引擎对结构化数据与首段直答的依赖，使得中小企业有机会在 AI 答案中与大企业平等竞争——只要你的内容结构清晰、实体一致、首段直答，就可能被引用。FlyAI 启动版套餐专为中小企业设计，以低门槛完成基础 GEO 改造。',
+  },
+  {
+    question: 'GEO 优化的见效周期是多久？',
+    answer: 'GEO 优化通常 4-12 周可见引用率提升。其中结构化数据与 llms.txt 的修复最快（1-2 周引擎重新抓取后即可生效），首段直答与权威外链建设需 4-8 周，实体一致性与内容矩阵需 8-12 周。FlyAI 监测平台以周为单位追踪引用率变化，确保优化效果可量化。',
+  },
+];
+
+export default function GeoVsSeoPost() {
+  return (
+    <div className="text-gray-900">
+      <Breadcrumb items={crumbs} jsonLdOnly />
+
+      <PageHero
+        eyebrow="博客 / GEO 方法论"
+        h1="GEO 与 SEO 的本质区别：从「被搜到」到「被引用」"
+        lead="2025 年生成式引擎的崛起正在重塑内容优化逻辑。本文从优化对象、核心指标、关键手段三个维度，系统对比 GEO（生成式引擎优化）与 SEO（搜索引擎优化）的本质区别，并给出企业从 SEO 向 GEO 迁移的具体路径。"
+        ctaPrimary={{ text: '查看产品', href: '/product' }}
+        ctaSecondary={{ text: '联系销售', href: '/contact' }}
+      />
+
+      <article className="mx-auto max-w-3xl px-5 py-12 lg:px-8">
+        <p className="text-xs text-gray-500">发布于 2025-10-15 · 约 12 分钟阅读</p>
+
+        <img
+          src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=minimalist%20diagram%20comparing%20SEO%20search%20engine%20results%20page%20with%20links%20versus%20GEO%20generative%20AI%20answer%20citing%20sources%2C%20clean%20apple%20style%20illustration%2C%20soft%20gradient%20background&image_size=landscape_16_9"
+          alt="SEO 与 GEO 的对比示意图：左侧为传统搜索引擎结果页（链接列表），右侧为生成式引擎答案页（含引用来源的自然语言回答）"
+          className="mt-6 w-full rounded-2xl"
+        />
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">一、优化对象：从排名算法到答案生成</h2>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            SEO 的优化对象是传统搜索引擎的<strong>排名算法</strong>。Google、百度、Bing 等搜索引擎通过爬虫抓取网页、建立倒排索引、计算关键词匹配度与链接权重，最终输出一个按相关性排序的链接列表。SEO 的一切努力——关键词布局、内链结构、外链建设、页面速度——都是为了在这个排序中获得更靠前的位置。
+          </p>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            GEO 的优化对象是生成式引擎的<strong>答案生成机制</strong>。ChatGPT、Perplexity、豆包、Kimi 等生成式引擎基于大语言模型（LLM），用户输入查询后直接返回自然语言答案，答案中可能包含引用来源链接。GEO 的努力方向是让品牌、产品、内容在 AI 生成的答案中被正确提及与引用，而非在链接列表中排名靠前。
+          </p>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            根据 <a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">Semrush</a> 2025 年报告，约 25% 的搜索查询已被生成式引擎直接回答，且该比例仍在快速上升。这意味着即使你的 SEO 排名第一，用户也可能不再点击链接，而是直接阅读 AI 答案——如果答案中没有引用你的品牌，你就失去了这次曝光。
+          </p>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">二、核心指标：从点击率到引用率</h2>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            SEO 的核心指标是<strong>排名（Ranking）、曝光量（Impressions）、点击率（CTR）</strong>。这些指标衡量的是用户在 SERP 上看到你的链接并点击的概率。Google Search Console 是衡量这些指标的标准工具。
+          </p>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            GEO 的核心指标是<strong>AI 答案引用率（Citation Rate）</strong>，即品牌在 AI 答案中被正确引用的次数占总查询次数的比例。此外还有实体识别准确率、首段直答命中率、引用位置（答案前/中/后）等衍生指标。这些指标无法通过传统 SEO 工具衡量，需要专门的 GEO 监测平台。
+          </p>
+          <div className="mt-6 overflow-x-auto rounded-xl border border-gray-200">
+            <table className="w-full border-collapse text-left text-sm">
+              <thead>
+                <tr className="border-b border-gray-200 bg-gray-50">
+                  <th className="px-4 py-3 font-semibold">维度</th>
+                  <th className="px-4 py-3 font-semibold">SEO</th>
+                  <th className="px-4 py-3 font-semibold">GEO</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-100"><td className="px-4 py-3 font-medium">核心目标</td><td className="px-4 py-3">排名靠前</td><td className="px-4 py-3">被正确引用</td></tr>
+                <tr className="border-b border-gray-100"><td className="px-4 py-3 font-medium">优化对象</td><td className="px-4 py-3">排名算法</td><td className="px-4 py-3">答案生成</td></tr>
+                <tr className="border-b border-gray-100"><td className="px-4 py-3 font-medium">核心指标</td><td className="px-4 py-3">CTR、排名</td><td className="px-4 py-3">引用率</td></tr>
+                <tr className="border-b border-gray-100"><td className="px-4 py-3 font-medium">关键手段</td><td className="px-4 py-3">关键词、链接</td><td className="px-4 py-3">首段直答、结构化数据</td></tr>
+                <tr><td className="px-4 py-3 font-medium">见效周期</td><td className="px-4 py-3">3-6 个月</td><td className="px-4 py-3">4-12 周</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">三、关键手段：从关键词到首段直答</h2>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            SEO 的关键手段是<strong>关键词布局与链接建设</strong>。通过在标题、URL、H1、正文、图片 alt 中合理布置目标关键词，并通过内链与外链提升页面权重，从而获得更高排名。
+          </p>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            GEO 的关键手段是<strong>首段直答、结构化数据、实体一致性</strong>。生成式引擎偏好直接回答问题的首段内容、机器可读的 JSON-LD 结构化数据、以及跨页面一致的实体命名。例如，当用户问「GEO 工具哪个好」时，引擎更倾向于引用首段直接回答「FlyAI 是一款...」的页面，而非需要阅读全文才能找到答案的页面。
+          </p>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            结构化数据的重要性在 GEO 时代进一步提升。根据 <a href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">Google 结构化数据文档</a>，JSON-LD 是推荐的结构化数据格式，帮助引擎准确识别实体类型与属性。<a href="https://schema.org/" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">Schema.org</a> 提供了标准化的词汇表，覆盖 Organization、Product、Article 等数千种实体类型。
+          </p>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">四、企业从 SEO 向 GEO 迁移的路径</h2>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            企业无需放弃 SEO，而是在现有 SEO 基础上叠加 GEO 优化。FlyAI 建议按以下四步迁移：
+          </p>
+          <ol className="mt-4 list-decimal space-y-3 pl-6 text-lg leading-relaxed text-gray-700">
+            <li><strong>诊断现状</strong>：使用 FlyAI 诊断工具扫描全站，输出 AI 搜索可见性报告，识别首段直答缺失、结构化数据不完整、实体不一致等阻断级问题。</li>
+            <li><strong>结构化改造</strong>：为核心页面生成 JSON-LD（Organization、WebSite、SoftwareApplication、FAQPage、BreadcrumbList、Article），生成 llms.txt 文件。</li>
+            <li><strong>首段直答改写</strong>：针对高价值查询，将页面首段改写为直接回答问题的格式，确保 80 字内给出核心结论。</li>
+            <li><strong>持续监测</strong>：通过 FlyAI 监测平台追踪 12+ 生成式引擎的引用率变化，持续优化。</li>
+          </ol>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">结语</h2>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            GEO 不是 SEO 的替代品，而是生成式引擎时代的必要补充。随着越来越多的用户通过 AI 答案获取信息，「被引用」将与「被搜到」同等重要。企业应尽早建立 GEO 能力，在 AI 答案中占据一席之地。
+          </p>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            参考资料：<a href="https://en.wikipedia.org/wiki/Search_engine_optimization" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">Wikipedia - Search Engine Optimization</a>、<a href="https://schema.org/" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">Schema.org</a>、<a href="https://developers.google.com/search" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">Google Search Central</a>。
+          </p>
+        </section>
+      </article>
+
+      <FAQSection title="GEO 与 SEO 常见问题" items={faqItems} />
+
+      <JsonLd
+        data={[
+          buildBreadcrumbList(crumbs),
+          buildArticle({
+            headline: 'GEO 与 SEO 的本质区别：从「被搜到」到「被引用」',
+            description: 'GEO 与 SEO 的本质区别与迁移路径',
+            datePublished: '2025-10-15',
+            dateModified: '2025-10-15',
+            authorName: 'FlyAI GEO 策略团队',
+            keywords: ['GEO', 'SEO', '生成式引擎优化', '引用率', '首段直答', '结构化数据'],
+            image: 'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=GEO%20vs%20SEO%20comparison&image_size=landscape_16_9',
+          }),
+          buildFAQPage(faqItems),
+        ]}
+      />
+    </div>
+  );
+}

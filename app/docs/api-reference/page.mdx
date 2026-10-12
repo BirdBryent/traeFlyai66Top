@@ -1,0 +1,258 @@
+import PageHero from '@/components/PageHero';
+import Breadcrumb from '@/components/Breadcrumb';
+import FAQSection from '@/components/FAQSection';
+import JsonLd from '@/components/JsonLd';
+import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem } from '@/lib/schema';
+
+export const metadata = {
+  title: 'FlyAI API 参考 — 诊断 · 结构化 · Schema · 监测 四组接口',
+  description: 'FlyAI REST API 完整参考：诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测四组接口，含请求参数、响应结构、错误码、curl 与 TypeScript 示例。',
+  alternates: { canonical: '/docs/api-reference' },
+  openGraph: {
+    title: 'FlyAI API 参考',
+    description: '诊断、结构化、Schema、监测四组 REST 接口完整参考',
+    url: 'https://flyai66.top/docs/api-reference',
+    type: 'article',
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'FlyAI API 参考' }],
+  },
+  twitter: { card: 'summary_large_image', title: 'FlyAI API 参考', description: '四组 REST 接口完整参考', images: ['/og-default.jpg'] },
+  robots: { index: true, follow: true },
+};
+
+export const crumbs = [
+  { label: '首页', href: '/' },
+  { label: '产品文档', href: '/docs' },
+  { label: 'API 参考', href: '/docs/api-reference' },
+];
+
+export const faqItems = [
+  {
+    question: 'FlyAI API 支持哪些编程语言的 SDK？',
+    answer: 'FlyAI 官方提供 Node.js（TypeScript）SDK，其他语言可通过 REST API 直接调用。社区贡献的 Python、Go、Java SDK 可在 GitHub（https://github.com/FlyAI）查看。SDK 与 REST API 功能完全一致。',
+  },
+  {
+    question: 'API 请求超时时间是多少？',
+    answer: '单次诊断请求超时时间为 300 秒（5 分钟），结构化与 Schema 生成接口超时 60 秒，监测查询接口超时 30 秒。超时后返回 408 Request Timeout，建议客户端实现退避重试。',
+  },
+  {
+    question: '如何处理 API 错误？',
+    answer: 'FlyAI API 使用标准 HTTP 状态码：200 成功、400 参数错误、401 认证失败、403 权限不足、429 限流、500 服务器错误。响应体含 error.code 与 error.message 字段，客户端应根据 code 做差异化处理。',
+  },
+];
+
+export const apis = [
+  {
+    method: 'POST',
+    path: '/v1/diagnosis',
+    desc: '提交 AI 搜索可见性诊断任务，返回 100+ 维度诊断报告。',
+    params: [
+      { name: 'urls', type: 'string[]', required: true, desc: '待诊断的 URL 列表，最多 500 个' },
+      { name: 'keywords', type: 'string[]', required: false, desc: '关注的关键词列表，最多 20 个' },
+      { name: 'engines', type: 'string[]', required: false, desc: '目标引擎，默认全部 12+ 引擎' },
+    ],
+  },
+  {
+    method: 'POST',
+    path: '/v1/structure',
+    desc: '将 Markdown/富文本内容转换为引擎友好的结构化格式。',
+    params: [
+      { name: 'content', type: 'string', required: true, desc: 'Markdown 或 HTML 内容' },
+      { name: 'entity_name', type: 'string', required: true, desc: '品牌实体名' },
+      { name: 'format', type: 'string', required: false, desc: '输出格式：markdown / json-ld' },
+    ],
+  },
+  {
+    method: 'POST',
+    path: '/v1/schema',
+    desc: '生成指定类型的 Schema.org JSON-LD。',
+    params: [
+      { name: 'type', type: 'string', required: true, desc: 'Schema 类型：Organization / WebSite / SoftwareApplication / FAQPage / BreadcrumbList / Article' },
+      { name: 'data', type: 'object', required: true, desc: 'Schema 字段数据' },
+    ],
+  },
+  {
+    method: 'GET',
+    path: '/v1/monitoring',
+    desc: '查询品牌在 12+ 生成式引擎中的引用与提及数据。',
+    params: [
+      { name: 'keyword', type: 'string', required: true, desc: '查询关键词' },
+      { name: 'engines', type: 'string[]', required: false, desc: '目标引擎' },
+      { name: 'date_from', type: 'string', required: false, desc: '开始日期 YYYY-MM-DD' },
+      { name: 'date_to', type: 'string', required: false, desc: '结束日期 YYYY-MM-DD' },
+    ],
+  },
+];
+
+export default function ApiReferenceDoc() {
+  return (
+    <div className="text-gray-900">
+      <Breadcrumb items={crumbs} jsonLdOnly />
+
+      <PageHero
+        eyebrow="产品文档 / API 参考"
+        h1="FlyAI API 参考 — 诊断 · 结构化 · Schema · 监测"
+        lead="FlyAI REST API 覆盖诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测四组接口。所有接口使用 JSON 请求与响应，通过 Bearer Token 认证，遵循 RESTful 设计规范。"
+        ctaPrimary={{ text: '阅读文档', href: '/docs/schema-fields' }}
+        ctaSecondary={{ text: '联系销售', href: '/contact' }}
+      />
+
+      <article className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
+        <section>
+          <h2 className="text-3xl font-bold tracking-tight">认证方式</h2>
+          <p className="mt-4 text-lg text-gray-700">
+            所有 API 请求需在 HTTP Header 中携带 <code>Authorization: Bearer {`<API_KEY>`}</code>。API Key 在控制台「账户设置 → API Key」中生成。
+          </p>
+          <pre className="mt-4 overflow-x-auto rounded-xl bg-gray-900 p-4 text-sm text-gray-100">
+            <code>{`curl https://api.flyai66.top/v1/monitoring?keyword=GEO \\
+  -H "Authorization: Bearer $FLYAI_API_KEY"`}</code>
+          </pre>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">速率限制</h2>
+          <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200">
+            <table className="w-full border-collapse text-left text-sm">
+              <thead>
+                <tr className="border-b border-gray-200 bg-gray-50">
+                  <th className="px-4 py-3 font-semibold">套餐</th>
+                  <th className="px-4 py-3 font-semibold">每分钟</th>
+                  <th className="px-4 py-3 font-semibold">每天</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-100">
+                  <td className="px-4 py-3 font-medium">专业版</td>
+                  <td className="px-4 py-3">60 次</td>
+                  <td className="px-4 py-3">1,000 次</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-medium">企业版</td>
+                  <td className="px-4 py-3">600 次（可协商）</td>
+                  <td className="px-4 py-3">不限量</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-4 text-sm text-gray-600">
+            响应头包含 <code>X-RateLimit-Limit</code>、<code>X-RateLimit-Remaining</code>、<code>X-RateLimit-Reset</code> 字段。
+          </p>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">接口列表</h2>
+          <div className="mt-8 space-y-8">
+            {apis.map((api) => (
+              <div key={api.path} className="rounded-2xl border border-gray-200 p-6">
+                <div className="flex items-center gap-3">
+                  <span className={
+                    'rounded px-2 py-1 text-xs font-bold ' +
+                    (api.method === 'GET' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800')
+                  }>
+                    {api.method}
+                  </span>
+                  <code className="text-lg font-semibold">{api.path}</code>
+                </div>
+                <p className="mt-3 text-gray-700">{api.desc}</p>
+                <h3 className="mt-4 font-semibold">请求参数</h3>
+                <div className="mt-2 overflow-x-auto">
+                  <table className="w-full border-collapse text-left text-sm">
+                    <thead>
+                      <tr className="border-b border-gray-200 bg-gray-50">
+                        <th className="px-3 py-2 font-semibold">参数</th>
+                        <th className="px-3 py-2 font-semibold">类型</th>
+                        <th className="px-3 py-2 font-semibold">必填</th>
+                        <th className="px-3 py-2 font-semibold">说明</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {api.params.map((p) => (
+                        <tr key={p.name} className="border-b border-gray-100">
+                          <td className="px-3 py-2 font-mono">{p.name}</td>
+                          <td className="px-3 py-2">{p.type}</td>
+                          <td className="px-3 py-2">{p.required ? '是' : '否'}</td>
+                          <td className="px-3 py-2 text-gray-600">{p.desc}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">诊断接口 curl 示例</h2>
+          <pre className="mt-4 overflow-x-auto rounded-xl bg-gray-900 p-4 text-sm text-gray-100">
+            <code>{`curl -X POST https://api.flyai66.top/v1/diagnosis \\
+  -H "Authorization: Bearer $FLYAI_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "urls": ["https://flyai66.top", "https://flyai66.top/product"],
+    "keywords": ["GEO 工具", "AI 搜索优化"]
+  }'`}</code>
+          </pre>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">错误码</h2>
+          <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200">
+            <table className="w-full border-collapse text-left text-sm">
+              <thead>
+                <tr className="border-b border-gray-200 bg-gray-50">
+                  <th className="px-4 py-3 font-semibold">状态码</th>
+                  <th className="px-4 py-3 font-semibold">错误码</th>
+                  <th className="px-4 py-3 font-semibold">说明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-100">
+                  <td className="px-4 py-3">400</td>
+                  <td className="px-4 py-3 font-mono">invalid_request</td>
+                  <td className="px-4 py-3">请求参数错误</td>
+                </tr>
+                <tr className="border-b border-gray-100">
+                  <td className="px-4 py-3">401</td>
+                  <td className="px-4 py-3 font-mono">unauthorized</td>
+                  <td className="px-4 py-3">API Key 无效或缺失</td>
+                </tr>
+                <tr className="border-b border-gray-100">
+                  <td className="px-4 py-3">403</td>
+                  <td className="px-4 py-3 font-mono">forbidden</td>
+                  <td className="px-4 py-3">套餐不支持该接口</td>
+                </tr>
+                <tr className="border-b border-gray-100">
+                  <td className="px-4 py-3">429</td>
+                  <td className="px-4 py-3 font-mono">rate_limited</td>
+                  <td className="px-4 py-3">超出速率限制</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3">500</td>
+                  <td className="px-4 py-3 font-mono">internal_error</td>
+                  <td className="px-4 py-3">服务器内部错误</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </article>
+
+      <FAQSection title="API 参考常见问题" items={faqItems} />
+
+      <JsonLd
+        data={[
+          buildBreadcrumbList(crumbs),
+          buildArticle({
+            headline: 'FlyAI API 参考 — 诊断 · 结构化 · Schema · 监测',
+            description: 'FlyAI REST API 四组接口完整参考',
+            datePublished: '2025-10-01',
+            dateModified: '2025-10-01',
+            authorName: 'FlyAI 文档团队',
+            keywords: ['API', 'REST', '诊断', 'Schema', '监测', 'SDK'],
+          }),
+          buildFAQPage(faqItems),
+        ]}
+      />
+    </div>
+  );
+}

@@ -33,9 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.mdx",
-    ".next/types/**/*.ts",
-    "/tmp/flyai-build/types/**/*.ts",
-    "/var/folders/0b/hrlmm12d0x7g_52fn4khtymh0000gn/T/flyai-next-build/types/**/*.ts"
+    "../../../../../../Users/tian1qi/.cache/flyai-next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

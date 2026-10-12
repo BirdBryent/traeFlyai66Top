@@ -54,21 +54,20 @@ export function PageHero({
       )}
       <div
         className={clsx(
-          'mx-auto max-w-7xl px-5 pb-14 pt-16 lg:px-8 lg:pb-20 lg:pt-24',
+          'mx-auto max-w-7xl px-5 pb-12 pt-8 lg:px-8 lg:pb-16 lg:pt-12',
           center && 'flex justify-center',
         )}
       >
         <div
           className={clsx(
             'max-w-5xl',
-            center && 'w-full max-w-5xl text-center',
+            center && 'w-full max-w-5xl',
           )}
         >
           {!hideEyebrow && (
             <p
               className={clsx(
                 'mb-5 text-sm font-semibold uppercase tracking-wider text-brand-600',
-                center && 'mx-auto',
               )}
             >
               {eyebrow}
@@ -77,14 +76,14 @@ export function PageHero({
           <h1
             className={clsx(
               'text-4xl font-bold leading-[1.15] tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-7xl',
-              center && 'mx-auto',
+              center && 'text-center',
             )}
           >
             {renderH1(h1)}
           </h1>
           <p
             className={clsx(
-              'lead mt-8 max-w-3xl text-xl leading-relaxed text-gray-700 md:text-2xl',
+              'lead mt-8 text-xl leading-relaxed text-gray-700 md:text-2xl',
               center && 'mx-auto',
             )}
           >

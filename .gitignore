@@ -19,3 +19,5 @@ yarn-error.log*
 *.swp
 *.swo
 *.tsbuildinfo
+# 本地构建残留（distDir 指向 HOME 时的相对路径残留）
+Users/

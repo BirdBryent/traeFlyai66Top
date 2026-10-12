@@ -1,0 +1,190 @@
+import PageHero from '@/components/PageHero';
+import Breadcrumb from '@/components/Breadcrumb';
+import FAQSection from '@/components/FAQSection';
+import JsonLd from '@/components/JsonLd';
+import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem } from '@/lib/schema';
+
+export const metadata = {
+  title: 'FlyAI 快速开始 — 3 步完成 GEO 接入',
+  description:
+    '本快速开始指南帮助你在 10 分钟内完成 FlyAI 接入：获取 API Key、安装 SDK、调用首个 AI 搜索可见性诊断接口，生成 100+ 维度诊断报告。',
+  alternates: { canonical: '/docs/quickstart' },
+  openGraph: {
+    title: 'FlyAI 快速开始 — 3 步完成 GEO 接入',
+    description: '10 分钟完成 FlyAI 接入：API Key、SDK、首个诊断接口调用。',
+    url: 'https://flyai66.top/docs/quickstart',
+    type: 'article',
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'FlyAI 快速开始' }],
+  },
+  twitter: { card: 'summary_large_image', title: 'FlyAI 快速开始', description: '10 分钟完成 FlyAI 接入', images: ['/og-default.jpg'] },
+  robots: { index: true, follow: true },
+};
+
+export const crumbs = [
+  { label: '首页', href: '/' },
+  { label: '产品文档', href: '/docs' },
+  { label: '快速开始', href: '/docs/quickstart' },
+];
+
+export const faqItems = [
+  {
+    question: 'API Key 生成后还能查看明文吗？',
+    answer: '不能。FlyAI API Key 仅在生成时显示一次明文，后续只能查看前 8 位掩码。若丢失需在控制台重新生成，旧 Key 立即失效。建议将 Key 存储在环境变量中，不要硬编码到代码或提交到 Git。',
+  },
+  {
+    question: '沙箱环境和生产环境的 API Key 是否通用？',
+    answer: '不通用。FlyAI 沙箱与生产环境完全隔离，需分别生成 API Key。沙箱 Key 以 `sk_sandbox_` 前缀开头，生产 Key 以 `sk_live_` 前缀开头。调用时需确保 Key 与环境域名匹配，否则返回 401 错误。',
+  },
+  {
+    question: '调用诊断接口时 URL 数量有限制吗？',
+    answer: '单次请求最多支持 500 个 URL。超过 500 个 URL 的大站可分批提交，FlyAI 会自动合并为一份全站诊断报告。每个 URL 需为完整 URL（含 https://），不支持通配符。',
+  },
+];
+
+export default function QuickStartDoc() {
+  return (
+    <div className="text-gray-900">
+      <Breadcrumb items={crumbs} jsonLdOnly />
+
+      <PageHero
+        eyebrow="产品文档 / 快速开始"
+        h1="FlyAI 快速开始 — 3 步完成 GEO 接入"
+        lead="本指南帮助你在 10 分钟内完成 FlyAI 的首次接入：获取 API Key、安装 SDK、调用首个 AI 搜索可见性诊断接口，生成 100+ 维度的诊断报告。所有代码示例以 curl 与 TypeScript 双版本呈现。"
+        ctaPrimary={{ text: '阅读文档', href: '/docs/api-reference' }}
+        ctaSecondary={{ text: '联系销售', href: '/contact' }}
+      />
+
+      <article className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
+        <section>
+          <h2 className="text-3xl font-bold tracking-tight">Step 1：获取 API Key</h2>
+          <p className="mt-4 text-lg text-gray-700">
+            登录 FlyAI 控制台，在「账户设置 → API Key」中生成生产环境密钥。Key 仅在生成时显示一次明文，请妥善保管。
+          </p>
+          <pre className="mt-4 overflow-x-auto rounded-xl bg-gray-900 p-4 text-sm text-gray-100">
+            <code>{`# 设置环境变量（Linux / macOS）
+export FLYAI_API_KEY="sk_live_YOUR_PROD_KEY"
+
+# Windows PowerShell
+$env:FLYAI_API_KEY="sk_live_YOUR_PROD_KEY"`}</code>
+          </pre>
+          <p className="mt-4 text-sm text-gray-600">
+            沙箱环境 Key 以 <code>sk_sandbox_</code> 开头，生产环境以 <code>sk_live_</code> 开头，二者不通用。
+          </p>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">Step 2：安装 SDK</h2>
+          <p className="mt-4 text-lg text-gray-700">
+            通过 npm 或 yarn 安装 FlyAI Node.js SDK，或直接通过 REST API 调用。
+          </p>
+          <pre className="mt-4 overflow-x-auto rounded-xl bg-gray-900 p-4 text-sm text-gray-100">
+            <code>{`# npm
+npm install @flyai/sdk
+
+# yarn
+yarn add @flyai/sdk`}</code>
+          </pre>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">Step 3：调用首个诊断接口</h2>
+          <p className="mt-4 text-lg text-gray-700">
+            传入 URL 清单，调用 <code>POST /v1/diagnosis</code> 接口，获取 100+ 维度的 AI 搜索可见性诊断报告。
+          </p>
+
+          <h3 className="mt-8 text-xl font-bold">curl 示例</h3>
+          <pre className="mt-4 overflow-x-auto rounded-xl bg-gray-900 p-4 text-sm text-gray-100">
+            <code>{`curl -X POST https://api.flyai66.top/v1/diagnosis \\
+  -H "Authorization: Bearer $FLYAI_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "urls": [
+      "https://flyai66.top",
+      "https://flyai66.top/product",
+      "https://flyai66.top/pricing"
+    ],
+    "keywords": ["GEO 工具", "AI 搜索优化"]
+  }'`}</code>
+          </pre>
+
+          <h3 className="mt-8 text-xl font-bold">TypeScript 示例</h3>
+          <pre className="mt-4 overflow-x-auto rounded-xl bg-gray-900 p-4 text-sm text-gray-100">
+            <code>{`import { FlyAI } from '@flyai/sdk';
+
+const flyai = new FlyAI({ apiKey: process.env.FLYAI_API_KEY });
+
+const report = await flyai.diagnosis.create({
+  urls: [
+    'https://flyai66.top',
+    'https://flyai66.top/product',
+    'https://flyai66.top/pricing',
+  ],
+  keywords: ['GEO 工具', 'AI 搜索优化'],
+});
+
+console.log(report.confidence);   // 整体引用置信度 0-1
+console.log(report.issues);       // 问题清单（按严重程度排序）
+console.log(report.suggestions);  // 修复建议`}</code>
+          </pre>
+
+          <h3 className="mt-8 text-xl font-bold">响应字段说明</h3>
+          <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200">
+            <table className="w-full border-collapse text-left text-sm">
+              <thead>
+                <tr className="border-b border-gray-200 bg-gray-50">
+                  <th className="px-4 py-3 font-semibold">字段</th>
+                  <th className="px-4 py-3 font-semibold">类型</th>
+                  <th className="px-4 py-3 font-semibold">说明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-100">
+                  <td className="px-4 py-3 font-mono">confidence</td>
+                  <td className="px-4 py-3">number</td>
+                  <td className="px-4 py-3">整体引用置信度，0-1</td>
+                </tr>
+                <tr className="border-b border-gray-100">
+                  <td className="px-4 py-3 font-mono">issues</td>
+                  <td className="px-4 py-3">array</td>
+                  <td className="px-4 py-3">问题清单，含严重程度与修复建议</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-mono">suggestions</td>
+                  <td className="px-4 py-3">array</td>
+                  <td className="px-4 py-3">优化建议，按优先级排序</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">后续步骤</h2>
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-lg text-gray-700">
+            <li>阅读 <a href="/docs/api-reference" className="text-brand-700 underline">API 参考</a>，了解全部接口与错误码</li>
+            <li>查看 <a href="/docs/schema-fields" className="text-brand-700 underline">字段字典</a>，掌握 Schema.org 字段定义</li>
+            <li>在控制台配置 Webhook，实时接收诊断完成通知</li>
+            <li>联系 FlyAI 技术支持获取接入指导</li>
+          </ul>
+        </section>
+      </article>
+
+      <FAQSection title="快速开始常见问题" items={faqItems} />
+
+      <JsonLd
+        data={[
+          buildBreadcrumbList(crumbs),
+          buildArticle({
+            headline: 'FlyAI 快速开始 — 3 步完成 GEO 接入',
+            description: '10 分钟完成 FlyAI 接入：获取 API Key、安装 SDK、调用首个诊断接口。',
+            datePublished: '2025-10-01',
+            dateModified: '2025-10-01',
+            authorName: 'FlyAI 文档团队',
+            keywords: ['GEO', '快速开始', 'API Key', 'SDK', '诊断接口'],
+          }),
+          buildFAQPage(faqItems),
+        ]}
+      />
+    </div>
+  );
+}

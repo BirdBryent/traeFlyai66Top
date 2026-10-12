@@ -1,10 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { siteConfig } from '@/lib/site.config';
 import { CTAButton } from './CTAButton';
 
 export function SiteHeader() {
+  const pathname = usePathname();
+
   return (
     <header
       className="fixed top-0 inset-x-0 z-[9999] w-full border-b border-gray-200/60 bg-white/75 text-gray-900 antialiased"
@@ -32,15 +35,27 @@ export function SiteHeader() {
           aria-label="主导航"
           className="hidden items-center gap-6 text-[13px] font-normal tracking-wide text-gray-700 md:flex"
         >
-          {siteConfig.navMain.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="touch-target transition hover:text-gray-900"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {siteConfig.navMain.map((item) => {
+            const isActive =
+              item.href === '/'
+                ? pathname === '/'
+                : pathname === item.href || pathname.startsWith(item.href + '/');
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={isActive ? 'page' : undefined}
+                className={
+                  'touch-target transition ' +
+                  (isActive
+                    ? 'font-medium text-brand-600'
+                    : 'text-gray-700 hover:text-gray-900')
+                }
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-2">

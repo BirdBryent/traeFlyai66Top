@@ -37,11 +37,6 @@ const routes: Omit<SitemapEntry, 'lastModified'>[] = [
     changeFrequency: 'monthly',
   },
   { url: `${base}/glossary`, priority: 0.9, changeFrequency: 'weekly' },
-  {
-    url: `${base}/glossary/geo-terminology-2025`,
-    priority: 0.8,
-    changeFrequency: 'monthly',
-  },
   { url: `${base}/blog`, priority: 0.85, changeFrequency: 'weekly' },
   {
     url: `${base}/blog/geo-vs-seo-differences`,

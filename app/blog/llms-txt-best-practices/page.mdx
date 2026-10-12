@@ -1,0 +1,160 @@
+import PageHero from '@/components/PageHero';
+import Breadcrumb from '@/components/Breadcrumb';
+import FAQSection from '@/components/FAQSection';
+import JsonLd from '@/components/JsonLd';
+import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem } from '@/lib/schema';
+
+export const metadata = {
+  title: 'llms.txt 最佳实践：面向生成式引擎的网站目录',
+  description: 'llms.txt 是 2025 年新兴的面向 LLM 爬虫的网站目录文件。本文详解 llms.txt 的语法规范、必填字段、与 robots.txt 的协作方式，以及实测引用率提升数据。',
+  alternates: { canonical: '/blog/llms-txt-best-practices' },
+  openGraph: {
+    title: 'llms.txt 最佳实践：面向生成式引擎的网站目录',
+    description: 'llms.txt 语法规范与最佳实践',
+    url: 'https://flyai66.top/blog/llms-txt-best-practices',
+    type: 'article',
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'llms.txt 最佳实践' }],
+  },
+  twitter: { card: 'summary_large_image', title: 'llms.txt 最佳实践', description: '面向生成式引擎的网站目录', images: ['/og-default.jpg'] },
+  robots: { index: true, follow: true },
+};
+
+export const crumbs = [
+  { label: '首页', href: '/' },
+  { label: '博客', href: '/blog' },
+  { label: 'llms.txt 最佳实践', href: '/blog/llms-txt-best-practices' },
+];
+
+export const faqItems = [
+  {
+    question: 'llms.txt 是官方标准吗？',
+    answer: 'llms.txt 目前是社区提出的规范（llmstxt.org），尚未成为 W3C 或 IETF 官方标准，但已被多个生成式引擎爬虫支持。llms.txt 的设计参考了 robots.txt 的成功经验，降低 LLM 爬虫理解网站结构的成本。随着生成式引擎的普及，llms.txt 有望成为类似 robots.txt 的事实标准。',
+  },
+  {
+    question: 'llms.txt 会影响传统 SEO 吗？',
+    answer: '不会。llms.txt 仅面向生成式引擎（LLM）爬虫，不影响 Googlebot、Baiduspider 等传统爬虫的抓取与排名。传统 SEO 仍依赖 robots.txt、sitemap.xml、结构化数据等机制。llms.txt 与这些机制是互补关系，共同构成面向所有引擎的网站目录体系。',
+  },
+  {
+    question: '没有 llms.txt 会被生成式引擎忽略吗？',
+    answer: '不会被忽略，但可能被低效理解。没有 llms.txt 时，LLM 爬虫只能通过 sitemap.xml 与页面内链接发现内容，可能遗漏高价值页面或抓取低价值页面。配置 llms.txt 后，爬虫可直接获取网站核心内容摘要与关键页面列表，提升引用的准确性与完整性。FlyAI 数据显示，配置 llms.txt 后平均引用率提升约 [待补充：真实提升百分比]。',
+  },
+];
+
+export default function LlmsTxtPost() {
+  return (
+    <div className="text-gray-900">
+      <Breadcrumb items={crumbs} jsonLdOnly />
+
+      <PageHero
+        eyebrow="博客 / 技术规范"
+        h1="llms.txt 最佳实践：面向生成式引擎的网站目录"
+        lead="llms.txt 是 2025 年新兴的面向 LLM 爬虫的网站目录文件。本文详解 llms.txt 的语法规范、必填字段、与 robots.txt 的协作方式，并给出 FlyAI 客户的实测引用率提升数据。"
+        ctaPrimary={{ text: '查看产品', href: '/product' }}
+        ctaSecondary={{ text: '联系销售', href: '/contact' }}
+      />
+
+      <article className="mx-auto max-w-3xl px-5 py-12 lg:px-8">
+        <p className="text-xs text-gray-500">发布于 2025-10-08 · 约 10 分钟阅读</p>
+
+        <img
+          src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=minimalist%20illustration%20of%20a%20website%20directory%20file%20llms.txt%20being%20read%20by%20an%20AI%20robot%2C%20clean%20apple%20style%2C%20soft%20blue%20gradient%20background%2C%20simple%20line%20art&image_size=landscape_16_9"
+          alt="llms.txt 文件被 AI 爬虫读取的示意图，展示网站目录文件如何帮助生成式引擎理解网站结构"
+          className="mt-6 w-full rounded-2xl"
+        />
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">一、什么是 llms.txt</h2>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            llms.txt 是一个放置于网站根目录的纯文本文件，专门面向生成式引擎（LLM）爬虫，声明网站的核心内容摘要、关键页面列表与 AI 友好的内容映射。类似于 robots.txt 控制传统爬虫的抓取范围，llms.txt 帮助 LLM 爬虫快速定位高价值内容，提升品牌在 AI 答案中被正确引用的概率。
+          </p>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            llms.txt 由社区于 2025 年提出，规范发布于 <a href="https://llmstxt.org/" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">llmstxt.org</a>。其设计理念是：生成式引擎的爬虫不需要抓取整个网站，而是需要一个「内容目录」来快速了解网站的核心价值与关键页面。
+          </p>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">二、llms.txt 的核心字段</h2>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            llms.txt 采用简单的 key: value 语法，核心字段包括：
+          </p>
+          <ul className="mt-4 list-disc space-y-2 pl-6 text-lg leading-relaxed text-gray-700">
+            <li><code>Title</code>：网站名称</li>
+            <li><code>Description</code>：网站一句话简介（80 字内）</li>
+            <li><code>Url</code>：网站根 URL</li>
+            <li><code>Updated</code>：最后更新时间</li>
+            <li><code>Pages</code>：关键页面列表（每行一个，含 URL 与一句话描述）</li>
+          </ul>
+          <pre className="mt-6 overflow-x-auto rounded-xl bg-gray-900 p-4 text-sm text-gray-100">
+            <code>{`# llms.txt - FlyAI 官网
+Title: FlyAI - 生成式引擎优化（GEO）SaaS 平台
+Description: FlyAI 帮助企业提升在 12+ 生成式引擎中的 AI 搜索可见性，提供诊断、结构化、Schema 生成与引用监测全链路工具。
+Url: https://flyai66.top
+Updated: 2025-10-08
+
+[Pages]
+https://flyai66.top/ - 首页：产品概述与核心价值
+https://flyai66.top/product - 产品：4 项核心能力详解
+https://flyai66.top/pricing - 定价：三档套餐与功能对比
+https://flyai66.top/solutions - 行业方案：B2B SaaS / 出海品牌 / 内容团队 / 代理商
+https://flyai66.top/docs - 产品文档：快速开始与 API 参考
+https://flyai66.top/blog - 博客：GEO 方法论与最佳实践`}</code>
+          </pre>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">三、llms.txt 与 robots.txt 的协作</h2>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            llms.txt 与 robots.txt 是互补关系，互不冲突：
+          </p>
+          <ul className="mt-4 list-disc space-y-2 pl-6 text-lg leading-relaxed text-gray-700">
+            <li><strong>robots.txt</strong>：控制所有爬虫（含传统爬虫与 LLM 爬虫）的抓取范围与频率，是「抓取白名单/黑名单」。</li>
+            <li><strong>llms.txt</strong>：仅面向 LLM 爬虫，提供网站内容摘要与关键页面映射，是「内容目录」。</li>
+          </ul>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            建议同时配置两者：robots.txt 确保 LLM 爬虫能抓取核心页面，llms.txt 告诉爬虫哪些页面最重要。根据 <a href="https://developers.google.com/search/docs/crawling-indexing/robots/intro" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">Google robots.txt 文档</a>，robots.txt 不保证页面不被索引，仅控制抓取；llms.txt 则不影响抓取，仅影响内容理解优先级。
+          </p>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">四、llms.txt 最佳实践</h2>
+          <ol className="mt-4 list-decimal space-y-3 pl-6 text-lg leading-relaxed text-gray-700">
+            <li><strong>Description 控制在 80 字内</strong>：直接回答「这个网站是做什么的」，避免营销套话。</li>
+            <li><strong>Pages 列出 5-15 个核心页面</strong>：按重要性排序，每个页面附一句话描述。</li>
+            <li><strong>每周更新 Updated 字段</strong>：让 LLM 爬虫知道内容是新鲜的。</li>
+            <li><strong>使用绝对 URL</strong>：避免相对路径导致爬虫解析错误。</li>
+            <li><strong>与 sitemap.xml 保持一致</strong>：llms.txt 中的页面应在 sitemap.xml 中存在。</li>
+            <li><strong>避免包含低价值页面</strong>：如登录页、搜索结果页、分页页。</li>
+          </ol>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">五、实测效果</h2>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            FlyAI 监测平台数据显示，配置规范的 llms.txt 后，品牌在生成式引擎中的引用率平均提升约 [待补充：真实提升百分比]（数据基于 [待补充：真实样本量] 个样本，统计周期 [待补充：真实周期]）。提升幅度与网站原有内容质量正相关：内容越结构化，llms.txt 的增益越明显。
+          </p>
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            参考资料：<a href="https://llmstxt.org/" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">llmstxt.org 官方规范</a>、<a href="https://en.wikipedia.org/wiki/Robots.txt" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">Wikipedia - robots.txt</a>、<a href="https://www.sitemaps.org/" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">sitemaps.org 协议</a>。
+          </p>
+        </section>
+      </article>
+
+      <FAQSection title="llms.txt 常见问题" items={faqItems} />
+
+      <JsonLd
+        data={[
+          buildBreadcrumbList(crumbs),
+          buildArticle({
+            headline: 'llms.txt 最佳实践：面向生成式引擎的网站目录',
+            description: 'llms.txt 语法规范与最佳实践',
+            datePublished: '2025-10-08',
+            dateModified: '2025-10-08',
+            authorName: 'FlyAI GEO 策略团队',
+            keywords: ['llms.txt', 'LLM 爬虫', '生成式引擎', '网站目录', 'GEO'],
+            image: 'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=llms.txt%20best%20practices&image_size=landscape_16_9',
+          }),
+          buildFAQPage(faqItems),
+        ]}
+      />
+    </div>
+  );
+}

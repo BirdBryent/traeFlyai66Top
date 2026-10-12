@@ -1,0 +1,205 @@
+import PageHero from '@/components/PageHero';
+import Breadcrumb from '@/components/Breadcrumb';
+import FAQSection from '@/components/FAQSection';
+import JsonLd from '@/components/JsonLd';
+import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem } from '@/lib/schema';
+
+export const metadata = {
+  title: 'FlyAI 字段字典 — 30+ Schema.org 字段解释表',
+  description: 'FlyAI 结构化数据字段字典：覆盖 Organization、WebSite、SoftwareApplication、FAQPage、BreadcrumbList、Article 六种类型的 30+ 字段，含字段名、类型、必填、说明与示例值。',
+  alternates: { canonical: '/docs/schema-fields' },
+  openGraph: {
+    title: 'FlyAI 字段字典 — 30+ Schema.org 字段解释表',
+    description: '30+ Schema.org 字段解释表',
+    url: 'https://flyai66.top/docs/schema-fields',
+    type: 'article',
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'FlyAI 字段字典' }],
+  },
+  twitter: { card: 'summary_large_image', title: 'FlyAI 字段字典', description: '30+ Schema.org 字段解释表', images: ['/og-default.jpg'] },
+  robots: { index: true, follow: true },
+};
+
+export const crumbs = [
+  { label: '首页', href: '/' },
+  { label: '产品文档', href: '/docs' },
+  { label: '字段字典', href: '/docs/schema-fields' },
+];
+
+export const faqItems = [
+  {
+    question: 'Schema.org 字段缺失会影响 GEO 效果吗？',
+    answer: '会。结构化数据是生成式引擎理解页面实体的关键信号。必填字段缺失会导致引擎无法正确识别实体类型与属性，进而影响引用率。FlyAI 诊断报告会标记所有缺失字段，建议优先修复 Organization、WebSite、SoftwareApplication 的必填字段。',
+  },
+  {
+    question: 'JSON-LD 中可以使用外部 ID（@id）吗？',
+    answer: '可以。建议为核心实体设置 @id（如 https://flyai66.top/#organization），便于跨页面实体对齐与知识图谱关联。FlyAI 自动生成的 JSON-LD 默认包含 @id 字段。',
+  },
+  {
+    question: 'FlyAI 支持自定义 Schema 类型吗？',
+    answer: '支持。除内置的 6 种常用类型外，企业版客户可通过自定义模板扩展其他 Schema.org 类型（如 Product、Service、Event 等）。自定义模板需在控制台配置，遵循 Schema.org 官方规范。',
+  },
+];
+
+
+export const orgFields = [
+  { name: '@type', type: 'string', required: true, desc: 'Schema 类型', example: '"Organization"' },
+  { name: '@id', type: 'URL', required: true, desc: '实体全局唯一标识', example: '"https://flyai66.top/#organization"' },
+  { name: 'name', type: 'string', required: true, desc: '组织全称', example: '"广州飞爱智能科技有限公司"' },
+  { name: 'alternateName', type: 'string', required: false, desc: '简称/品牌名', example: '"FlyAI"' },
+  { name: 'url', type: 'URL', required: true, desc: '官网 URL', example: '"https://flyai66.top"' },
+  { name: 'logo', type: 'URL', required: true, desc: 'Logo 图片 URL', example: '"https://flyai66.top/logo.png"' },
+  { name: 'description', type: 'string', required: true, desc: '组织简介', example: '"生成式引擎优化（GEO）SaaS 平台"' },
+  { name: 'foundingDate', type: 'Date', required: false, desc: '成立日期', example: '"2025-01-01"' },
+  { name: 'sameAs', type: 'URL[]', required: false, desc: '社交媒体主页等', example: '["https://github.com/FlyAI"]' },
+];
+
+export const siteFields = [
+  { name: '@type', type: 'string', required: true, desc: 'Schema 类型', example: '"WebSite"' },
+  { name: '@id', type: 'URL', required: true, desc: '实体标识', example: '"https://flyai66.top/#website"' },
+  { name: 'url', type: 'URL', required: true, desc: '网站根 URL', example: '"https://flyai66.top"' },
+  { name: 'name', type: 'string', required: true, desc: '网站名称', example: '"FlyAI"' },
+  { name: 'description', type: 'string', required: true, desc: '网站描述', example: '"GEO SaaS 平台官网"' },
+  { name: 'inLanguage', type: 'string', required: false, desc: '语言代码', example: '"zh-CN"' },
+  { name: 'publisher', type: 'Organization', required: true, desc: '发布组织', example: '{"@id":"...#organization"}' },
+];
+
+export const appFields = [
+  { name: '@type', type: 'string', required: true, desc: 'Schema 类型', example: '"SoftwareApplication"' },
+  { name: 'name', type: 'string', required: true, desc: '软件名称', example: '"FlyAI GEO Platform"' },
+  { name: 'applicationCategory', type: 'string', required: true, desc: '应用分类', example: '"BusinessApplication"' },
+  { name: 'operatingSystem', type: 'string', required: false, desc: '操作系统', example: '"Web"' },
+  { name: 'offers', type: 'Offer', required: false, desc: '定价信息', example: '{"@type":"Offer","price":"0"}' },
+  { name: 'aggregateRating', type: 'AggregateRating', required: false, desc: '综合评分', example: '{"ratingValue":"4.8","reviewCount":"120"}' },
+  { name: 'featureList', type: 'string[]', required: false, desc: '功能列表', example: '["诊断","结构化","监测"]' },
+];
+
+export const faqFields = [
+  { name: '@type', type: 'string', required: true, desc: 'Schema 类型', example: '"FAQPage"' },
+  { name: 'mainEntity', type: 'Question[]', required: true, desc: '问答列表', example: '[{"@type":"Question",...}]' },
+  { name: 'mainEntity[].name', type: 'string', required: true, desc: '问题文本', example: '"FlyAI 是什么？"' },
+  { name: 'mainEntity[].acceptedAnswer', type: 'Answer', required: true, desc: '答案', example: '{"@type":"Answer","text":"..."}' },
+  { name: 'mainEntity[].acceptedAnswer.text', type: 'string', required: true, desc: '答案文本', example: '"FlyAI 是 GEO SaaS 平台..."' },
+];
+
+export const breadcrumbFields = [
+  { name: '@type', type: 'string', required: true, desc: 'Schema 类型', example: '"BreadcrumbList"' },
+  { name: 'itemListElement', type: 'ListItem[]', required: true, desc: '面包屑项列表', example: '[{"@type":"ListItem",...}]' },
+  { name: 'itemListElement[].position', type: 'integer', required: true, desc: '位置序号', example: '1' },
+  { name: 'itemListElement[].name', type: 'string', required: true, desc: '页面名称', example: '"首页"' },
+  { name: 'itemListElement[].item', type: 'URL', required: true, desc: '页面 URL', example: '"https://flyai66.top"' },
+];
+
+export const articleFields = [
+  { name: '@type', type: 'string', required: true, desc: 'Schema 类型', example: '"Article" 或 "BlogPosting"' },
+  { name: 'headline', type: 'string', required: true, desc: '标题', example: '"GEO vs SEO 的区别"' },
+  { name: 'datePublished', type: 'Date', required: true, desc: '发布日期', example: '"2025-10-01"' },
+  { name: 'dateModified', type: 'Date', required: true, desc: '修改日期', example: '"2025-10-01"' },
+  { name: 'author', type: 'Person|Organization', required: true, desc: '作者', example: '{"@type":"Organization","name":"FlyAI"}' },
+  { name: 'publisher', type: 'Organization', required: true, desc: '发布方', example: '{"@id":"...#organization"}' },
+  { name: 'mainEntityOfPage', type: 'URL', required: false, desc: '页面 URL', example: '"https://flyai66.top/blog/..."' },
+  { name: 'image', type: 'URL', required: false, desc: '封面图', example: '"https://flyai66.top/og-default.jpg"' },
+];
+
+export function FieldTable({ fields }) {
+  return (
+    <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200">
+      <table className="w-full border-collapse text-left text-sm">
+        <thead>
+          <tr className="border-b border-gray-200 bg-gray-50">
+            <th className="px-4 py-3 font-semibold">字段</th>
+            <th className="px-4 py-3 font-semibold">类型</th>
+            <th className="px-4 py-3 font-semibold">必填</th>
+            <th className="px-4 py-3 font-semibold">说明</th>
+            <th className="px-4 py-3 font-semibold">示例</th>
+          </tr>
+        </thead>
+        <tbody>
+          {fields.map((f) => (
+            <tr key={f.name} className="border-b border-gray-100 last:border-0">
+              <td className="px-4 py-3 font-mono text-xs">{f.name}</td>
+              <td className="px-4 py-3">{f.type}</td>
+              <td className="px-4 py-3">{f.required ? '是' : '否'}</td>
+              <td className="px-4 py-3 text-gray-600">{f.desc}</td>
+              <td className="px-4 py-3 font-mono text-xs text-gray-700">{f.example}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default function SchemaFieldsDoc() {
+  return (
+    <div className="text-gray-900">
+      <Breadcrumb items={crumbs} jsonLdOnly />
+
+      <PageHero
+        eyebrow="产品文档 / 字段字典"
+        h1="FlyAI 字段字典 — 30+ Schema.org 字段解释表"
+        lead="本字段字典覆盖 FlyAI 常用的六种 Schema.org 类型共 30+ 字段，每个字段标注类型、是否必填、说明与示例值。所有字段遵循 Schema.org 官方规范，可直接用于 JSON-LD 实现。"
+        ctaPrimary={{ text: '查看 API', href: '/docs/api-reference' }}
+        ctaSecondary={{ text: '联系销售', href: '/contact' }}
+      />
+
+      <article className="mx-auto max-w-5xl px-5 py-12 lg:px-8">
+        <p className="text-lg text-gray-700">
+          结构化数据（Structured Data）是生成式引擎理解页面实体的关键信号。FlyAI 自动生成符合 <a href="https://schema.org" className="text-brand-700 underline" target="_blank" rel="noopener noreferrer">Schema.org</a> 规范的 JSON-LD，以下为常用字段说明。
+        </p>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">Organization</h2>
+          <p className="mt-2 text-gray-600">描述企业/组织主体，是所有实体的根节点。</p>
+          <FieldTable fields={orgFields} />
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">WebSite</h2>
+          <p className="mt-2 text-gray-600">描述网站整体，包含名称、URL、发布者。</p>
+          <FieldTable fields={siteFields} />
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">SoftwareApplication</h2>
+          <p className="mt-2 text-gray-600">描述 SaaS 产品，含分类、定价、评分、功能列表。</p>
+          <FieldTable fields={appFields} />
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">FAQPage</h2>
+          <p className="mt-2 text-gray-600">描述问答页，每个问题需包含 acceptedAnswer。</p>
+          <FieldTable fields={faqFields} />
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">BreadcrumbList</h2>
+          <p className="mt-2 text-gray-600">描述面包屑导航，帮助引擎理解页面层级。</p>
+          <FieldTable fields={breadcrumbFields} />
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-3xl font-bold tracking-tight">Article / BlogPosting</h2>
+          <p className="mt-2 text-gray-600">描述文章内容，必填 headline、datePublished、author、publisher。</p>
+          <FieldTable fields={articleFields} />
+        </section>
+      </article>
+
+      <FAQSection title="字段字典常见问题" items={faqItems} />
+
+      <JsonLd
+        data={[
+          buildBreadcrumbList(crumbs),
+          buildArticle({
+            headline: 'FlyAI 字段字典 — 30+ Schema.org 字段解释表',
+            description: '30+ Schema.org 字段解释表',
+            datePublished: '2025-10-01',
+            dateModified: '2025-10-01',
+            authorName: 'FlyAI 文档团队',
+            keywords: ['Schema.org', 'JSON-LD', '字段字典', '结构化数据', 'GEO'],
+          }),
+          buildFAQPage(faqItems),
+        ]}
+      />
+    </div>
+  );
+}
