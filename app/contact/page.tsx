@@ -8,7 +8,7 @@ import { buildFAQPage, buildBreadcrumbList, FAQItem } from '@/lib/schema';
 
 const title = '联系 FlyAI — 免费诊断 · 预约演示 · 合作咨询';
 const description =
-  '通过 FlyAI 联系表单提交你的需求，商务团队将于工作日 24 小时内回复（中国工作时间 9:00-18:00 GMT+8）。免费 AI 搜索可见性诊断支持提交最多 500 个 URL，2 个工作日内输出报告并通过邮件发送。';
+  '通过 FlyAI 联系表单提交你的需求，商务团队将于工作日 24 小时内回复（中国工作时间 9:00-18:00 GMT+8）。免费 AI 搜索可见性诊断支持提交最多 500 个 URL，2 个工作日内输出 100+ 维度的诊断报告并通过邮件发送，报告包含问题清单与修复优先级建议，可直接对接增长团队执行。';
 
 export const metadata: Metadata = {
   title,
@@ -251,6 +251,25 @@ export default function ContactPage() {
             </tbody>
           </table>
         </div>
+      </section>
+
+      {/* 参考资料与延伸阅读 */}
+      <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
+        <h2 className="text-3xl font-bold tracking-tight">参考资料与延伸阅读</h2>
+        <ul className="mt-6 space-y-3 text-base text-gray-700">
+          <li>
+            <a href="https://schema.org/docs/gs.html" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Schema.org 官方 Getting Started 指南</a>
+            <span className="text-gray-500"> — 结构化数据类型与 JSON-LD 标记规范</span>
+          </li>
+          <li>
+            <a href="https://developers.google.com/search/docs/appearance/structured-data" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Google Search Central 结构化数据文档</a>
+            <span className="text-gray-500"> — Google 对结构化数据的收录与展示规则</span>
+          </li>
+          <li>
+            <a href="https://en.wikipedia.org/wiki/Search_engine_optimization" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Wikipedia: Search Engine Optimization</a>
+            <span className="text-gray-500"> — SEO 基础概念与搜索引擎工作原理</span>
+          </li>
+        </ul>
       </section>
 
       <FAQSection title="关于联系 FlyAI 的常见问题" items={faqItems} />

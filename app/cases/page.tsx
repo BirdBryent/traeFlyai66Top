@@ -8,7 +8,7 @@ import { buildFAQPage, buildBreadcrumbList, FAQItem } from '@/lib/schema';
 
 const title = 'FlyAI 客户案例 — 背景 · 动作 · 可量化结果';
 const description =
-  '本节展示 FlyAI 典型客户交付框架，所有具体案例数据均以占位符标注待客户授权后补录，确保任何展示的品牌名与数字均可追溯并通过真实验证；读者可通过每条案例的「背景-动作-结果」结构理解 FlyAI GEO 方法论在不同行业的落地路径。';
+  '本节展示 FlyAI 典型客户交付框架，所有具体案例数据均以占位符标注待客户授权后补录，确保任何展示的品牌名与数字均可追溯并通过真实验证。读者可通过每条案例的「背景-动作-结果」三段式结构，理解 FlyAI GEO 方法论在不同行业的落地路径与可复用模板。';
 
 export const metadata: Metadata = {
   title,
@@ -179,6 +179,25 @@ export default function CasesPage() {
           <li><strong>可追溯：</strong>每个数字均可追溯至客户签署的交付确认书与引用监测系统导出的原始数据。</li>
           <li><strong>不构成承诺：</strong>案例数据为特定客户在特定条件下的真实结果，不构成对其他客户的效果承诺。</li>
           <li><strong>持续更新：</strong>案例每季度更新一次，新增案例需完成 MAA 签署后方可上线。</li>
+        </ul>
+      </section>
+
+      {/* 参考资料与延伸阅读 */}
+      <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
+        <h2 className="text-3xl font-bold tracking-tight">参考资料与延伸阅读</h2>
+        <ul className="mt-6 space-y-3 text-base text-gray-700">
+          <li>
+            <a href="https://schema.org/docs/gs.html" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Schema.org 官方 Getting Started 指南</a>
+            <span className="text-gray-500"> — 结构化数据类型与 JSON-LD 标记规范</span>
+          </li>
+          <li>
+            <a href="https://developers.google.com/search/docs/appearance/structured-data" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Google Search Central 结构化数据文档</a>
+            <span className="text-gray-500"> — Google 对结构化数据的收录与展示规则</span>
+          </li>
+          <li>
+            <a href="https://en.wikipedia.org/wiki/Search_engine_optimization" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Wikipedia: Search Engine Optimization</a>
+            <span className="text-gray-500"> — SEO 基础概念与搜索引擎工作原理</span>
+          </li>
         </ul>
       </section>
 

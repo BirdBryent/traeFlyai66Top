@@ -8,7 +8,7 @@ import { buildFAQPage, buildBreadcrumbList, FAQItem } from '@/lib/schema';
 
 const title = 'FlyAI 解决方案 — B2B SaaS · 出海品牌 · 内容团队 · 代理商';
 const description =
-  '针对 B2B SaaS 客户需要在 AI 答案中被作为工具推荐准确引用、出海品牌需要在多语言生成式引擎中维持实体一致性、内容团队需要规模化产出高引用内容、代理商需要将 GEO 打包进客户服务套餐四类典型场景，FlyAI 提供模块化组合方案与对应的诊断模板、数据接入方式、交付物清单。';
+  '针对 B2B SaaS 客户需要在 AI 答案中被作为工具推荐准确引用、出海品牌需要在多语言生成式引擎中维持实体一致性、内容团队需要规模化产出高引用内容、代理商需要将 GEO 打包进客户服务套餐四类典型场景，FlyAI 提供模块化组合方案与对应的诊断模板、数据接入方式与交付物清单，可按团队规模与行业灵活选配。';
 
 export const metadata: Metadata = {
   title,
@@ -201,6 +201,25 @@ export default function SolutionsPage() {
             </tbody>
           </table>
         </div>
+      </section>
+
+      {/* 参考资料与延伸阅读 */}
+      <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
+        <h2 className="text-3xl font-bold tracking-tight">参考资料与延伸阅读</h2>
+        <ul className="mt-6 space-y-3 text-base text-gray-700">
+          <li>
+            <a href="https://schema.org/docs/gs.html" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Schema.org 官方 Getting Started 指南</a>
+            <span className="text-gray-500"> — 结构化数据类型与 JSON-LD 标记规范</span>
+          </li>
+          <li>
+            <a href="https://developers.google.com/search/docs/appearance/structured-data" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Google Search Central 结构化数据文档</a>
+            <span className="text-gray-500"> — Google 对结构化数据的收录与展示规则</span>
+          </li>
+          <li>
+            <a href="https://en.wikipedia.org/wiki/Search_engine_optimization" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Wikipedia: Search Engine Optimization</a>
+            <span className="text-gray-500"> — SEO 基础概念与搜索引擎工作原理</span>
+          </li>
+        </ul>
       </section>
 
       <FAQSection title="关于 FlyAI 解决方案的常见问题" items={faqItems} />

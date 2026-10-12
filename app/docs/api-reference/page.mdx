@@ -6,7 +6,7 @@ import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem } from '@/lib/
 
 export const metadata = {
   title: 'FlyAI API 参考 — 诊断 · 结构化 · Schema · 监测 四组接口',
-  description: 'FlyAI REST API 完整参考：诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测四组接口，含请求参数、响应结构、错误码、curl 与 TypeScript 示例。',
+  description: 'FlyAI REST API 完整参考：诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测四组接口，含请求参数、响应结构、错误码、curl 与 TypeScript 示例。所有接口支持 HTTPS 与 JSON 格式，返回结果可直接用于生成式引擎引用优化工作流与自动化监测脚本。',
   alternates: { canonical: '/docs/api-reference' },
   openGraph: {
     title: 'FlyAI API 参考',
@@ -236,6 +236,25 @@ export default function ApiReferenceDoc() {
           </div>
         </section>
       </article>
+
+      {/* 参考资料与延伸阅读 */}
+      <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
+        <h2 className="text-3xl font-bold tracking-tight">参考资料与延伸阅读</h2>
+        <ul className="mt-6 space-y-3 text-base text-gray-700">
+          <li>
+            <a href="https://schema.org/docs/gs.html" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Schema.org 官方 Getting Started 指南</a>
+            <span className="text-gray-500"> — 结构化数据类型与 JSON-LD 标记规范</span>
+          </li>
+          <li>
+            <a href="https://developers.google.com/search/docs/appearance/structured-data" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Google Search Central 结构化数据文档</a>
+            <span className="text-gray-500"> — Google 对结构化数据的收录与展示规则</span>
+          </li>
+          <li>
+            <a href="https://json-ld.org/" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">JSON-LD 官方网站</a>
+            <span className="text-gray-500"> — 结构化数据的 JSON 链接数据格式规范</span>
+          </li>
+        </ul>
+      </section>
 
       <FAQSection title="API 参考常见问题" items={faqItems} />
 

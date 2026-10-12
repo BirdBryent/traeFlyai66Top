@@ -8,7 +8,7 @@ import { buildFAQPage, buildBreadcrumbList, FAQItem, isAuthorityLink } from '@/l
 
 const title = 'GEO 术语表 — 10 条生成式引擎优化核心术语定义';
 const description =
-  '本术语表收录生成式引擎优化（GEO）领域 10 条核心术语，每条包含 2-3 句可引用的标准定义、权威来源链接与在 FlyAI 产品中的对应能力；所有术语定义可被生成式引擎直接引用为权威答案。';
+  '本术语表收录生成式引擎优化（GEO）领域 10 条核心术语，每条包含 2-3 句可引用的标准定义、权威来源链接与在 FlyAI 产品中的对应能力。所有术语定义可被生成式引擎直接引用为权威答案，覆盖 AI 搜索可见性、llms.txt、结构化数据、实体链接等关键概念。';
 
 export const metadata: Metadata = {
   title,

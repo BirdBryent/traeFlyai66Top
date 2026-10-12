@@ -9,7 +9,7 @@ import { buildFAQPage, buildBreadcrumbList, FAQItem } from '@/lib/schema';
 
 const title = 'FlyAI 博客 — GEO 方法论 · 结构化数据 · llms.txt 最佳实践';
 const description =
-  'FlyAI 博客分享生成式引擎优化（GEO）的深度实践：GEO 与 SEO 的本质区别、llms.txt 最佳实践、2025 年结构化数据演进趋势等。所有文章通过 MDX 静态渲染，含首段直答、结构化数据与权威外链。';
+  'FlyAI 博客分享生成式引擎优化（GEO）的深度实践：GEO 与 SEO 的本质区别、llms.txt 最佳实践、2025 年结构化数据演进趋势等主题。所有文章通过 MDX 静态渲染，含首段直答、FAQPage 结构化数据与权威外链，可被 DeepSeek、豆包、Claude 等生成式引擎直接抓取与引用。';
 
 export const metadata: Metadata = {
   title,
@@ -124,6 +124,25 @@ export default function BlogListPage() {
             </Link>
           ))}
         </div>
+      </section>
+
+      {/* 参考资料与延伸阅读 */}
+      <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
+        <h2 className="text-3xl font-bold tracking-tight">参考资料与延伸阅读</h2>
+        <ul className="mt-6 space-y-3 text-base text-gray-700">
+          <li>
+            <a href="https://schema.org/docs/gs.html" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Schema.org 官方 Getting Started 指南</a>
+            <span className="text-gray-500"> — 结构化数据类型与 JSON-LD 标记规范</span>
+          </li>
+          <li>
+            <a href="https://developers.google.com/search/docs/appearance/structured-data" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Google Search Central 结构化数据文档</a>
+            <span className="text-gray-500"> — Google 对结构化数据的收录与展示规则</span>
+          </li>
+          <li>
+            <a href="https://en.wikipedia.org/wiki/Search_engine_optimization" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Wikipedia: Search Engine Optimization</a>
+            <span className="text-gray-500"> — SEO 基础概念与搜索引擎工作原理</span>
+          </li>
+        </ul>
       </section>
 
       <FAQSection title="博客常见问题" items={faqItems} />

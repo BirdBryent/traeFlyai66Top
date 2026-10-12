@@ -6,7 +6,7 @@ import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem } from '@/lib/
 
 export const metadata = {
   title: 'FlyAI 字段字典 — 30+ Schema.org 字段解释表',
-  description: 'FlyAI 结构化数据字段字典：覆盖 Organization、WebSite、SoftwareApplication、FAQPage、BreadcrumbList、Article 六种类型的 30+ 字段，含字段名、类型、必填、说明与示例值。',
+  description: 'FlyAI 结构化数据字段字典：覆盖 Organization、WebSite、SoftwareApplication、FAQPage、BreadcrumbList、Article 六种类型的 30+ 字段，含字段名、类型、是否必填、说明与示例值，对齐 schema.org 官方规范。',
   alternates: { canonical: '/docs/schema-fields' },
   openGraph: {
     title: 'FlyAI 字段字典 — 30+ Schema.org 字段解释表',
@@ -183,6 +183,25 @@ export default function SchemaFieldsDoc() {
           <FieldTable fields={articleFields} />
         </section>
       </article>
+
+      {/* 参考资料与延伸阅读 */}
+      <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
+        <h2 className="text-3xl font-bold tracking-tight">参考资料与延伸阅读</h2>
+        <ul className="mt-6 space-y-3 text-base text-gray-700">
+          <li>
+            <a href="https://schema.org/docs/gs.html" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Schema.org 官方 Getting Started 指南</a>
+            <span className="text-gray-500"> — 结构化数据类型与 JSON-LD 标记规范</span>
+          </li>
+          <li>
+            <a href="https://developers.google.com/search/docs/appearance/structured-data" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Google Search Central 结构化数据文档</a>
+            <span className="text-gray-500"> — Google 对结构化数据的收录与展示规则</span>
+          </li>
+          <li>
+            <a href="https://json-ld.org/" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">JSON-LD 官方网站</a>
+            <span className="text-gray-500"> — 结构化数据的 JSON 链接数据格式规范</span>
+          </li>
+        </ul>
+      </section>
 
       <FAQSection title="字段字典常见问题" items={faqItems} />
 

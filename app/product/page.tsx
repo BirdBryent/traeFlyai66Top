@@ -14,7 +14,7 @@ import {
 
 const title = 'FlyAI 产品功能 — AI 搜索可见性诊断 · 内容结构化 · Schema 与 llms.txt 生成 · 引用监测';
 const description =
-  'FlyAI 产品覆盖 GEO 全流程：AI 搜索可见性诊断引擎 5 分钟扫描全站抓取漏洞；内容结构化编辑器将 Markdown/富文本转为引擎友好实体标注；Schema 与 llms.txt 生成器一键对齐 schema.org 与 LLM 抓取协议；引用与提及监测面板实时追踪品牌在 12+ 生成式引擎中的被引用次数与准确度。';
+  'FlyAI 产品覆盖 GEO 全流程：AI 搜索可见性诊断引擎 5 分钟扫描全站抓取漏洞；内容结构化编辑器将 Markdown/富文本转为引擎友好实体标注；Schema 与 llms.txt 生成器一键对齐 schema.org 与 LLM 抓取协议；引用监测面板追踪品牌在 12+ 生成式引擎中的被引用次数与准确度。';
 
 export const metadata: Metadata = {
   title,
@@ -253,6 +253,25 @@ export default function ProductPage() {
             </tbody>
           </table>
         </div>
+      </section>
+
+      {/* 参考资料与延伸阅读 */}
+      <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
+        <h2 className="text-3xl font-bold tracking-tight">参考资料与延伸阅读</h2>
+        <ul className="mt-6 space-y-3 text-base text-gray-700">
+          <li>
+            <a href="https://schema.org/docs/gs.html" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Schema.org 官方 Getting Started 指南</a>
+            <span className="text-gray-500"> — 结构化数据类型与 JSON-LD 标记规范</span>
+          </li>
+          <li>
+            <a href="https://developers.google.com/search/docs/appearance/structured-data" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Google Search Central 结构化数据文档</a>
+            <span className="text-gray-500"> — Google 对结构化数据的收录与展示规则</span>
+          </li>
+          <li>
+            <a href="https://en.wikipedia.org/wiki/Search_engine_optimization" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Wikipedia: Search Engine Optimization</a>
+            <span className="text-gray-500"> — SEO 基础概念与搜索引擎工作原理</span>
+          </li>
+        </ul>
       </section>
 
       <FAQSection title="关于 FlyAI 产品功能的常见问题" items={faqItems} />

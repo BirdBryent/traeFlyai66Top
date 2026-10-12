@@ -6,8 +6,7 @@ import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem } from '@/lib/
 
 export const metadata = {
   title: 'FlyAI 快速开始 — 3 步完成 GEO 接入',
-  description:
-    '本快速开始指南帮助你在 10 分钟内完成 FlyAI 接入：获取 API Key、安装 SDK、调用首个 AI 搜索可见性诊断接口，生成 100+ 维度诊断报告。',
+  description: '10 分钟完成 FlyAI 接入：获取 API Key、安装 SDK、调用首个诊断接口。本文档引导开发者完成从账号注册、环境配置到提交首批 URL 进行 AI 搜索可见性诊断的全流程，并给出常见错误排查与下一步功能模块的入口链接，帮助团队快速上手 GEO 能力。',
   alternates: { canonical: '/docs/quickstart' },
   openGraph: {
     title: 'FlyAI 快速开始 — 3 步完成 GEO 接入',
@@ -168,6 +167,25 @@ console.log(report.suggestions);  // 修复建议`}</code>
           </ul>
         </section>
       </article>
+
+      {/* 参考资料与延伸阅读 */}
+      <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
+        <h2 className="text-3xl font-bold tracking-tight">参考资料与延伸阅读</h2>
+        <ul className="mt-6 space-y-3 text-base text-gray-700">
+          <li>
+            <a href="https://schema.org/docs/gs.html" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Schema.org 官方 Getting Started 指南</a>
+            <span className="text-gray-500"> — 结构化数据类型与 JSON-LD 标记规范</span>
+          </li>
+          <li>
+            <a href="https://developers.google.com/search/docs/appearance/structured-data" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Google Search Central 结构化数据文档</a>
+            <span className="text-gray-500"> — Google 对结构化数据的收录与展示规则</span>
+          </li>
+          <li>
+            <a href="https://json-ld.org/" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">JSON-LD 官方网站</a>
+            <span className="text-gray-500"> — 结构化数据的 JSON 链接数据格式规范</span>
+          </li>
+        </ul>
+      </section>
 
       <FAQSection title="快速开始常见问题" items={faqItems} />
 
