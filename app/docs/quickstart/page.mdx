@@ -1,6 +1,7 @@
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
+import RelatedLinks from '@/components/RelatedLinks';
 import JsonLd from '@/components/JsonLd';
 import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem } from '@/lib/schema';
 
@@ -187,6 +188,7 @@ console.log(report.suggestions);  // 修复建议`}</code>
         </ul>
       </section>
 
+      <RelatedLinks path="/docs/quickstart" />
       <FAQSection title="快速开始常见问题" items={faqItems} />
 
       <JsonLd

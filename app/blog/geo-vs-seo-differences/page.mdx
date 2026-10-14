@@ -1,12 +1,13 @@
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
+import RelatedLinks from '@/components/RelatedLinks';
 import JsonLd from '@/components/JsonLd';
 import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem } from '@/lib/schema';
 
 export const metadata = {
   title: 'GEO 与 SEO 的本质区别：从「被搜到」到「被引用」',
-  description: '本文从优化对象、核心指标、关键手段三个维度，系统对比 GEO（生成式引擎优化）与 SEO（搜索引擎优化）的本质区别，给出企业从传统 SEO 向 GEO 迁移的具体路径与优先级建议，帮助市场与增长团队理解 AI 搜索时代的品牌可见性新范式与资源投入策略。',
+  description: '本文从优化对象、核心指标、关键手段三个维度，系统对比 GEO（生成式引擎优化）与 SEO（搜索引擎优化）的本质区别，给出企业从 SEO 向 GEO 迁移的具体路径。',
   alternates: { canonical: '/blog/geo-vs-seo-differences' },
   openGraph: {
     title: 'GEO 与 SEO 的本质区别：从「被搜到」到「被引用」',
@@ -140,6 +141,7 @@ export default function GeoVsSeoPost() {
         </section>
       </article>
 
+      <RelatedLinks path="/blog/geo-vs-seo-differences" />
       <FAQSection title="GEO 与 SEO 常见问题" items={faqItems} />
 
       <JsonLd

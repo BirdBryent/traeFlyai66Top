@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import RelatedLinks from '@/components/RelatedLinks';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import CTAButton from '@/components/CTAButton';
@@ -289,6 +290,7 @@ export default function FAQPage() {
         </ul>
       </section>
 
+      <RelatedLinks path="/faq" />
       <JsonLd data={[buildBreadcrumbList(crumbs), buildFAQPage(allFaqItems)]} />
     </div>
   );

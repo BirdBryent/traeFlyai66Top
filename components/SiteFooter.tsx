@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { siteConfig } from '@/lib/site.config';
+import { toAbsolute } from '@/lib/related-links';
 
 export function SiteFooter() {
   return (
@@ -70,12 +71,12 @@ export function SiteFooter() {
             <ul className="space-y-2 list-none pl-0 text-left">
               {siteConfig.navFooter.product.map((i) => (
                 <li key={i.href}>
-                  <Link
-                    href={i.href}
+                  <a
+                    href={toAbsolute(i.href)}
                     className="inline-flex h-8 items-center text-gray-600 transition hover:text-brand-600"
                   >
                     {i.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -86,12 +87,12 @@ export function SiteFooter() {
             <ul className="space-y-2 list-none pl-0 text-left">
               {siteConfig.navFooter.resources.map((i) => (
                 <li key={i.href}>
-                  <Link
-                    href={i.href}
+                  <a
+                    href={toAbsolute(i.href)}
                     className="inline-flex h-8 items-center text-gray-600 transition hover:text-brand-600"
                   >
                     {i.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -102,12 +103,12 @@ export function SiteFooter() {
             <ul className="space-y-2 list-none pl-0 text-left">
               {siteConfig.navFooter.company.map((i) => (
                 <li key={i.href}>
-                  <Link
-                    href={i.href}
+                  <a
+                    href={toAbsolute(i.href)}
                     className="inline-flex h-8 items-center text-gray-600 transition hover:text-brand-600"
                   >
                     {i.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

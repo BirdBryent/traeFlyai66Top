@@ -2,13 +2,14 @@ import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
+import RelatedLinks from '@/components/RelatedLinks';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
 import { buildFAQPage, buildBreadcrumbList, FAQItem } from '@/lib/schema';
 
 const title = 'FlyAI 定价 — 启动版 · 专业版 · 企业版 三档订阅方案';
 const description =
-  'FlyAI 提供按月订阅的透明定价：启动版适合 3 人以内内容团队试水 GEO；专业版适合 10-50 人市场/增长团队规模化运行；企业版适合 50+ 人或多品牌集团客户定制私有部署、SLA 保障与专属 CSM 服务。所有套餐价格以联系销售后的正式报价单为准，页面不展示任何虚假金额。';
+  'FlyAI 提供按月订阅的透明定价：启动版适合 3 人以内内容团队试水 GEO；专业版适合 10-50 人市场/增长团队规模化运行；企业版适合 50+ 人或多品牌集团客户定制私有部署、SLA 与专属 CSM。所有价格以联系销售后的正式报价单为准，不展示任何虚假金额。';
 
 export const metadata: Metadata = {
   title,
@@ -226,25 +227,7 @@ export default function PricingPage() {
         </ul>
       </section>
 
-      {/* 参考资料与延伸阅读 */}
-      <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">参考资料与延伸阅读</h2>
-        <ul className="mt-6 space-y-3 text-base text-gray-700">
-          <li>
-            <a href="https://schema.org/docs/gs.html" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Schema.org 官方 Getting Started 指南</a>
-            <span className="text-gray-500"> — 结构化数据类型与 JSON-LD 标记规范</span>
-          </li>
-          <li>
-            <a href="https://developers.google.com/search/docs/appearance/structured-data" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Google Search Central 结构化数据文档</a>
-            <span className="text-gray-500"> — Google 对结构化数据的收录与展示规则</span>
-          </li>
-          <li>
-            <a href="https://en.wikipedia.org/wiki/Search_engine_optimization" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Wikipedia: Search Engine Optimization</a>
-            <span className="text-gray-500"> — SEO 基础概念与搜索引擎工作原理</span>
-          </li>
-        </ul>
-      </section>
-
+      <RelatedLinks path="/pricing" />
       <FAQSection title="关于 FlyAI 定价与计费的常见问题" items={faqItems} />
 
       <section className="mx-auto max-w-7xl px-5 pb-24 lg:px-8">

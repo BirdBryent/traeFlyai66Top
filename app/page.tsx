@@ -3,6 +3,7 @@ import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
+import RelatedLinks from '@/components/RelatedLinks';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
 import HomeCapabilities from '@/components/HomeCapabilities';
@@ -102,6 +103,7 @@ export default function HomePage() {
 
       <HomePainPoints />
 
+      <RelatedLinks path="/" />
       <FAQSection title="关于 FlyAI 生成式引擎优化（GEO）的 5 条常见问题" items={homeFAQ} />
 
       <section

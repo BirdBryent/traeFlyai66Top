@@ -3,7 +3,7 @@ export const siteConfig = {
   fullCompanyName: '广州飞爱智能科技有限公司',
   description:
     'FlyAI（广州飞爱智能科技有限公司）专注 GEO 生成式引擎优化服务：AI 搜索可见性诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测，帮助企业市场/增长/内容团队在 DeepSeek、豆包、千问、Google AIO 等生成式引擎答案中获得稳定引用。',
-  url: 'https://flyai66.top',
+  url: 'https://www.flyai66.top',
   ogImage: '/og-default.jpg',
   locale: 'zh_CN',
   lang: 'zh-CN',

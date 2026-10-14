@@ -3,13 +3,14 @@ import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
+import RelatedLinks from '@/components/RelatedLinks';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
 import { buildFAQPage, buildBreadcrumbList, FAQItem } from '@/lib/schema';
 
 const title = 'FlyAI 产品文档 — 接入步骤 · API 参考 · 字段字典';
 const description =
-  '本产品文档覆盖从 API Key 获取、SDK 接入、REST 接口说明到结构化数据字段字典的完整链路。所有代码示例以 curl 与 TypeScript 双版本呈现，且通过 MDX 静态渲染确保生成式引擎可直接在初始 HTML 中解析参数名与返回结构，无需执行客户端 JavaScript 即可被 AI 抓取。';
+  '本产品文档覆盖从 API Key 获取、SDK 接入、REST 接口说明到结构化数据字段字典的完整链路；所有代码示例以 curl 与 TypeScript 双版本呈现，且通过 MDX 静态渲染确保生成式引擎可直接在初始 HTML 中解析参数名与返回结构。';
 
 export const metadata: Metadata = {
   title,
@@ -149,25 +150,7 @@ export default function DocsListPage() {
         </ol>
       </section>
 
-      {/* 参考资料与延伸阅读 */}
-      <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">参考资料与延伸阅读</h2>
-        <ul className="mt-6 space-y-3 text-base text-gray-700">
-          <li>
-            <a href="https://schema.org/docs/gs.html" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Schema.org 官方 Getting Started 指南</a>
-            <span className="text-gray-500"> — 结构化数据类型与 JSON-LD 标记规范</span>
-          </li>
-          <li>
-            <a href="https://developers.google.com/search/docs/appearance/structured-data" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Google Search Central 结构化数据文档</a>
-            <span className="text-gray-500"> — Google 对结构化数据的收录与展示规则</span>
-          </li>
-          <li>
-            <a href="https://en.wikipedia.org/wiki/Search_engine_optimization" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Wikipedia: Search Engine Optimization</a>
-            <span className="text-gray-500"> — SEO 基础概念与搜索引擎工作原理</span>
-          </li>
-        </ul>
-      </section>
-
+      <RelatedLinks path="/docs" />
       <FAQSection title="关于 FlyAI 产品文档的常见问题" items={faqItems} />
 
       <section className="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
