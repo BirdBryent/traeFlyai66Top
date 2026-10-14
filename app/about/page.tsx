@@ -3,6 +3,7 @@ import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
+import CitedSources, { SOURCES } from '@/components/CitedSources';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
 import { buildFAQPage, buildBreadcrumbList, FAQItem, buildWebPage, buildAboutPage } from '@/lib/schema';
@@ -169,6 +170,10 @@ export default function AboutPage() {
         </p>
       </section>
 
+      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
+        FlyAI 的服务范围与合规承诺遵循<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>。GEO 方法论的学术依据见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，行业背景参考<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a>。
+      </p>
+      <CitedSources items={[SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.geoPaper]} />
       <RelatedLinks path="/about" />
       <FAQSection title="关于 FlyAI 公司的常见问题" items={faqItems} />
 

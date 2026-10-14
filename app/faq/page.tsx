@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import RelatedLinks from '@/components/RelatedLinks';
+import CitedSources, { SOURCES } from '@/components/CitedSources';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import CTAButton from '@/components/CTAButton';
@@ -290,6 +291,10 @@ export default function FAQPage() {
         </ul>
       </section>
 
+      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
+        以下 FAQ 的回答基于 FlyAI GEO 方法论。方法论依据见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，检索增强生成原理参考<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Lewis et al., NeurIPS 2020</a>，合规要求遵循<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>。
+      </p>
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.rag]} />
       <RelatedLinks path="/faq" />
       <JsonLd data={[buildWebPage({ url: '/faq', name: 'FlyAI 常见问题' }),
           buildService('FlyAI GEO 服务', 'AI 搜索可见性诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测'),

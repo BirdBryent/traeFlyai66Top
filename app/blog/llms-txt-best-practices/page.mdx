@@ -2,6 +2,7 @@ import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
+import CitedSources, { SOURCES } from '@/components/CitedSources';
 import JsonLd from '@/components/JsonLd';
 import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem, buildWebPage } from '@/lib/schema';
 
@@ -139,6 +140,10 @@ https://flyai66.top/blog - 博客：GEO 方法论与最佳实践`}</code>
         </section>
       </article>
 
+      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
+        llms.txt 的最佳实践建立在生成式引擎的检索机制之上。<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">GEO 论文</a> 提出的「来源引用」手法与<a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 的长上下文研究，共同指导了本文的写作。
+      </p>
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.longContext, SOURCES.rag]} />
       <RelatedLinks path="/blog/llms-txt-best-practices" />
       <FAQSection title="llms.txt 常见问题" items={faqItems} />
 

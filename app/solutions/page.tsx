@@ -3,6 +3,7 @@ import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
+import CitedSources, { SOURCES } from '@/components/CitedSources';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
 import { buildFAQPage, buildBreadcrumbList, FAQItem, buildWebPage, buildService } from '@/lib/schema';
@@ -204,6 +205,10 @@ export default function SolutionsPage() {
         </div>
       </section>
 
+      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
+        不同行业落地 GEO 的路径差异显著，但底层逻辑一致：让生成式引擎在检索阶段召回你的实体，在综合阶段准确描述你的品牌。<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">GEO 论文</a> 提出的「来源引用」手法与<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a> 对内容合规的要求，共同决定了方案的设计边界。
+      </p>
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.rag, SOURCES.geoDoi]} />
       <RelatedLinks path="/solutions" />
       <FAQSection title="关于 FlyAI 解决方案的常见问题" items={faqItems} />
 

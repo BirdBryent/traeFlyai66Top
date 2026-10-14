@@ -4,6 +4,7 @@ import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
+import CitedSources, { SOURCES } from '@/components/CitedSources';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
 import {
@@ -258,6 +259,10 @@ export default function ProductPage() {
         </div>
       </section>
 
+      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
+        FlyAI 的产品设计以生成式引擎的检索与综合机制为基础。<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》</a> 系统阐述了 RAG 的检索-综合两阶段架构，而 <a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 则解释了为何首段直达答案对被引用至关重要。
+      </p>
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.geoDoi]} />
       <RelatedLinks path="/product" />
       <FAQSection title="关于 FlyAI 产品功能的常见问题" items={faqItems} />
 

@@ -4,6 +4,7 @@ import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
+import CitedSources, { SOURCES } from '@/components/CitedSources';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
 import HomeCapabilities from '@/components/HomeCapabilities';
@@ -105,6 +106,10 @@ export default function HomePage() {
 
       <HomePainPoints />
 
+      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
+        生成式引擎优化的实证依据来自 KDD 2024 论文 <a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《GEO: Generative Engine Optimization》</a>：其中「引文添加」「统计数据添加」「来源引用」三种改写手法在 GEO-bench 上分别带来约 41%、37%、30% 的可信度/可见度提升，而关键词堆砌无效。
+      </p>
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.stanfordAiIndex]} />
       <RelatedLinks path="/" />
       <FAQSection title="关于 FlyAI 生成式引擎优化（GEO）的 5 条常见问题" items={homeFAQ} />
 

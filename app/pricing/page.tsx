@@ -3,6 +3,7 @@ import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
+import CitedSources, { SOURCES } from '@/components/CitedSources';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
 import { buildFAQPage, buildBreadcrumbList, FAQItem, buildWebPage, buildService } from '@/lib/schema';
@@ -227,6 +228,10 @@ export default function PricingPage() {
         </ul>
       </section>
 
+      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
+        FlyAI 三档定价对应不同规模团队的 GEO 成熟度阶段。定价模型参考了<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a> 对生成式 AI 服务提供者的合规义务界定，以及<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a> 中企业 AI 采纳率的行业基准。
+      </p>
+      <CitedSources items={[SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.geoDoi, SOURCES.geoDoi]} />
       <RelatedLinks path="/pricing" />
       <FAQSection title="关于 FlyAI 定价与计费的常见问题" items={faqItems} />
 

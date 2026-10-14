@@ -3,6 +3,7 @@ import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
+import CitedSources, { SOURCES } from '@/components/CitedSources';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
 import { buildFAQPage, buildBreadcrumbList, FAQItem, buildWebPage, buildContactPage } from '@/lib/schema';
@@ -254,6 +255,10 @@ export default function ContactPage() {
         </div>
       </section>
 
+      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
+        FlyAI 商务团队将在工作日 24 小时内回复。GEO 服务的方法论基础见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，服务合规遵循<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>。
+      </p>
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.geoDoi]} />
       <RelatedLinks path="/contact" />
       <FAQSection title="关于联系 FlyAI 的常见问题" items={faqItems} />
 
