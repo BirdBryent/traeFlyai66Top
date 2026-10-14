@@ -6,7 +6,7 @@ import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
-import { buildFAQPage, buildBreadcrumbList, FAQItem } from '@/lib/schema';
+import { buildFAQPage, buildBreadcrumbList, FAQItem, buildWebPage, buildCollectionPage } from '@/lib/schema';
 
 const title = 'FlyAI 产品文档 — 接入步骤 · API 参考 · 字段字典';
 const description =
@@ -170,7 +170,9 @@ export default function DocsListPage() {
         </div>
       </section>
 
-      <JsonLd data={[buildBreadcrumbList(crumbs), buildFAQPage(faqItems)]} />
+      <JsonLd data={[buildWebPage({ url: '/docs', name: 'FlyAI 产品文档' }),
+          buildCollectionPage('/docs', 'FlyAI 产品文档集合'),
+          buildBreadcrumbList(crumbs), buildFAQPage(faqItems)]} />
     </div>
   );
 }

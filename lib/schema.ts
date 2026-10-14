@@ -32,6 +32,7 @@ export function buildOrganization() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': `${siteConfig.url}/#organization`,
     name: siteConfig.name,
     alternateName: siteConfig.fullCompanyName,
     url: siteConfig.url,
@@ -66,6 +67,7 @@ export function buildWebSite() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': `${siteConfig.url}/#website`,
     name: siteConfig.name,
     alternateName: `${siteConfig.name} 官网`,
     url: siteConfig.url,
@@ -153,49 +155,56 @@ export function buildFAQPage(items: FAQItem[]) {
 
 export type ArticleParams = {
   headline: string;
+  /** 文章自身 URL（相对路径即可），用于 @id 与 mainEntityOfPage —— 必填 */
+  url: string;
   description?: string;
   datePublished: string;
   dateModified?: string;
   authorName?: string;
+  /** 站内真实图片，默认 /og-default.jpg；不要用站外生成接口的临时链接 */
   image?: string;
   keywords?: string[];
+  articleSection?: string;
+  wordCount?: number;
 };
+
+function absUrl(p: string): string {
+  if (/^https?:\/\//.test(p)) return p;
+  return `${siteConfig.url.replace(/\/$/, '')}${p.startsWith('/') ? p : `/${p}`}`;
+}
 
 export function buildArticle(params: ArticleParams) {
   const {
     headline,
+    url,
     description,
     datePublished,
     dateModified,
     authorName = 'FlyAI 内容研究团队',
-    image = `${siteConfig.url}/og-default.jpg`,
+    image = '/og-default.jpg',
     keywords,
+    articleSection,
+    wordCount,
   } = params;
+
+  const articleUrl = absUrl(url);
+  const orgId = `${siteConfig.url.replace(/\/$/, '')}/#organization`;
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
+    '@id': `${articleUrl}#article`,
     headline,
     description: description ?? siteConfig.description,
-    image,
+    image: { '@type': 'ImageObject', url: absUrl(image), width: 1200, height: 630 },
     datePublished,
     dateModified: dateModified ?? datePublished,
-    author: {
-      '@type': 'Organization',
-      name: authorName,
-      url: siteConfig.url,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: siteConfig.fullCompanyName,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${siteConfig.url}/logo.svg`,
-      },
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': siteConfig.url,
-    },
+    author: { '@type': 'Organization', '@id': orgId, name: authorName, url: siteConfig.url },
+    publisher: { '@id': orgId },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+    isPartOf: { '@id': `${siteConfig.url.replace(/\/$/, '')}/#website` },
+    articleSection,
+    wordCount,
     keywords: keywords ? keywords.join(', ') : undefined,
     inLanguage: siteConfig.lang,
   };
@@ -213,6 +222,85 @@ export function buildBreadcrumbList(items: BreadcrumbItem[]) {
       name: it.label,
       item: it.href ? `${siteConfig.url}${it.href}` : undefined,
     })),
+  };
+}
+
+export function buildWebPage({ url, name, description }: { url: string; name: string; description?: string }) {
+  const u = `${siteConfig.url.replace(/\/$/, '')}${url}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${u}#webpage`,
+    url: u,
+    name,
+    description,
+    isPartOf: { '@id': `${siteConfig.url.replace(/\/$/, '')}/#website` },
+    about: { '@id': `${siteConfig.url.replace(/\/$/, '')}/#organization` },
+    inLanguage: siteConfig.lang,
+  };
+}
+
+export function buildService(name: string, description: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name,
+    description,
+    serviceType: '生成式引擎优化（GEO）',
+    provider: { '@id': `${siteConfig.url.replace(/\/$/, '')}/#organization` },
+    areaServed: ['CN', 'Global'],
+    url: `${siteConfig.url.replace(/\/$/, '')}/product`,
+  };
+}
+
+export function buildCollectionPage(url: string, name: string) {
+  const u = `${siteConfig.url.replace(/\/$/, '')}${url}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${u}#collection`,
+    url: u,
+    name,
+    isPartOf: { '@id': `${siteConfig.url.replace(/\/$/, '')}/#website` },
+    inLanguage: siteConfig.lang,
+  };
+}
+
+export function buildDefinedTermSet(url: string, name: string) {
+  const u = `${siteConfig.url.replace(/\/$/, '')}${url}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTermSet',
+    '@id': `${u}#terms`,
+    url: u,
+    name,
+    inLanguage: siteConfig.lang,
+  };
+}
+
+export function buildAboutPage(url: string, name: string) {
+  const u = `${siteConfig.url.replace(/\/$/, '')}${url}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    '@id': `${u}#about`,
+    url: u,
+    name,
+    isPartOf: { '@id': `${siteConfig.url.replace(/\/$/, '')}/#website` },
+    inLanguage: siteConfig.lang,
+  };
+}
+
+export function buildContactPage(url: string, name: string) {
+  const u = `${siteConfig.url.replace(/\/$/, '')}${url}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    '@id': `${u}#contact`,
+    url: u,
+    name,
+    isPartOf: { '@id': `${siteConfig.url.replace(/\/$/, '')}/#website` },
+    inLanguage: siteConfig.lang,
   };
 }
 

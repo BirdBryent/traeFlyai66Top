@@ -3,7 +3,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
 import JsonLd from '@/components/JsonLd';
-import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem } from '@/lib/schema';
+import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem, buildWebPage } from '@/lib/schema';
 
 export const metadata = {
   title: 'llms.txt 最佳实践：面向生成式引擎的网站目录',
@@ -58,7 +58,7 @@ export default function LlmsTxtPost() {
         <p className="text-xs text-gray-500">发布于 2025-10-08 · 约 10 分钟阅读</p>
 
         <img
-          src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=minimalist%20illustration%20of%20a%20website%20directory%20file%20llms.txt%20being%20read%20by%20an%20AI%20robot%2C%20clean%20apple%20style%2C%20soft%20blue%20gradient%20background%2C%20simple%20line%20art&image_size=landscape_16_9"
+          src="/og-default.jpg"
           alt="llms.txt 文件被 AI 爬虫读取的示意图，展示网站目录文件如何帮助生成式引擎理解网站结构"
           className="mt-6 w-full rounded-2xl"
         />
@@ -145,14 +145,15 @@ https://flyai66.top/blog - 博客：GEO 方法论与最佳实践`}</code>
       <JsonLd
         data={[
           buildBreadcrumbList(crumbs),
+          buildWebPage({ url: '/blog/llms-txt-best-practices', name: 'llms.txt 最佳实践' }),
           buildArticle({
             headline: 'llms.txt 最佳实践：面向生成式引擎的网站目录',
+            url: '/blog/llms-txt-best-practices',
             description: 'llms.txt 语法规范与最佳实践',
             datePublished: '2025-10-08',
             dateModified: '2025-10-08',
-            authorName: 'FlyAI GEO 策略团队',
+            authorName: 'FlyAI 内容研究团队',
             keywords: ['llms.txt', 'LLM 爬虫', '生成式引擎', '网站目录', 'GEO'],
-            image: 'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=llms.txt%20best%20practices&image_size=landscape_16_9',
           }),
           buildFAQPage(faqItems),
         ]}

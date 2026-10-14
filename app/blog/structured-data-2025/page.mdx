@@ -3,7 +3,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
 import JsonLd from '@/components/JsonLd';
-import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem } from '@/lib/schema';
+import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem, buildWebPage } from '@/lib/schema';
 
 export const metadata = {
   title: '2025 年结构化数据演进：从搜索引擎到生成式引擎',
@@ -58,7 +58,7 @@ export default function StructuredData2025Post() {
         <p className="text-xs text-gray-500">发布于 2025-09-28 · 约 14 分钟阅读</p>
 
         <img
-          src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=minimalist%20illustration%20of%20structured%20data%20nodes%20connected%20in%20a%20graph%2C%20Organization%20WebSite%20SoftwareApplication%20FAQPage%20BreadcrumbList%20Article%20entities%2C%20clean%20apple%20style%2C%20purple%20gradient%20background&image_size=landscape_16_9"
+          src="/og-default.jpg"
           alt="结构化数据实体关系图，展示 Organization、WebSite、SoftwareApplication、FAQPage、BreadcrumbList、Article 六种 Schema 类型及其关联"
           className="mt-6 w-full rounded-2xl"
         />
@@ -154,14 +154,15 @@ export default function StructuredData2025Post() {
       <JsonLd
         data={[
           buildBreadcrumbList(crumbs),
+          buildWebPage({ url: '/blog/structured-data-2025', name: '2025 年结构化数据演进' }),
           buildArticle({
             headline: '2025 年结构化数据演进：从搜索引擎到生成式引擎',
+            url: '/blog/structured-data-2025',
             description: '2025 年结构化数据演进趋势与企业落地指南',
             datePublished: '2025-09-28',
             dateModified: '2025-09-28',
-            authorName: 'FlyAI GEO 策略团队',
+            authorName: 'FlyAI 内容研究团队',
             keywords: ['结构化数据', 'Schema.org', 'JSON-LD', 'GEO', '生成式引擎'],
-            image: 'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=structured%20data%202025&image_size=landscape_16_9',
           }),
           buildFAQPage(faqItems),
         ]}

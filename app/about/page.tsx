@@ -5,7 +5,7 @@ import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
-import { buildFAQPage, buildBreadcrumbList, FAQItem } from '@/lib/schema';
+import { buildFAQPage, buildBreadcrumbList, FAQItem, buildWebPage, buildAboutPage } from '@/lib/schema';
 
 const title = '关于 FlyAI（广州飞爱智能科技有限公司）— 团队 · 方法论 · 公司信息';
 const description =
@@ -189,7 +189,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <JsonLd data={[buildBreadcrumbList(crumbs), buildFAQPage(faqItems)]} />
+      <JsonLd data={[buildWebPage({ url: '/about', name: '关于 FlyAI' }),
+          buildAboutPage('/about', '关于 FlyAI'),
+          buildBreadcrumbList(crumbs), buildFAQPage(faqItems)]} />
     </div>
   );
 }

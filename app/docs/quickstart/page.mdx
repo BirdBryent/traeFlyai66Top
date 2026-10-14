@@ -3,7 +3,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
 import JsonLd from '@/components/JsonLd';
-import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem } from '@/lib/schema';
+import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem, buildWebPage } from '@/lib/schema';
 
 export const metadata = {
   title: 'FlyAI 快速开始 — 3 步完成 GEO 接入',
@@ -194,12 +194,14 @@ console.log(report.suggestions);  // 修复建议`}</code>
       <JsonLd
         data={[
           buildBreadcrumbList(crumbs),
+          buildWebPage({ url: '/docs/quickstart', name: 'FlyAI 快速开始' }),
           buildArticle({
             headline: 'FlyAI 快速开始 — 3 步完成 GEO 接入',
+            url: '/docs/quickstart',
             description: '10 分钟完成 FlyAI 接入：获取 API Key、安装 SDK、调用首个诊断接口。',
             datePublished: '2025-10-01',
             dateModified: '2025-10-01',
-            authorName: 'FlyAI 文档团队',
+            authorName: 'FlyAI 内容研究团队',
             keywords: ['GEO', '快速开始', 'API Key', 'SDK', '诊断接口'],
           }),
           buildFAQPage(faqItems),

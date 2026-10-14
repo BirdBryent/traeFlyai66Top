@@ -4,7 +4,7 @@ import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
-import { buildFAQPage, buildBreadcrumbList, FAQItem } from '@/lib/schema';
+import { buildFAQPage, buildBreadcrumbList, FAQItem, buildWebPage, buildService } from '@/lib/schema';
 
 const title = 'FlyAI 常见问题汇总（FAQ）— 产品 · 方案 · 计费 · 接入 · 合规 全分类';
 const description =
@@ -291,7 +291,9 @@ export default function FAQPage() {
       </section>
 
       <RelatedLinks path="/faq" />
-      <JsonLd data={[buildBreadcrumbList(crumbs), buildFAQPage(allFaqItems)]} />
+      <JsonLd data={[buildWebPage({ url: '/faq', name: 'FlyAI 常见问题' }),
+          buildService('FlyAI GEO 服务', 'AI 搜索可见性诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测'),
+          buildBreadcrumbList(crumbs), buildFAQPage(allFaqItems)]} />
     </div>
   );
 }

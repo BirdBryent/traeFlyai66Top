@@ -13,6 +13,8 @@ import {
   buildBreadcrumbList,
   isAuthorityLink,
   FAQItem,
+  buildWebPage,
+  buildService,
 } from '@/lib/schema';
 
 const title =
@@ -178,6 +180,8 @@ export default function HomePage() {
 
       <JsonLd
         data={[
+          buildWebPage({ url: '/', name: 'FlyAI 官网首页' }),
+          buildService('FlyAI GEO 服务', 'AI 搜索可见性诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测'),
           buildBreadcrumbList([{ label: '首页', href: '/' }]),
           buildFAQPage(homeFAQ),
         ]}

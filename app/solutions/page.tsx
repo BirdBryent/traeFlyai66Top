@@ -5,7 +5,7 @@ import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
-import { buildFAQPage, buildBreadcrumbList, FAQItem } from '@/lib/schema';
+import { buildFAQPage, buildBreadcrumbList, FAQItem, buildWebPage, buildService } from '@/lib/schema';
 
 const title = 'FlyAI 解决方案 — B2B SaaS · 出海品牌 · 内容团队 · 代理商';
 const description =
@@ -224,7 +224,9 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <JsonLd data={[buildBreadcrumbList(crumbs), buildFAQPage(faqItems)]} />
+      <JsonLd data={[buildWebPage({ url: '/solutions', name: 'FlyAI 行业解决方案' }),
+          buildService('FlyAI 行业 GEO 方案', '按 B2B SaaS、出海品牌、内容团队、代理商划分的 GEO 解决方案'),
+          buildBreadcrumbList(crumbs), buildFAQPage(faqItems)]} />
     </div>
   );
 }

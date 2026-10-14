@@ -3,7 +3,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
 import JsonLd from '@/components/JsonLd';
-import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem } from '@/lib/schema';
+import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem, buildWebPage } from '@/lib/schema';
 
 export const metadata = {
   title: 'GEO 与 SEO 的本质区别：从「被搜到」到「被引用」',
@@ -58,7 +58,7 @@ export default function GeoVsSeoPost() {
         <p className="text-xs text-gray-500">发布于 2025-10-15 · 约 12 分钟阅读</p>
 
         <img
-          src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=minimalist%20diagram%20comparing%20SEO%20search%20engine%20results%20page%20with%20links%20versus%20GEO%20generative%20AI%20answer%20citing%20sources%2C%20clean%20apple%20style%20illustration%2C%20soft%20gradient%20background&image_size=landscape_16_9"
+          src="/og-default.jpg"
           alt="SEO 与 GEO 的对比示意图：左侧为传统搜索引擎结果页（链接列表），右侧为生成式引擎答案页（含引用来源的自然语言回答）"
           className="mt-6 w-full rounded-2xl"
         />
@@ -147,14 +147,15 @@ export default function GeoVsSeoPost() {
       <JsonLd
         data={[
           buildBreadcrumbList(crumbs),
+          buildWebPage({ url: '/blog/geo-vs-seo-differences', name: 'GEO 与 SEO 的本质区别' }),
           buildArticle({
             headline: 'GEO 与 SEO 的本质区别：从「被搜到」到「被引用」',
+            url: '/blog/geo-vs-seo-differences',
             description: 'GEO 与 SEO 的本质区别与迁移路径',
             datePublished: '2025-10-15',
             dateModified: '2025-10-15',
-            authorName: 'FlyAI GEO 策略团队',
+            authorName: 'FlyAI 内容研究团队',
             keywords: ['GEO', 'SEO', '生成式引擎优化', '引用率', '首段直答', '结构化数据'],
-            image: 'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=GEO%20vs%20SEO%20comparison&image_size=landscape_16_9',
           }),
           buildFAQPage(faqItems),
         ]}

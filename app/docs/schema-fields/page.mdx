@@ -3,7 +3,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
 import JsonLd from '@/components/JsonLd';
-import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem } from '@/lib/schema';
+import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem, buildWebPage } from '@/lib/schema';
 
 export const metadata = {
   title: 'FlyAI 字段字典 — 30+ Schema.org 字段解释表',
@@ -210,12 +210,14 @@ export default function SchemaFieldsDoc() {
       <JsonLd
         data={[
           buildBreadcrumbList(crumbs),
+          buildWebPage({ url: '/docs/schema-fields', name: 'FlyAI 字段字典' }),
           buildArticle({
             headline: 'FlyAI 字段字典 — 30+ Schema.org 字段解释表',
+            url: '/docs/schema-fields',
             description: '30+ Schema.org 字段解释表',
             datePublished: '2025-10-01',
             dateModified: '2025-10-01',
-            authorName: 'FlyAI 文档团队',
+            authorName: 'FlyAI 内容研究团队',
             keywords: ['Schema.org', 'JSON-LD', '字段字典', '结构化数据', 'GEO'],
           }),
           buildFAQPage(faqItems),

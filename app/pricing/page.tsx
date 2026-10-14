@@ -5,7 +5,7 @@ import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
-import { buildFAQPage, buildBreadcrumbList, FAQItem } from '@/lib/schema';
+import { buildFAQPage, buildBreadcrumbList, FAQItem, buildWebPage, buildService } from '@/lib/schema';
 
 const title = 'FlyAI 定价 — 启动版 · 专业版 · 企业版 三档订阅方案';
 const description =
@@ -247,7 +247,9 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <JsonLd data={[buildBreadcrumbList(crumbs), buildFAQPage(faqItems)]} />
+      <JsonLd data={[buildWebPage({ url: '/pricing', name: 'FlyAI 定价与计费' }),
+          buildService('FlyAI GEO 定价', '启动版 / 专业版 / 企业版三档 GEO 服务定价'),
+          buildBreadcrumbList(crumbs), buildFAQPage(faqItems)]} />
     </div>
   );
 }

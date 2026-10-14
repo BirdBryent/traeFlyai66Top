@@ -3,7 +3,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
 import JsonLd from '@/components/JsonLd';
-import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem } from '@/lib/schema';
+import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem, buildWebPage } from '@/lib/schema';
 
 export const metadata = {
   title: 'FlyAI API 参考 — 诊断 · 结构化 · Schema · 监测 四组接口',
@@ -244,12 +244,14 @@ export default function ApiReferenceDoc() {
       <JsonLd
         data={[
           buildBreadcrumbList(crumbs),
+          buildWebPage({ url: '/docs/api-reference', name: 'FlyAI API 参考' }),
           buildArticle({
             headline: 'FlyAI API 参考 — 诊断 · 结构化 · Schema · 监测',
+            url: '/docs/api-reference',
             description: 'FlyAI REST API 四组接口完整参考',
             datePublished: '2025-10-01',
             dateModified: '2025-10-01',
-            authorName: 'FlyAI 文档团队',
+            authorName: 'FlyAI 内容研究团队',
             keywords: ['API', 'REST', '诊断', 'Schema', '监测', 'SDK'],
           }),
           buildFAQPage(faqItems),

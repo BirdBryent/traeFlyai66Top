@@ -11,6 +11,8 @@ import {
   buildBreadcrumbList,
   isAuthorityLink,
   FAQItem,
+  buildWebPage,
+  buildService,
 } from '@/lib/schema';
 
 const title = 'FlyAI 产品功能 — AI 搜索可见性诊断 · 内容结构化 · Schema 与 llms.txt 生成 · 引用监测';
@@ -276,7 +278,9 @@ export default function ProductPage() {
         </div>
       </section>
 
-      <JsonLd data={[buildBreadcrumbList(crumbs), buildFAQPage(faqItems)]} />
+      <JsonLd data={[buildWebPage({ url: '/product', name: 'FlyAI 产品功能' }),
+          buildService('FlyAI GEO 平台', '面向企业市场/增长/内容团队的 GEO 服务平台'),
+          buildBreadcrumbList(crumbs), buildFAQPage(faqItems)]} />
     </div>
   );
 }
