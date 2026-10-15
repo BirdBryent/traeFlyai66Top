@@ -1,3 +1,4 @@
+import { buildMetadata } from '@/lib/metadata';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
@@ -6,20 +7,15 @@ import CitedSources, { SOURCES } from '@/components/CitedSources';
 import JsonLd from '@/components/JsonLd';
 import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem, buildWebPage } from '@/lib/schema';
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: 'FlyAI API 参考 — 诊断 · 结构化 · Schema · 监测 四组接口',
   description: 'FlyAI REST API 完整参考：诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测四组接口，含请求参数、响应结构、错误码、curl 与 TypeScript 示例。',
-  alternates: { canonical: '/docs/api-reference' },
-  openGraph: {
-    title: 'FlyAI API 参考',
-    description: '诊断、结构化、Schema、监测四组 REST 接口完整参考',
-    url: 'https://flyai66.top/docs/api-reference',
-    type: 'article',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'FlyAI API 参考' }],
-  },
-  twitter: { card: 'summary_large_image', title: 'FlyAI API 参考', description: '四组 REST 接口完整参考', images: ['/og-default.jpg'] },
-  robots: { index: true, follow: true },
-};
+  path: '/docs/api-reference',
+  type: 'article',
+  publishedTime: '2025-10-01',
+  modifiedTime: '2026-10-15',
+  section: '文档',
+});
 
 export const crumbs = [
   { label: '首页', href: '/' },
@@ -39,6 +35,21 @@ export const faqItems = [
   {
     question: '如何处理 API 错误？',
     answer: 'FlyAI API 使用标准 HTTP 状态码：200 成功、400 参数错误、401 认证失败、403 权限不足、429 限流、500 服务器错误。响应体含 error.code 与 error.message 字段，客户端应根据 code 做差异化处理。',
+  },
+  {
+    question: '接口是同步还是异步？',
+    answer:
+      '提交类接口（诊断、生成）返回任务或记录标识，结果需另行查询；读取类接口同步返回结果。【待确认：各接口的字段名】',
+  },
+  {
+    question: '接口有幂等性保证吗？',
+    answer:
+      '以任务/记录 ID 为准。【待确认：重复提交是新建记录还是复用，请按实际实现填写】',
+  },
+  {
+    question: '错误码怎么读？',
+    answer:
+      '4xx 多为请求参数或鉴权问题，5xx 为服务侧问题；响应体中的 message 字段说明具体原因。',
   },
 ];
 
@@ -190,7 +201,7 @@ export default function ApiReferenceDoc() {
   -H "Authorization: Bearer $FLYAI_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "urls": ["https://flyai66.top", "https://flyai66.top/product"],
+    "urls": ["https://www.flyai66.top", "https://www.flyai66.top/product"],
     "keywords": ["GEO 工具", "AI 搜索优化"]
   }'`}</code>
           </pre>
@@ -240,9 +251,9 @@ export default function ApiReferenceDoc() {
       </article>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        本文档的 API 设计遵循 GEO 方法论。方法论见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，RAG 原理参考<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Lewis et al., NeurIPS 2020</a>。
+        本文档的 API 设计遵循 GEO 方法论。方法论见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，RAG 原理参考<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Lewis et al., NeurIPS 2020</a>。
       </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.geoDoi]} />
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.geoDoi, SOURCES.w3cJsonLd, SOURCES.googleStructuredData]} />
       <RelatedLinks path="/docs/api-reference" />
       <FAQSection title="API 参考常见问题" items={faqItems} />
 

@@ -305,7 +305,7 @@ Allow: /
 Disallow: /api/
 Disallow: /private/
 Disallow: /*?draft=
-Sitemap: https://flyai66.top/sitemap.xml
+Sitemap: https://www.flyai66.top/sitemap.xml
 ```
 
 ### 3.2 `/sitemap.xml`
@@ -317,14 +317,14 @@ Next.js sitemap.ts 生成 ≥11 个 URL（11 核心页 + 3 docs + 3 blog + gloss
 > FlyAI 为企业市场/增长/内容团队提供 GEO 服务：诊断、结构化、Schema、引用监测。
 
 ## 重要页面
-- https://flyai66.top/product    产品功能：AI 可见性诊断与 Schema 生成
-- https://flyai66.top/pricing    三档定价：启动版/专业版/企业版
-- https://flyai66.top/docs       产品文档：接入、API、字段字典
-- https://flyai66.top/cases      案例：背景-动作-结果
-- https://flyai66.top/glossary   术语：GEO/llms.txt/结构化数据定义
-- https://flyai66.top/solutions  方案：B2B/出海/内容/代理
-- https://flyai66.top/faq        FAQ：24 条全生命周期问答
-- https://flyai66.top/blog       博客：GEO 深度研究与最佳实践
+- https://www.flyai66.top/product    产品功能：AI 可见性诊断与 Schema 生成
+- https://www.flyai66.top/pricing    三档定价：启动版/专业版/企业版
+- https://www.flyai66.top/docs       产品文档：接入、API、字段字典
+- https://www.flyai66.top/cases      案例：背景-动作-结果
+- https://www.flyai66.top/glossary   术语：GEO/llms.txt/结构化数据定义
+- https://www.flyai66.top/solutions  方案：B2B/出海/内容/代理
+- https://www.flyai66.top/faq        FAQ：24 条全生命周期问答
+- https://www.flyai66.top/blog       博客：GEO 深度研究与最佳实践
 
 ## AI Reading Notes
 1. GEO（生成式引擎优化）首次由 2024 年学术论文系统阐述 [待补充真实 DOI]，核心维度：实体可见性 + 结构化数据 + 引用可信度（来源：arxiv.org | 更新时间：2025-10-09）
@@ -370,7 +370,7 @@ Next.js sitemap.ts 生成 ≥11 个 URL（11 核心页 + 3 docs + 3 blog + gloss
   - 例：首页：「FlyAI 生成式引擎优化（GEO）——让 AI 答案优先引用你的品牌 — FlyAI」
   - 例：产品：「产品功能 — AI 可见性诊断 · 内容结构化 · Schema 生成 · 引用监测 — FlyAI」
 - **description**: 严格 150-160 字符，必含核心关键词：FlyAI / GEO / 生成式引擎优化 / AI 搜索可见性 / 内容结构化 / llms.txt / Schema.org
-- **canonical**: 每页 `https://flyai66.top{path}`；`meta robots`: `index,follow,max-image-preview:large`
+- **canonical**: 每页 `https://www.flyai66.top{path}`；`meta robots`: `index,follow,max-image-preview:large`
 - **Open Graph 五件套**: og:title / og:description / og:image（1200×630 og-default.jpg）/ og:type（首页=website，blog 详情=article）/ og:locale=zh_CN
 - **Twitter Card**: twitter:card=summary_large_image + twitter:image=og 默认图
 - **其它**: `<html lang="zh-CN">`、`<meta name="viewport">`、favicon 四件套全部齐全

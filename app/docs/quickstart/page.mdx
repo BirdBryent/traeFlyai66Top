@@ -1,3 +1,4 @@
+import { buildMetadata } from '@/lib/metadata';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
@@ -6,20 +7,15 @@ import CitedSources, { SOURCES } from '@/components/CitedSources';
 import JsonLd from '@/components/JsonLd';
 import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem, buildWebPage } from '@/lib/schema';
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: 'FlyAI 快速开始 — 3 步完成 GEO 接入',
   description: '10 分钟完成 FlyAI 接入：获取 API Key、安装 SDK、调用首个诊断接口。本文档引导开发者完成从账号注册、环境配置到提交首批 URL 进行 AI 搜索可见性诊断的全流程，并给出常见错误排查与下一步功能模块的入口链接，帮助团队快速上手 GEO 能力。',
-  alternates: { canonical: '/docs/quickstart' },
-  openGraph: {
-    title: 'FlyAI 快速开始 — 3 步完成 GEO 接入',
-    description: '10 分钟完成 FlyAI 接入：API Key、SDK、首个诊断接口调用。',
-    url: 'https://flyai66.top/docs/quickstart',
-    type: 'article',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'FlyAI 快速开始' }],
-  },
-  twitter: { card: 'summary_large_image', title: 'FlyAI 快速开始', description: '10 分钟完成 FlyAI 接入', images: ['/og-default.jpg'] },
-  robots: { index: true, follow: true },
-};
+  path: '/docs/quickstart',
+  type: 'article',
+  publishedTime: '2025-10-01',
+  modifiedTime: '2026-10-14',
+  section: '文档',
+});
 
 export const crumbs = [
   { label: '首页', href: '/' },
@@ -39,6 +35,21 @@ export const faqItems = [
   {
     question: '调用诊断接口时 URL 数量有限制吗？',
     answer: '单次请求最多支持 500 个 URL。超过 500 个 URL 的大站可分批提交，FlyAI 会自动合并为一份全站诊断报告。每个 URL 需为完整 URL（含 https://），不支持通配符。',
+  },
+  {
+    question: '首次调用诊断接口前要准备什么？',
+    answer:
+      '一个可公开访问的 URL、一个 API Key，以及可访问外网的执行环境；若站点有登录墙或强反爬，请先放行诊断请求的 UA。',
+  },
+  {
+    question: '返回 401 或 429 怎么排查？',
+    answer:
+      '401 多为 Key 缺失、被掩码复制或环境不匹配；429 表示触发限流，应退避重试并降低并发。【待确认：限流阈值与重试建议】',
+  },
+  {
+    question: '诊断结果是实时抓取吗？',
+    answer:
+      '是。诊断按请求抓取当时的页面内容与结构化数据，因此站点改动后重新诊断即可对比前后差异。',
   },
 ];
 
@@ -100,9 +111,9 @@ yarn add @flyai/sdk`}</code>
   -H "Content-Type: application/json" \\
   -d '{
     "urls": [
-      "https://flyai66.top",
-      "https://flyai66.top/product",
-      "https://flyai66.top/pricing"
+      "https://www.flyai66.top",
+      "https://www.flyai66.top/product",
+      "https://www.flyai66.top/pricing"
     ],
     "keywords": ["GEO 工具", "AI 搜索优化"]
   }'`}</code>
@@ -116,9 +127,9 @@ const flyai = new FlyAI({ apiKey: process.env.FLYAI_API_KEY });
 
 const report = await flyai.diagnosis.create({
   urls: [
-    'https://flyai66.top',
-    'https://flyai66.top/product',
-    'https://flyai66.top/pricing',
+    'https://www.flyai66.top',
+    'https://www.flyai66.top/product',
+    'https://www.flyai66.top/pricing',
   ],
   keywords: ['GEO 工具', 'AI 搜索优化'],
 });
@@ -190,9 +201,9 @@ console.log(report.suggestions);  // 修复建议`}</code>
       </section>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        本快速开始指南的理论基础见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>。检索增强生成（RAG）的技术原理参考<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Lewis et al., NeurIPS 2020</a>。
+        本快速开始指南的理论基础见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>。检索增强生成（RAG）的技术原理参考<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Lewis et al., NeurIPS 2020</a>。
       </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext]} />
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.rfc9309, SOURCES.openaiBots]} />
       <RelatedLinks path="/docs/quickstart" />
       <FAQSection title="快速开始常见问题" items={faqItems} />
 

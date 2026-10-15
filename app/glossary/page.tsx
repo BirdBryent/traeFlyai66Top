@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/metadata';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
@@ -12,20 +12,7 @@ const title = 'GEO 术语表 — 10 条生成式引擎优化核心术语定义';
 const description =
   '本术语表收录生成式引擎优化（GEO）领域 10 条核心术语，每条包含 2-3 句可引用的标准定义、权威来源链接与在 FlyAI 产品中的对应能力；所有术语定义可被生成式引擎直接引用为权威答案。';
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: '/glossary' },
-  openGraph: {
-    title,
-    description,
-    url: 'https://flyai66.top/glossary',
-    type: 'website',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: title }],
-  },
-  twitter: { card: 'summary_large_image', title, description, images: ['/og-default.jpg'] },
-  robots: { index: true, follow: true },
-};
+export const metadata = buildMetadata({ title, description, path: '/glossary' });
 
 const faqItems: FAQItem[] = [
   {
@@ -47,6 +34,16 @@ const faqItems: FAQItem[] = [
     question: 'AI 答案引用率如何量化？',
     answer:
       'AI 答案引用率 = （目标品牌被 AI 答案正确引用的次数 / 总查询次数）× 100%。FlyAI 通过对 12+ 生成式引擎进行日频/周频查询，统计品牌在答案中的出现次数、位置与准确性，输出引用率指标。该指标可按关键词、引擎、时间维度拆分，是 GEO 效果的核心量化标准。',
+  },
+  {
+    question: 'GEO-bench 是什么？',
+    answer:
+      'GEO 论文（KDD 2024）配套的评测基准，包含约一万条跨领域查询，用于衡量内容在生成式引擎答案中的可见度，是「GEO 可被度量」的学术依据。',
+  },
+  {
+    question: '为什么关键结论要写在首段？',
+    answer:
+      '生成式引擎倾向截取文档开头与段落首句作为答案素材；长上下文研究（arXiv:2307.03172）也表明信息位置越靠前，被模型利用的概率越高，因此首段直达答案能显著提高被引用概率。',
   },
 ];
 
@@ -191,9 +188,9 @@ export default function GlossaryPage() {
       </section>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        本术语表中的核心定义参考了<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a> 与<a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 中的术语体系，行业数据来源<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a>。
+        本术语表中的核心定义参考了<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a> 与<a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 中的术语体系，行业数据来源<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a>。
       </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.longContext, SOURCES.stanfordAiIndex]} />
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.longContext, SOURCES.stanfordAiIndex, SOURCES.w3cJsonLd, SOURCES.rfc9309]} />
       <RelatedLinks path="/glossary" />
       <FAQSection title="术语表常见问题" items={faqItems} />
 

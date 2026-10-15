@@ -1,3 +1,4 @@
+import { buildMetadata } from '@/lib/metadata';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
@@ -6,20 +7,14 @@ import CitedSources, { SOURCES } from '@/components/CitedSources';
 import JsonLd from '@/components/JsonLd';
 import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem, buildWebPage } from '@/lib/schema';
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: 'llms.txt 最佳实践：面向生成式引擎的网站目录',
   description: 'llms.txt 是 2025 年新兴的面向 LLM 爬虫的网站目录文件。本文详解 llms.txt 的语法规范、必填字段、与 robots.txt 的协作方式，以及实测引用率提升数据。',
-  alternates: { canonical: '/blog/llms-txt-best-practices' },
-  openGraph: {
-    title: 'llms.txt 最佳实践：面向生成式引擎的网站目录',
-    description: 'llms.txt 语法规范与最佳实践',
-    url: 'https://flyai66.top/blog/llms-txt-best-practices',
-    type: 'article',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'llms.txt 最佳实践' }],
-  },
-  twitter: { card: 'summary_large_image', title: 'llms.txt 最佳实践', description: '面向生成式引擎的网站目录', images: ['/og-default.jpg'] },
-  robots: { index: true, follow: true },
-};
+  path: '/blog/llms-txt-best-practices',
+  type: 'article',
+  publishedTime: '2025-10-08',
+  modifiedTime: '2026-10-15',
+});
 
 export const crumbs = [
   { label: '首页', href: '/' },
@@ -39,6 +34,21 @@ export const faqItems = [
   {
     question: '没有 llms.txt 会被生成式引擎忽略吗？',
     answer: '不会被忽略，但可能被低效理解。没有 llms.txt 时，LLM 爬虫只能通过 sitemap.xml 与页面内链接发现内容，可能遗漏高价值页面或抓取低价值页面。配置 llms.txt 后，爬虫可直接获取网站核心内容摘要与关键页面列表，提升引用的准确性与完整性。FlyAI 数据显示，配置 llms.txt 后平均引用率提升约 [待补充：真实提升百分比]。',
+  },
+  {
+    question: 'llms.txt 应该放在哪里？',
+    answer:
+      '放在域名根目录，即 `https://域名/llms.txt`，与 robots.txt 同级；放到子目录不会被常规抓取约定识别。',
+  },
+  {
+    question: '多个子域或多语言站怎么配置？',
+    answer:
+      '每个独立主机名各自放一份 llms.txt，只列该主机名下的重要页面；多语言建议在「重要页面」段按语言分组。',
+  },
+  {
+    question: 'llms.txt 有官方校验工具吗？',
+    answer:
+      '没有官方规范也没有官方校验器（它是社区提案，见 `https://www.llmstxt.org/`）。自检要点是四段结构（标题 / 摘要 / 重要页面 / 备注）完整、链接全部可访问。',
   },
 ];
 
@@ -90,16 +100,16 @@ export default function LlmsTxtPost() {
             <code>{`# llms.txt - FlyAI 官网
 Title: FlyAI - 生成式引擎优化（GEO）SaaS 平台
 Description: FlyAI 帮助企业提升在 12+ 生成式引擎中的 AI 搜索可见性，提供诊断、结构化、Schema 生成与引用监测全链路工具。
-Url: https://flyai66.top
+Url: https://www.flyai66.top
 Updated: 2025-10-08
 
 [Pages]
-https://flyai66.top/ - 首页：产品概述与核心价值
-https://flyai66.top/product - 产品：4 项核心能力详解
-https://flyai66.top/pricing - 定价：三档套餐与功能对比
-https://flyai66.top/solutions - 行业方案：B2B SaaS / 出海品牌 / 内容团队 / 代理商
-https://flyai66.top/docs - 产品文档：快速开始与 API 参考
-https://flyai66.top/blog - 博客：GEO 方法论与最佳实践`}</code>
+https://www.flyai66.top/ - 首页：产品概述与核心价值
+https://www.flyai66.top/product - 产品：4 项核心能力详解
+https://www.flyai66.top/pricing - 定价：三档套餐与功能对比
+https://www.flyai66.top/solutions - 行业方案：B2B SaaS / 出海品牌 / 内容团队 / 代理商
+https://www.flyai66.top/docs - 产品文档：快速开始与 API 参考
+https://www.flyai66.top/blog - 博客：GEO 方法论与最佳实践`}</code>
           </pre>
         </section>
 
@@ -141,9 +151,9 @@ https://flyai66.top/blog - 博客：GEO 方法论与最佳实践`}</code>
       </article>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        llms.txt 的最佳实践建立在生成式引擎的检索机制之上。<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">GEO 论文</a> 提出的「来源引用」手法与<a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 的长上下文研究，共同指导了本文的写作。
+        llms.txt 的最佳实践建立在生成式引擎的检索机制之上。<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">GEO 论文</a> 提出的「来源引用」手法与<a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 的长上下文研究，共同指导了本文的写作。
       </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.longContext, SOURCES.rag]} />
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.longContext, SOURCES.rag, SOURCES.rfc9309, SOURCES.llmsTxt]} />
       <RelatedLinks path="/blog/llms-txt-best-practices" />
       <FAQSection title="llms.txt 常见问题" items={faqItems} />
 

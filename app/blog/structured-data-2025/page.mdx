@@ -1,3 +1,4 @@
+import { buildMetadata } from '@/lib/metadata';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
@@ -6,20 +7,14 @@ import CitedSources, { SOURCES } from '@/components/CitedSources';
 import JsonLd from '@/components/JsonLd';
 import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem, buildWebPage } from '@/lib/schema';
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: '2025 年结构化数据演进：从搜索引擎到生成式引擎',
   description: '结构化数据不再只是搜索引擎的排名信号，正在成为生成式引擎理解实体的基础设施。本文梳理 2025 年 Schema.org 的关键更新、JSON-LD 在 AI 答案生成中的作用机制，以及企业应优先落地的 6 种 Schema 类型。',
-  alternates: { canonical: '/blog/structured-data-2025' },
-  openGraph: {
-    title: '2025 年结构化数据演进：从搜索引擎到生成式引擎',
-    description: '2025 年结构化数据演进趋势与企业落地指南',
-    url: 'https://flyai66.top/blog/structured-data-2025',
-    type: 'article',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: '2025 结构化数据' }],
-  },
-  twitter: { card: 'summary_large_image', title: '2025 结构化数据演进', description: '从搜索引擎到生成式引擎', images: ['/og-default.jpg'] },
-  robots: { index: true, follow: true },
-};
+  path: '/blog/structured-data-2025',
+  type: 'article',
+  publishedTime: '2025-09-28',
+  modifiedTime: '2026-10-15',
+});
 
 export const crumbs = [
   { label: '首页', href: '/' },
@@ -39,6 +34,21 @@ export const faqItems = [
   {
     question: 'Schema 字段填错了会有惩罚吗？',
     answer: '不会有「惩罚」，但可能导致结构化数据被忽略。Google 的结构化数据测试工具会标记错误字段，引擎可能忽略错误的 Schema 而不影响页面整体排名。但建议使用 <a href="https://validator.schema.org/" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">schema.org 验证器</a> 与 <a href="https://search.google.com/test/rich-results" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">Google 富结果测试</a> 双校验，确保字段正确。FlyAI 内置双校验流程。',
+  },
+  {
+    question: 'JSON-LD、Microdata、RDFa 该选哪个？',
+    answer:
+      '优先 JSON-LD。它是 schema.org 与 Google 推荐格式（规范见 `https://www.w3.org/TR/json-ld11/`），与页面结构解耦、易维护，也不影响渲染。',
+  },
+  {
+    question: '结构化数据写错会被惩罚吗？',
+    answer:
+      '不会直接惩罚，但无效字段会被忽略；若声明与页面可见内容不一致（例如标注了页面上并不存在的评分），可能被判定为垃圾结构化数据。',
+  },
+  {
+    question: '一个页面可以放几组 JSON-LD？',
+    answer:
+      '可以放多组，建议用 `@graph` 合并并用 `@id` 互引；同一实体不要重复声明——重复的 FAQPage 或 BreadcrumbList 会在校验器里出现重复节点。',
   },
 ];
 
@@ -150,9 +160,9 @@ export default function StructuredData2025Post() {
       </article>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        结构化数据在生成式引擎中的作用机制可追溯至<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">RAG 原始论文（Lewis et al., NeurIPS 2020）</a>。<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">GEO 论文</a> 进一步量化了结构化数据对引用率的提升效果。
+        结构化数据在生成式引擎中的作用机制可追溯至<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">RAG 原始论文（Lewis et al., NeurIPS 2020）</a>。<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">GEO 论文</a> 进一步量化了结构化数据对引用率的提升效果。
       </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext]} />
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.w3cJsonLd, SOURCES.googleStructuredData]} />
       <RelatedLinks path="/blog/structured-data-2025" />
       <FAQSection title="结构化数据常见问题" items={faqItems} />
 

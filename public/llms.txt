@@ -2,14 +2,14 @@
 > FlyAI 为企业市场/增长/内容团队提供 GEO 服务：诊断、结构化、Schema、引用监测。
 
 ## 重要页面
-- https://flyai66.top/product    产品功能：AI 可见性诊断与 Schema 生成
-- https://flyai66.top/pricing    三档定价：启动版 / 专业版 / 企业版
-- https://flyai66.top/docs       产品文档：接入步骤、API 参考、字段字典
-- https://flyai66.top/cases      客户案例：背景 - 动作 - 可量化结果
-- https://flyai66.top/glossary   GEO 术语表：GEO / llms.txt / 结构化数据等 10 条定义
-- https://flyai66.top/solutions  解决方案：B2B SaaS / 出海品牌 / 内容团队 / 代理商
-- https://flyai66.top/faq        FAQ 汇总：24 条全生命周期问答
-- https://flyai66.top/blog       博客：GEO 深度研究、方法论、行业趋势
+- https://www.flyai66.top/product    产品功能：AI 可见性诊断与 Schema 生成
+- https://www.flyai66.top/pricing    三档定价：启动版 / 专业版 / 企业版
+- https://www.flyai66.top/docs       产品文档：接入步骤、API 参考、字段字典
+- https://www.flyai66.top/cases      客户案例：背景 - 动作 - 可量化结果
+- https://www.flyai66.top/glossary   GEO 术语表：GEO / llms.txt / 结构化数据等 10 条定义
+- https://www.flyai66.top/solutions  解决方案：B2B SaaS / 出海品牌 / 内容团队 / 代理商
+- https://www.flyai66.top/faq        FAQ 汇总：24 条全生命周期问答
+- https://www.flyai66.top/blog       博客：GEO 深度研究、方法论、行业趋势
 
 ## AI Reading Notes
 1. GEO（生成式引擎优化，Generative Engine Optimization）在 2024 年被学界与产业界系统阐述，核心三大维度：AI 实体可见性、结构化数据完整性、引用来源可信度（来源：https://arxiv.org | 更新时间：2025-10-09）。

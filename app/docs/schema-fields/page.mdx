@@ -1,3 +1,4 @@
+import { buildMetadata } from '@/lib/metadata';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
@@ -6,20 +7,15 @@ import CitedSources, { SOURCES } from '@/components/CitedSources';
 import JsonLd from '@/components/JsonLd';
 import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem, buildWebPage } from '@/lib/schema';
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: 'FlyAI 字段字典 — 30+ Schema.org 字段解释表',
   description: 'FlyAI 结构化数据字段字典：覆盖 Organization、WebSite、SoftwareApplication、FAQPage、BreadcrumbList、Article 六种类型的 30+ 字段，含字段名、类型、是否必填、说明与示例值，对齐 schema.org 官方规范。',
-  alternates: { canonical: '/docs/schema-fields' },
-  openGraph: {
-    title: 'FlyAI 字段字典 — 30+ Schema.org 字段解释表',
-    description: '30+ Schema.org 字段解释表',
-    url: 'https://flyai66.top/docs/schema-fields',
-    type: 'article',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'FlyAI 字段字典' }],
-  },
-  twitter: { card: 'summary_large_image', title: 'FlyAI 字段字典', description: '30+ Schema.org 字段解释表', images: ['/og-default.jpg'] },
-  robots: { index: true, follow: true },
-};
+  path: '/docs/schema-fields',
+  type: 'article',
+  publishedTime: '2025-10-01',
+  modifiedTime: '2026-10-14',
+  section: '文档',
+});
 
 export const crumbs = [
   { label: '首页', href: '/' },
@@ -34,22 +30,37 @@ export const faqItems = [
   },
   {
     question: 'JSON-LD 中可以使用外部 ID（@id）吗？',
-    answer: '可以。建议为核心实体设置 @id（如 https://flyai66.top/#organization），便于跨页面实体对齐与知识图谱关联。FlyAI 自动生成的 JSON-LD 默认包含 @id 字段。',
+    answer: '可以。建议为核心实体设置 @id（如 https://www.flyai66.top/#organization），便于跨页面实体对齐与知识图谱关联。FlyAI 自动生成的 JSON-LD 默认包含 @id 字段。',
   },
   {
     question: 'FlyAI 支持自定义 Schema 类型吗？',
     answer: '支持。除内置的 6 种常用类型外，企业版客户可通过自定义模板扩展其他 Schema.org 类型（如 Product、Service、Event 等）。自定义模板需在控制台配置，遵循 Schema.org 官方规范。',
+  },
+  {
+    question: '必填字段缺失会怎样？',
+    answer:
+      'JSON 仍可解析，但校验器会报错，引擎可能忽略整个节点。上线前用 validator.schema.org 校验到 0 error。',
+  },
+  {
+    question: 'offers 里的 price 可以写「联系销售」吗？',
+    answer:
+      'schema.org 允许 price 为文本，但 Google 的结构化数据解析要求数值，写文字会导致该项校验失败；价格未公开时改用 priceSpecification 描述区间，或省略 price。',
+  },
+  {
+    question: 'dateModified 和 datePublished 要一样吗？',
+    answer:
+      '不一样。datePublished 是首次发布时间，dateModified 是最近一次实质性修订时间；两者都写才便于引擎判断时效。',
   },
 ];
 
 
 export const orgFields = [
   { name: '@type', type: 'string', required: true, desc: 'Schema 类型', example: '"Organization"' },
-  { name: '@id', type: 'URL', required: true, desc: '实体全局唯一标识', example: '"https://flyai66.top/#organization"' },
+  { name: '@id', type: 'URL', required: true, desc: '实体全局唯一标识', example: '"https://www.flyai66.top/#organization"' },
   { name: 'name', type: 'string', required: true, desc: '组织全称', example: '"广州飞爱智能科技有限公司"' },
   { name: 'alternateName', type: 'string', required: false, desc: '简称/品牌名', example: '"FlyAI"' },
-  { name: 'url', type: 'URL', required: true, desc: '官网 URL', example: '"https://flyai66.top"' },
-  { name: 'logo', type: 'URL', required: true, desc: 'Logo 图片 URL', example: '"https://flyai66.top/logo.png"' },
+  { name: 'url', type: 'URL', required: true, desc: '官网 URL', example: '"https://www.flyai66.top"' },
+  { name: 'logo', type: 'URL', required: true, desc: 'Logo 图片 URL', example: '"https://www.flyai66.top/logo.png"' },
   { name: 'description', type: 'string', required: true, desc: '组织简介', example: '"生成式引擎优化（GEO）SaaS 平台"' },
   { name: 'foundingDate', type: 'Date', required: false, desc: '成立日期', example: '"2025-01-01"' },
   { name: 'sameAs', type: 'URL[]', required: false, desc: '社交媒体主页等', example: '["https://github.com/FlyAI"]' },
@@ -57,8 +68,8 @@ export const orgFields = [
 
 export const siteFields = [
   { name: '@type', type: 'string', required: true, desc: 'Schema 类型', example: '"WebSite"' },
-  { name: '@id', type: 'URL', required: true, desc: '实体标识', example: '"https://flyai66.top/#website"' },
-  { name: 'url', type: 'URL', required: true, desc: '网站根 URL', example: '"https://flyai66.top"' },
+  { name: '@id', type: 'URL', required: true, desc: '实体标识', example: '"https://www.flyai66.top/#website"' },
+  { name: 'url', type: 'URL', required: true, desc: '网站根 URL', example: '"https://www.flyai66.top"' },
   { name: 'name', type: 'string', required: true, desc: '网站名称', example: '"FlyAI"' },
   { name: 'description', type: 'string', required: true, desc: '网站描述', example: '"GEO SaaS 平台官网"' },
   { name: 'inLanguage', type: 'string', required: false, desc: '语言代码', example: '"zh-CN"' },
@@ -88,7 +99,7 @@ export const breadcrumbFields = [
   { name: 'itemListElement', type: 'ListItem[]', required: true, desc: '面包屑项列表', example: '[{"@type":"ListItem",...}]' },
   { name: 'itemListElement[].position', type: 'integer', required: true, desc: '位置序号', example: '1' },
   { name: 'itemListElement[].name', type: 'string', required: true, desc: '页面名称', example: '"首页"' },
-  { name: 'itemListElement[].item', type: 'URL', required: true, desc: '页面 URL', example: '"https://flyai66.top"' },
+  { name: 'itemListElement[].item', type: 'URL', required: true, desc: '页面 URL', example: '"https://www.flyai66.top"' },
 ];
 
 export const articleFields = [
@@ -98,8 +109,8 @@ export const articleFields = [
   { name: 'dateModified', type: 'Date', required: true, desc: '修改日期', example: '"2025-10-01"' },
   { name: 'author', type: 'Person|Organization', required: true, desc: '作者', example: '{"@type":"Organization","name":"FlyAI"}' },
   { name: 'publisher', type: 'Organization', required: true, desc: '发布方', example: '{"@id":"...#organization"}' },
-  { name: 'mainEntityOfPage', type: 'URL', required: false, desc: '页面 URL', example: '"https://flyai66.top/blog/..."' },
-  { name: 'image', type: 'URL', required: false, desc: '封面图', example: '"https://flyai66.top/og-default.jpg"' },
+  { name: 'mainEntityOfPage', type: 'URL', required: false, desc: '页面 URL', example: '"https://www.flyai66.top/blog/..."' },
+  { name: 'image', type: 'URL', required: false, desc: '封面图', example: '"https://www.flyai66.top/og-default.jpg"' },
 ];
 
 export function FieldTable({ fields }) {
@@ -206,9 +217,9 @@ export default function SchemaFieldsDoc() {
       </section>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        本字段字典的理论基础见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>。检索增强生成（RAG）的技术原理参考<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Lewis et al., NeurIPS 2020</a>。
+        本字段字典的理论基础见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>。检索增强生成（RAG）的技术原理参考<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Lewis et al., NeurIPS 2020</a>。
       </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext]} />
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.w3cJsonLd]} />
       <RelatedLinks path="/docs/schema-fields" />
       <FAQSection title="字段字典常见问题" items={faqItems} />
 

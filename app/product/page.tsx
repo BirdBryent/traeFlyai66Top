@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/metadata';
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -20,20 +20,7 @@ const title = 'FlyAI 产品功能 — AI 搜索可见性诊断 · 内容结构�
 const description =
   'FlyAI 产品覆盖 GEO 全流程：AI 搜索可见性诊断引擎 5 分钟扫描全站抓取漏洞；内容结构化编辑器将 Markdown/富文本转为引擎友好实体标注；Schema 与 llms.txt 生成器一键对齐 schema.org 与 LLM 抓取协议；引用与提及监测面板实时追踪品牌在 12+ 生成式引擎中的被引用次数与准确度。';
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: '/product' },
-  openGraph: {
-    title,
-    description,
-    url: 'https://flyai66.top/product',
-    type: 'website',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: title }],
-  },
-  twitter: { card: 'summary_large_image', title, description, images: ['/og-default.jpg'] },
-  robots: { index: true, follow: true },
-};
+export const metadata = buildMetadata({ title, description, path: '/product' });
 
 const faqItems: FAQItem[] = [
   {
@@ -55,6 +42,16 @@ const faqItems: FAQItem[] = [
     question: '引用与提及监测面板的数据多久刷新一次？',
     answer:
       'FlyAI 引用与提及监测面板提供三档刷新频率：①实时监测（每 15 分钟抓取一次 12+ 引擎的目标关键词答案，用于上线首周的密集观测）；②日频监测（每日 02:00 GMT+8 全量抓取，日常运营默认档位）；③周频监测（每周一全量抓取，用于季度复盘）。每次抓取记录答案原文、是否引用品牌、引用位置（首段/中段/尾段）、引用链接是否为官方域名、品牌实体是否被张冠李戴。所有历史快照可按周/月导出 CSV，用于向管理层汇报 GEO 提升曲线。具体配额与刷新档位以 [查看定价](/pricing) 的套餐说明为准。',
+  },
+  {
+    question: '诊断报告里的「站内链接」为什么会显示为 0？',
+    answer:
+      '诊断工具只统计带完整域名的链接（如 https://www.flyai66.top/product），相对路径（`href="/product"`）不计入；站点导航多用相对路径时就会显示为 0，这是统计口径，不代表页面没有内链。',
+  },
+  {
+    question: '注入结构化数据会影响页面渲染或现有 SEO 吗？',
+    answer:
+      '不会。JSON-LD 是 `<script type="application/ld+json">` 数据块，不参与渲染、不改变视觉样式；回滚只需删除该 script 块。',
   },
 ];
 
@@ -260,9 +257,9 @@ export default function ProductPage() {
       </section>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        FlyAI 的产品设计以生成式引擎的检索与综合机制为基础。<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》</a> 系统阐述了 RAG 的检索-综合两阶段架构，而 <a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 则解释了为何首段直达答案对被引用至关重要。
+        FlyAI 的产品设计以生成式引擎的检索与综合机制为基础。<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》</a> 系统阐述了 RAG 的检索-综合两阶段架构，而 <a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 则解释了为何首段直达答案对被引用至关重要。
       </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.geoDoi]} />
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.geoDoi, SOURCES.googleStructuredData, SOURCES.w3cJsonLd]} />
       <RelatedLinks path="/product" />
       <FAQSection title="关于 FlyAI 产品功能的常见问题" items={faqItems} />
 

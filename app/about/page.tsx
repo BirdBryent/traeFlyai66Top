@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/metadata';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
@@ -12,20 +12,7 @@ const title = '关于 FlyAI（广州飞爱智能科技有限公司）— 团队 
 const description =
   'FlyAI（广州飞爱智能科技有限公司）成立于 [待补充：真实成立年份]，是一家专注于生成式引擎优化（GEO）赛道的独立软件公司，核心团队来自 Google、百度、字节跳动的搜索产品与结构化数据方向；公司以「让每个品牌都被 AI 正确引用」为使命，向中国与海外客户交付可被重复验证的 GEO 方法论与工具链。';
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: '/about' },
-  openGraph: {
-    title,
-    description,
-    url: 'https://flyai66.top/about',
-    type: 'website',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: title }],
-  },
-  twitter: { card: 'summary_large_image', title, description, images: ['/og-default.jpg'] },
-  robots: { index: true, follow: true },
-};
+export const metadata = buildMetadata({ title, description, path: '/about' });
 
 const faqItems: FAQItem[] = [
   {
@@ -47,6 +34,16 @@ const faqItems: FAQItem[] = [
     question: 'FlyAI 是否有开源项目？',
     answer:
       'FlyAI 在 GitHub（https://github.com/FlyAI）维护若干开源项目，包括：① GEO 诊断工具的开源版本（轻量级 llms.txt 生成器与 Schema 校验器）；② 结构化数据最佳实践文档；③ 引用监测的开源浏览器插件。开源项目采用 MIT 或 Apache 2.0 许可证，欢迎社区贡献。具体项目列表与许可证以 GitHub 仓库为准。',
+  },
+  {
+    question: 'FlyAI 的服务边界是什么？',
+    answer:
+      '交付内容与 GEO 配置（诊断、结构化数据、llms.txt、引用监测）；不承诺具体排名或引用率，也不代替客户做网站发布与运维决策。【待确认：与合同/服务条款表述保持一致】',
+  },
+  {
+    question: '怎么核实 FlyAI 的公司主体信息？',
+    answer:
+      '可在国家企业信用信息公示系统与市场监管总局官网按主体名称查询工商登记信息（`https://www.samr.gov.cn/`）。',
   },
 ];
 
@@ -155,7 +152,7 @@ export default function AboutPage() {
                 ['注册资本', '[待补充：真实注册资本] 万元人民币'],
                 ['经营范围', '[待补充：真实经营范围，以工商登记为准]'],
                 ['资质认证', 'ISO 27001（申请中，预计 [待补充：真实取证时间] 取证；等保三级（申请中）'],
-                ['公司官网', 'https://flyai66.top'],
+                ['公司官网', 'https://www.flyai66.top'],
               ].map((row) => (
                 <tr key={row[0]} className="border-b border-gray-100 last:border-0">
                   <td className="w-40 px-4 py-3 font-medium text-gray-900">{row[0]}</td>
@@ -171,9 +168,9 @@ export default function AboutPage() {
       </section>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        FlyAI 的服务范围与合规承诺遵循<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>。GEO 方法论的学术依据见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，行业背景参考<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a>。
+        FlyAI 的服务范围与合规承诺遵循<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>。GEO 方法论的学术依据见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，行业背景参考<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a>。
       </p>
-      <CitedSources items={[SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.geoPaper]} />
+      <CitedSources items={[SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.geoPaper, SOURCES.samr, SOURCES.miit]} />
       <RelatedLinks path="/about" />
       <FAQSection title="关于 FlyAI 公司的常见问题" items={faqItems} />
 

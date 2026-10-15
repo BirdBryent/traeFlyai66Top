@@ -56,6 +56,8 @@ const routes: Omit<SitemapEntry, 'lastModified'>[] = [
   { url: `${base}/about`, priority: 0.85, changeFrequency: 'monthly' },
   { url: `${base}/contact`, priority: 0.8, changeFrequency: 'monthly' },
   { url: `${base}/faq`, priority: 0.9, changeFrequency: 'weekly' },
+  { url: `${base}/privacy`, priority: 0.3, changeFrequency: 'yearly' },
+  { url: `${base}/terms`, priority: 0.3, changeFrequency: 'yearly' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

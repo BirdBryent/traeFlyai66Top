@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/metadata';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
@@ -12,20 +12,7 @@ const title = 'FlyAI 客户案例 — 背景 · 动作 · 可量化结果';
 const description =
   '本节展示 FlyAI 典型客户交付框架，所有具体案例数据均以占位符标注待客户授权后补录，确保任何展示的品牌名与数字均可追溯并通过真实验证；读者可通过每条案例的「背景-动作-结果」结构理解 FlyAI GEO 方法论在不同行业的落地路径。';
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: '/cases' },
-  openGraph: {
-    title,
-    description,
-    url: 'https://flyai66.top/cases',
-    type: 'website',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: title }],
-  },
-  twitter: { card: 'summary_large_image', title, description, images: ['/og-default.jpg'] },
-  robots: { index: true, follow: true },
-};
+export const metadata = buildMetadata({ title, description, path: '/cases' });
 
 const faqItems: FAQItem[] = [
   {
@@ -42,6 +29,21 @@ const faqItems: FAQItem[] = [
     question: '未脱敏的案例在哪里可以看？',
     answer:
       '未脱敏案例（含真实客户名、具体数据、合同金额）需在 [联系销售](/contact) 并签署 NDA（保密协议）后，由 FlyAI 商务团队通过安全渠道提供。未脱敏案例仅用于客户内部评估，不得对外传播或公开引用。FlyAI 对所有未脱敏案例的数据真实性负责，所有数字均可追溯至客户签署的交付确认书。',
+  },
+  {
+    question: 'GEO 的效果一般多久能在 AI 答案里观察到？',
+    answer:
+      '分三步：先被抓取（站点出现在 GPTBot/ClaudeBot 等爬虫日志里，通常 1–2 周），再进入答案样本池（2–4 周），稳定引用通常需 1–3 个月持续更新同一主题域；新域名的权威度累积明显更慢。',
+  },
+  {
+    question: '案例里的效果数据是怎么统计出来的？',
+    answer:
+      '以「AI 答案中是否出现品牌名或域名」为基线，结合爬虫日志识别与人工复核。样本量、统计周期与检索词清单在交付报告中标注。【待确认：是否公开统计口径与样本量】',
+  },
+  {
+    question: '只有公众号或小红书，没有独立官网，能做 GEO 吗？',
+    answer:
+      '可以，但第三方平台的内容与结构不可控。建议至少有一个自有域名作为实体锚点（承接 Organization Schema 与 llms.txt），再把第三方平台内容作为分发渠道。',
   },
 ];
 
@@ -185,7 +187,7 @@ export default function CasesPage() {
       </section>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        以下案例框架基于 FlyAI 的 GEO 方法论沉淀。方法论的学术依据见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，行业背景参考<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a> 中的企业生成式 AI 采纳数据。
+        以下案例框架基于 FlyAI 的 GEO 方法论沉淀。方法论的学术依据见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，行业背景参考<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a> 中的企业生成式 AI 采纳数据。
       </p>
       <CitedSources items={[SOURCES.geoPaper, SOURCES.stanfordAiIndex, SOURCES.cacAiRule, SOURCES.geoDoi]} />
       <RelatedLinks path="/cases" />

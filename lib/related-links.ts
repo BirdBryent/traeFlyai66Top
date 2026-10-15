@@ -132,4 +132,18 @@ export const relatedLinks: Record<string, RelatedLink[]> = {
     { path: '/blog/structured-data-2025', anchor: '2025 年结构化数据演进' },
     { path: '/docs', anchor: '文档首页' },
   ],
+  '/privacy': [
+    { path: '/about', anchor: '关于 FlyAI 的公司主体与服务范围' },
+    { path: '/contact', anchor: '联系我们：商务、支持与数据删除申请' },
+    { path: '/faq', anchor: '数据合规与隐私常见问题' },
+    { path: '/terms', anchor: '服务条款' },
+    { path: '/docs', anchor: '产品文档：接入、API 与字段字典' },
+  ],
+  '/terms': [
+    { path: '/privacy', anchor: '隐私政策：数据收集与用途说明' },
+    { path: '/about', anchor: '关于 FlyAI 的公司主体与服务范围' },
+    { path: '/contact', anchor: '联系我们' },
+    { path: '/faq', anchor: '常见问题' },
+    { path: '/docs', anchor: '产品文档：接入、API 与字段字典' },
+  ],
 };

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/metadata';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
@@ -12,20 +12,7 @@ const title = 'FlyAI 定价 — 启动版 · 专业版 · 企业版 三档订阅
 const description =
   'FlyAI 提供按月订阅的透明定价：启动版适合 3 人以内内容团队试水 GEO；专业版适合 10-50 人市场/增长团队规模化运行；企业版适合 50+ 人或多品牌集团客户定制私有部署、SLA 与专属 CSM。所有价格以联系销售后的正式报价单为准，不展示任何虚假金额。';
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: '/pricing' },
-  openGraph: {
-    title,
-    description,
-    url: 'https://flyai66.top/pricing',
-    type: 'website',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: title }],
-  },
-  twitter: { card: 'summary_large_image', title, description, images: ['/og-default.jpg'] },
-  robots: { index: true, follow: true },
-};
+export const metadata = buildMetadata({ title, description, path: '/pricing' });
 
 const faqItems: FAQItem[] = [
   {
@@ -229,9 +216,9 @@ export default function PricingPage() {
       </section>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        FlyAI 三档定价对应不同规模团队的 GEO 成熟度阶段。定价模型参考了<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a> 对生成式 AI 服务提供者的合规义务界定，以及<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a> 中企业 AI 采纳率的行业基准。
+        FlyAI 三档定价对应不同规模团队的 GEO 成熟度阶段。定价模型参考了<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a> 对生成式 AI 服务提供者的合规义务界定，以及<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a> 中企业 AI 采纳率的行业基准。
       </p>
-      <CitedSources items={[SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.geoDoi, SOURCES.geoDoi]} />
+      <CitedSources items={[SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.geoDoi, SOURCES.miit]} />
       <RelatedLinks path="/pricing" />
       <FAQSection title="关于 FlyAI 定价与计费的常见问题" items={faqItems} />
 

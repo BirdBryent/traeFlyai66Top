@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/metadata';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
@@ -12,20 +12,7 @@ const title = 'FlyAI 解决方案 — B2B SaaS · 出海品牌 · 内容团队 �
 const description =
   '针对 B2B SaaS 客户需要在 AI 答案中被作为工具推荐准确引用、出海品牌需要在多语言生成式引擎中维持实体一致性、内容团队需要规模化产出高引用内容、代理商需要将 GEO 打包进客户服务套餐四类典型场景，FlyAI 提供模块化组合方案与对应的诊断模板、数据接入方式、交付物清单。';
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: '/solutions' },
-  openGraph: {
-    title,
-    description,
-    url: 'https://flyai66.top/solutions',
-    type: 'website',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: title }],
-  },
-  twitter: { card: 'summary_large_image', title, description, images: ['/og-default.jpg'] },
-  robots: { index: true, follow: true },
-};
+export const metadata = buildMetadata({ title, description, path: '/solutions' });
 
 const faqItems: FAQItem[] = [
   {
@@ -47,6 +34,16 @@ const faqItems: FAQItem[] = [
     question: '代理商有返利或贴牌（OEM）模式吗？',
     answer:
       '有。FlyAI 为代理商提供两种合作模式：① 渠道返利模式：代理商以折扣价采购 FlyAI 套餐加价转售，FlyAI 提供产品、技术支持与品牌物料；② 贴牌（OEM）模式：代理商可使用自有品牌包装 FlyAI 产品，在企业版私有部署基础上替换 Logo、域名与文档。两种模式均需签署渠道合作协议，具体返利比例与 OEM 授权费请 [联系渠道合作团队](mailto:partner@flyai66.top) 获取渠道手册。',
+  },
+  {
+    question: '出海品牌和国内站的 GEO 做法有什么不同？',
+    answer:
+      '目标引擎与合规要求不同。出海站主要覆盖 Google AI 概览、Perplexity、ChatGPT 类答案，要注意语言与 hreflang 正确性；国内站以 DeepSeek、豆包、千问等为主，同时要符合生成式 AI 服务的合规要求。',
+  },
+  {
+    question: '内容团队没有开发资源，可以只交付内容吗？',
+    answer:
+      '可以。结构化数据与 llms.txt 都能以文件形式交付（JSON-LD 片段、llms.txt、Markdown），由内容团队贴入 CMS，或由开发一次性注入，不需要持续改造代码。',
   },
 ];
 
@@ -206,7 +203,7 @@ export default function SolutionsPage() {
       </section>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        不同行业落地 GEO 的路径差异显著，但底层逻辑一致：让生成式引擎在检索阶段召回你的实体，在综合阶段准确描述你的品牌。<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">GEO 论文</a> 提出的「来源引用」手法与<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a> 对内容合规的要求，共同决定了方案的设计边界。
+        不同行业落地 GEO 的路径差异显著，但底层逻辑一致：让生成式引擎在检索阶段召回你的实体，在综合阶段准确描述你的品牌。<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">GEO 论文</a> 提出的「来源引用」手法与<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a> 对内容合规的要求，共同决定了方案的设计边界。
       </p>
       <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.rag, SOURCES.geoDoi]} />
       <RelatedLinks path="/solutions" />

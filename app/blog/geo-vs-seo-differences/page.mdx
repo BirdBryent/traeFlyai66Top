@@ -1,3 +1,4 @@
+import { buildMetadata } from '@/lib/metadata';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
@@ -6,20 +7,14 @@ import CitedSources, { SOURCES } from '@/components/CitedSources';
 import JsonLd from '@/components/JsonLd';
 import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem, buildWebPage } from '@/lib/schema';
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: 'GEO 与 SEO 的本质区别：从「被搜到」到「被引用」',
   description: '本文从优化对象、核心指标、关键手段三个维度，系统对比 GEO（生成式引擎优化）与 SEO（搜索引擎优化）的本质区别，给出企业从 SEO 向 GEO 迁移的具体路径。',
-  alternates: { canonical: '/blog/geo-vs-seo-differences' },
-  openGraph: {
-    title: 'GEO 与 SEO 的本质区别：从「被搜到」到「被引用」',
-    description: 'GEO 与 SEO 的本质区别与迁移路径',
-    url: 'https://flyai66.top/blog/geo-vs-seo-differences',
-    type: 'article',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'GEO 与 SEO 对比' }],
-  },
-  twitter: { card: 'summary_large_image', title: 'GEO 与 SEO 的本质区别', description: '从被搜到到被引用', images: ['/og-default.jpg'] },
-  robots: { index: true, follow: true },
-};
+  path: '/blog/geo-vs-seo-differences',
+  type: 'article',
+  publishedTime: '2025-10-15',
+  modifiedTime: '2026-10-15',
+});
 
 export const crumbs = [
   { label: '首页', href: '/' },
@@ -39,6 +34,21 @@ export const faqItems = [
   {
     question: 'GEO 优化的见效周期是多久？',
     answer: 'GEO 优化通常 4-12 周可见引用率提升。其中结构化数据与 llms.txt 的修复最快（1-2 周引擎重新抓取后即可生效），首段直答与权威外链建设需 4-8 周，实体一致性与内容矩阵需 8-12 周。FlyAI 监测平台以周为单位追踪引用率变化，确保优化效果可量化。',
+  },
+  {
+    question: 'GEO 会取代 SEO 吗？',
+    answer:
+      '不会。传统搜索仍有独立流量，GEO 处理的是「答案式检索」这一增量场景。两者共用同一套站点基础（可抓取、结构清晰、内容可信），差别在优化目标与内容写法。',
+  },
+  {
+    question: '已经有 SEO 团队，GEO 该由谁负责？',
+    answer:
+      '通常由 SEO/内容团队承接，因为工作重心从「关键词排名」转为「实体对齐与可引用段落」；开发只需一次性配合结构化数据与 robots.txt。',
+  },
+  {
+    question: 'GEO 能保证被 AI 引用吗？',
+    answer:
+      '不能。引用取决于引擎的检索与生成策略、域名权威、内容时效等多因素；GEO 做的是提高被检索、被抽取、被正确引用的概率。',
   },
 ];
 
@@ -143,9 +153,9 @@ export default function GeoVsSeoPost() {
       </article>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        GEO 与 SEO 的本质区别在 KDD 2024 论文<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《GEO: Generative Engine Optimization》</a> 中被系统阐述。同时，<a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 解释了为何 GEO 强调首段直达答案。
+        GEO 与 SEO 的本质区别在 KDD 2024 论文<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《GEO: Generative Engine Optimization》</a> 中被系统阐述。同时，<a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 解释了为何 GEO 强调首段直达答案。
       </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.longContext, SOURCES.rag]} />
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.longContext, SOURCES.rag, SOURCES.googleStructuredData, SOURCES.w3cJsonLd]} />
       <RelatedLinks path="/blog/geo-vs-seo-differences" />
       <FAQSection title="GEO 与 SEO 常见问题" items={faqItems} />
 

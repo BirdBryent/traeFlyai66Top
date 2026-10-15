@@ -29,12 +29,65 @@ export const SOURCES = {
     label: 'Stanford HAI, 《The 2025 AI Index Report》',
     url: 'https://hai.stanford.edu/ai-index/2025-ai-index-report',
   },
+  samr: {
+    label: '国家市场监督管理总局',
+    url: 'https://www.samr.gov.cn/',
+    note: '企业主体与经营资质查询入口',
+  },
+  miit: {
+    label: '工业和信息化部（ICP 备案主管部门）',
+    url: 'https://www.miit.gov.cn/',
+  },
+  rfc9309: {
+    label: 'RFC 9309 — Robots Exclusion Protocol（IETF）',
+    url: 'https://www.rfc-editor.org/rfc/rfc9309.html',
+    note: 'robots.txt 的现行规范',
+  },
+  w3cJsonLd: {
+    label: 'W3C JSON-LD 1.1 规范',
+    url: 'https://www.w3.org/TR/json-ld11/',
+  },
+  llmsTxt: {
+    label: 'llms.txt 社区提案（llmstxt.org）',
+    url: 'https://www.llmstxt.org/',
+    note: '当前 llms.txt 的唯一事实标准来源',
+  },
+  googleStructuredData: {
+    label: 'Google Search Central — 结构化数据官方文档',
+    url: 'https://developers.google.com/search/docs/appearance/structured-data',
+  },
+  openaiBots: {
+    label: 'OpenAI 爬虫与机器人文档（GPTBot / OAI-SearchBot / ChatGPT-User）',
+    url: 'https://developers.openai.com/api/docs/bots',
+    note: '浏览器可访问；curl 会返回 403',
+  },
+  appleBot: {
+    label: 'Applebot 与 Applebot-Extended 说明（Apple）',
+    url: 'https://support.apple.com/en-us/119829',
+  },
+  anthropicBot: {
+    label: 'Anthropic 抓取与屏蔽说明（ClaudeBot）',
+    url: 'https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler',
+  },
+  ccbot: {
+    label: 'Common Crawl 的 CCBot',
+    url: 'https://commoncrawl.org/ccbot',
+  },
 } as const;
 
-export function CitedSources({ items, title = '参考来源' }: { items: Source[]; title?: string }) {
+export function CitedSources({
+  items,
+  title = '参考来源',
+  id = 'sources',
+}: {
+  items: Source[];
+  title?: string;
+  id?: string;
+}) {
+  const headingId = `${id}-heading`;
   return (
-    <section aria-labelledby="sources-heading" className="mx-auto w-full max-w-4xl px-5 py-8 lg:px-8">
-      <h2 id="sources-heading" className="text-xl font-semibold text-gray-900">
+    <section aria-labelledby={headingId} className="mx-auto w-full max-w-4xl px-5 py-8 lg:px-8">
+      <h2 id={headingId} className="text-xl font-semibold text-gray-900">
         {title}
       </h2>
       <ol className="mt-4 list-decimal space-y-2 pl-5 text-gray-700">
@@ -43,7 +96,7 @@ export function CitedSources({ items, title = '参考来源' }: { items: Source[
             <a
               href={s.url}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="noopener noreferrer"
               className="text-brand-600 underline underline-offset-2 hover:text-brand-700"
             >
               {s.label}

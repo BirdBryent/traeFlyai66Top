@@ -129,10 +129,6 @@ export function SiteFooter() {
             <Link href="/terms" className="text-gray-500 hover:text-brand-600">
               服务条款
             </Link>
-            <span className="text-gray-300">·</span>
-            <Link href="/compliance" className="text-gray-500 hover:text-brand-600">
-              合规说明
-            </Link>
           </div>
         </div>
       </div>

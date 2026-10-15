@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/metadata';
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -13,20 +13,7 @@ const title = 'FlyAI 产品文档 — 接入步骤 · API 参考 · 字段字典
 const description =
   '本产品文档覆盖从 API Key 获取、SDK 接入、REST 接口说明到结构化数据字段字典的完整链路；所有代码示例以 curl 与 TypeScript 双版本呈现，且通过 MDX 静态渲染确保生成式引擎可直接在初始 HTML 中解析参数名与返回结构。';
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: '/docs' },
-  openGraph: {
-    title,
-    description,
-    url: 'https://flyai66.top/docs',
-    type: 'website',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: title }],
-  },
-  twitter: { card: 'summary_large_image', title, description, images: ['/og-default.jpg'] },
-  robots: { index: true, follow: true },
-};
+export const metadata = buildMetadata({ title, description, path: '/docs' });
 
 const faqItems: FAQItem[] = [
   {
@@ -48,6 +35,16 @@ const faqItems: FAQItem[] = [
     question: '沙箱环境和生产环境是否隔离？',
     answer:
       '完全隔离。FlyAI 为每个客户提供独立的沙箱（Sandbox）与生产（Production）环境，二者数据、配额、API Key、域名物理隔离。沙箱用于开发联调，配额宽松不保证 SLA；生产用于线上业务，受 SLA 保障。沙箱 API 调用不计入生产配额。',
+  },
+  {
+    question: '怎么确认站点已经被 AI 爬虫抓取过？',
+    answer:
+      '看服务器或 CDN 访问日志里的 UA：GPTBot、OAI-SearchBot、ChatGPT-User、ClaudeBot、PerplexityBot、Bytespider、Google-Extended、CCBot 等。若长期没有这些 UA，先检查 robots.txt 是否误拦。各爬虫的官方说明见 OpenAI 机器人文档、Apple 爬虫说明、Anthropic 抓取说明与 Common Crawl 的 CCBot 页面（本章节末尾附链接）。',
+  },
+  {
+    question: '文档里的示例可以直接用于生产吗？',
+    answer:
+      '示例用于说明请求结构与字段含义，请替换成真实 API Key 与真实域名，并先在沙箱环境验证通过再用于生产。',
   },
 ];
 
@@ -152,9 +149,14 @@ export default function DocsListPage() {
       </section>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        本文档基于 FlyAI GEO 方法论编写，核心概念源自<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a> 提出的 GEO-bench 评估框架。检索增强生成（RAG）的技术原理参考<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Lewis et al., NeurIPS 2020</a>。
+        本文档基于 FlyAI GEO 方法论编写，核心概念源自<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a> 提出的 GEO-bench 评估框架。检索增强生成（RAG）的技术原理参考<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Lewis et al., NeurIPS 2020</a>。
       </p>
       <CitedSources items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.geoDoi]} />
+      <CitedSources
+        title="AI 爬虫官方说明"
+        id="ai-crawlers"
+        items={[SOURCES.openaiBots, SOURCES.appleBot, SOURCES.anthropicBot, SOURCES.ccbot]}
+      />
       <RelatedLinks path="/docs" />
       <FAQSection title="关于 FlyAI 产品文档的常见问题" items={faqItems} />
 

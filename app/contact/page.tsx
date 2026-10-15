@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/metadata';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
@@ -12,20 +12,7 @@ const title = '联系 FlyAI — 免费诊断 · 预约演示 · 合作咨询';
 const description =
   '通过 FlyAI 联系表单提交你的需求，商务团队将于工作日 24 小时内回复（中国工作时间 9:00-18:00 GMT+8）。免费 AI 搜索可见性诊断支持提交最多 500 个 URL，2 个工作日内输出报告并通过邮件发送。';
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: '/contact' },
-  openGraph: {
-    title,
-    description,
-    url: 'https://flyai66.top/contact',
-    type: 'website',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: title }],
-  },
-  twitter: { card: 'summary_large_image', title, description, images: ['/og-default.jpg'] },
-  robots: { index: true, follow: true },
-};
+export const metadata = buildMetadata({ title, description, path: '/contact' });
 
 const faqItems: FAQItem[] = [
   {
@@ -36,7 +23,7 @@ const faqItems: FAQItem[] = [
   {
     question: '申请免费 AI 搜索可见性诊断需要提供后台账号或密码吗？',
     answer:
-      '不需要。FlyAI 免费诊断基于公开可访问的 URL 清单进行，不要求客户提供站点后台账号、数据库密码或服务器 SSH 权限。你只需在表单中提交：① 站点根域名（如 https://flyai66.top）；② 需诊断的 URL 清单（最多 500 个，可粘贴文本或上传 CSV）；③ 希望重点观测的 5-10 个核心关键词；④ 联系邮箱。FlyAI 通过模拟生成式引擎的抓取路径完成诊断，全程只读公开内容，不写入任何数据到客户站点。若后续签约后需要更深度的诊断（如登录态页面），会在合同中单独约定权限范围与数据处理协议。',
+      '不需要。FlyAI 免费诊断基于公开可访问的 URL 清单进行，不要求客户提供站点后台账号、数据库密码或服务器 SSH 权限。你只需在表单中提交：① 站点根域名（如 https://www.flyai66.top）；② 需诊断的 URL 清单（最多 500 个，可粘贴文本或上传 CSV）；③ 希望重点观测的 5-10 个核心关键词；④ 联系邮箱。FlyAI 通过模拟生成式引擎的抓取路径完成诊断，全程只读公开内容，不写入任何数据到客户站点。若后续签约后需要更深度的诊断（如登录态页面），会在合同中单独约定权限范围与数据处理协议。',
   },
   {
     question: '商务合作和渠道合作的对接人是否不同？',
@@ -256,9 +243,9 @@ export default function ContactPage() {
       </section>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        FlyAI 商务团队将在工作日 24 小时内回复。GEO 服务的方法论基础见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，服务合规遵循<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>。
+        FlyAI 商务团队将在工作日 24 小时内回复。GEO 服务的方法论基础见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，服务合规遵循<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>。
       </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.geoDoi]} />
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.geoDoi, SOURCES.miit, SOURCES.samr]} />
       <RelatedLinks path="/contact" />
       <FAQSection title="关于联系 FlyAI 的常见问题" items={faqItems} />
 

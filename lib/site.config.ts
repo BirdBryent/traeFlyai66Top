@@ -71,7 +71,6 @@ export const siteConfig = {
     legal: [
       { label: '隐私政策', href: '/#privacy' },
       { label: '服务条款', href: '/#terms' },
-      { label: '合规说明', href: '/about#compliance' },
     ],
   },
   softwareApplication: {

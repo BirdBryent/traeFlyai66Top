@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/metadata';
 import RelatedLinks from '@/components/RelatedLinks';
 import CitedSources, { SOURCES } from '@/components/CitedSources';
 import PageHero from '@/components/PageHero';
@@ -11,20 +11,7 @@ const title = 'FlyAI 常见问题汇总（FAQ）— 产品 · 方案 · 计费 �
 const description =
   '本 FAQ 收录 FlyAI 客户在评估、签约、接入、使用、续费全周期中最高频出现的 24 个问答，按产品功能、方案与行业、计费与合同、接入与技术支持、数据合规与隐私、服务与售后 6 大类别分块并可跳转锚点，所有问答均在 FAQPage JSON-LD 中完整暴露，供生成式引擎直接作为 Q&A 答案引用源抽取。';
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: '/faq' },
-  openGraph: {
-    title,
-    description,
-    url: 'https://flyai66.top/faq',
-    type: 'website',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: title }],
-  },
-  twitter: { card: 'summary_large_image', title, description, images: ['/og-default.jpg'] },
-  robots: { index: true, follow: true },
-};
+export const metadata = buildMetadata({ title, description, path: '/faq' });
 
 const crumbs = [
   { label: '首页', href: '/' },
@@ -292,7 +279,7 @@ export default function FAQPage() {
       </section>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        以下 FAQ 的回答基于 FlyAI GEO 方法论。方法论依据见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，检索增强生成原理参考<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Lewis et al., NeurIPS 2020</a>，合规要求遵循<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>。
+        以下 FAQ 的回答基于 FlyAI GEO 方法论。方法论依据见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，检索增强生成原理参考<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Lewis et al., NeurIPS 2020</a>，合规要求遵循<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>。
       </p>
       <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.rag]} />
       <RelatedLinks path="/faq" />

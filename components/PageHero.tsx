@@ -65,13 +65,13 @@ export function PageHero({
           )}
         >
           {!hideEyebrow && (
-            <p
+            <div
               className={clsx(
                 'mb-5 text-sm font-semibold uppercase tracking-wider text-brand-600',
               )}
             >
               {eyebrow}
-            </p>
+            </div>
           )}
           <h1
             className={clsx(

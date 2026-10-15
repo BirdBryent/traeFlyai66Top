@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/metadata';
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -23,36 +23,7 @@ const title =
 const description =
   'FlyAI（广州飞爱智能科技有限公司）提供 GEO 生成式引擎优化服务：AI 可见性诊断、内容结构化改造、Schema/llms.txt 自动生成、12+ 生成式引擎引用与提及监测，帮助企业市场与内容团队在 DeepSeek、豆包、千问、Google AIO 的 AI 答案中获得稳定、准确、高权重的品牌引用。';
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    title,
-    description,
-    url: 'https://flyai66.top/',
-    type: 'website',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: title }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title,
-    description,
-    images: ['/og-default.jpg'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-snippet': -1,
-      'max-image-preview': 'large',
-    },
-  },
-};
+export const metadata = buildMetadata({ title, description, path: '/' });
 
 const homeFAQ: FAQItem[] = [
   {
@@ -107,9 +78,9 @@ export default function HomePage() {
       <HomePainPoints />
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        生成式引擎优化的实证依据来自 KDD 2024 论文 <a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《GEO: Generative Engine Optimization》</a>：其中「引文添加」「统计数据添加」「来源引用」三种改写手法在 GEO-bench 上分别带来约 41%、37%、30% 的可信度/可见度提升，而关键词堆砌无效。
+        生成式引擎优化的实证依据来自 KDD 2024 论文 <a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《GEO: Generative Engine Optimization》</a>：其中「引文添加」「统计数据添加」「来源引用」三种改写手法在 GEO-bench 上分别带来约 41%、37%、30% 的可信度/可见度提升，而关键词堆砌无效。
       </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.stanfordAiIndex]} />
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.googleStructuredData, SOURCES.llmsTxt]} />
       <RelatedLinks path="/" />
       <FAQSection title="关于 FlyAI 生成式引擎优化（GEO）的 5 条常见问题" items={homeFAQ} />
 

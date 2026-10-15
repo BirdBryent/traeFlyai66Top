@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/metadata';
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -13,20 +13,7 @@ const title = 'FlyAI 博客 — GEO 方法论 · 结构化数据 · llms.txt 最
 const description =
   'FlyAI 博客分享生成式引擎优化（GEO）的深度实践：GEO 与 SEO 的本质区别、llms.txt 最佳实践、2025 年结构化数据演进趋势等。所有文章通过 MDX 静态渲染，含首段直答、结构化数据与权威外链。';
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: '/blog' },
-  openGraph: {
-    title,
-    description,
-    url: 'https://flyai66.top/blog',
-    type: 'website',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: title }],
-  },
-  twitter: { card: 'summary_large_image', title, description, images: ['/og-default.jpg'] },
-  robots: { index: true, follow: true },
-};
+export const metadata = buildMetadata({ title, description, path: '/blog' });
 
 const faqItems: FAQItem[] = [
   {
@@ -48,6 +35,16 @@ const faqItems: FAQItem[] = [
     question: '如何订阅 FlyAI 博客更新？',
     answer:
       '可通过以下方式订阅：① 订阅 FlyAI 邮件通讯（在首页底部输入邮箱）；② 关注 FlyAI 微信公众号「[待补充：真实公众号名]」；③ 关注 FlyAI GitHub 博客仓库（https://github.com/FlyAI/blog）获取 RSS。订阅渠道上线前请以官网博客页手动查看为准。',
+  },
+  {
+    question: '博客文章会更新吗？',
+    answer:
+      '会。每篇文章标注发布日期与最后更新时间；涉及规范变化（如 schema.org、llms.txt 生态）的条目会随规范修订，并在页面标注新的更新日期。',
+  },
+  {
+    question: '可以转载 FlyAI 的博客内容吗？',
+    answer:
+      '允许在标注来源与原文链接的前提下引用；禁止整站镜像，以及用于训练闭源商业模型而不注明来源。',
   },
 ];
 
@@ -129,9 +126,9 @@ export default function BlogListPage() {
       </section>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        本站博客聚焦 GEO 方法论与行业实践。方法论的学术基础见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，合规框架参考<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>，行业数据参考<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer nofollow" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a>。
+        本站博客聚焦 GEO 方法论与行业实践。方法论的学术基础见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，合规框架参考<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>，行业数据参考<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a>。
       </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.stanfordAiIndex]} />
+      <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.llmsTxt, SOURCES.googleStructuredData]} />
       <RelatedLinks path="/blog" />
       <FAQSection title="博客常见问题" items={faqItems} />
 
