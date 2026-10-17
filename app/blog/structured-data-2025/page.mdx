@@ -5,7 +5,7 @@ import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
 import CitedSources, { SOURCES } from '@/components/CitedSources';
 import JsonLd from '@/components/JsonLd';
-import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem, buildWebPage } from '@/lib/schema';
+import { buildArticle, buildBreadcrumbList, FAQItem, buildWebPage } from '@/lib/schema';
 
 export const metadata = buildMetadata({
   title: '2025 年结构化数据演进：从搜索引擎到生成式引擎',
@@ -179,7 +179,6 @@ export default function StructuredData2025Post() {
             authorName: 'FlyAI 内容研究团队',
             keywords: ['结构化数据', 'Schema.org', 'JSON-LD', 'GEO', '生成式引擎'],
           }),
-          buildFAQPage(faqItems),
         ]}
       />
     </div>

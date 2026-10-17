@@ -6,7 +6,7 @@ import RelatedLinks from '@/components/RelatedLinks';
 import CitedSources, { SOURCES } from '@/components/CitedSources';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
-import { buildFAQPage, buildBreadcrumbList, FAQItem, isAuthorityLink, buildWebPage, buildDefinedTermSet } from '@/lib/schema';
+import { buildBreadcrumbList, FAQItem, isAuthorityLink, buildWebPage, buildDefinedTermSet } from '@/lib/schema';
 
 const title = 'GEO 术语表 — 10 条生成式引擎优化核心术语定义';
 const description =
@@ -213,7 +213,7 @@ export default function GlossaryPage() {
 
       <JsonLd data={[buildWebPage({ url: '/glossary', name: 'FlyAI GEO 术语表' }),
           buildDefinedTermSet('/glossary', 'FlyAI GEO 术语表'),
-          buildBreadcrumbList(crumbs), buildFAQPage(faqItems)]} />
+          buildBreadcrumbList(crumbs)]} />
     </div>
   );
 }

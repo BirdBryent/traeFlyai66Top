@@ -22,7 +22,7 @@ function renderH1(h1: PageHeroH1) {
   return (
     <>
       <span className="block">{h1[0]}</span>
-      <span className="block">{h1[1]}</span>
+      <span className="block text-gray-500">{h1[1]}</span>
     </>
   );
 }
@@ -84,7 +84,7 @@ export function PageHero({
           <p
             className={clsx(
               'lead mt-8 text-xl leading-relaxed text-gray-700 md:text-2xl',
-              center && 'mx-auto',
+              center && 'mx-auto text-center',
             )}
           >
             {lead}

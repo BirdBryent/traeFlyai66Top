@@ -5,7 +5,7 @@ import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
 import CitedSources, { SOURCES } from '@/components/CitedSources';
 import JsonLd from '@/components/JsonLd';
-import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem, buildWebPage } from '@/lib/schema';
+import { buildArticle, buildBreadcrumbList, FAQItem, buildWebPage } from '@/lib/schema';
 
 export const metadata = buildMetadata({
   title: 'FlyAI 快速开始 — 3 步完成 GEO 接入',
@@ -220,7 +220,6 @@ console.log(report.suggestions);  // 修复建议`}</code>
             authorName: 'FlyAI 内容研究团队',
             keywords: ['GEO', '快速开始', 'API Key', 'SDK', '诊断接口'],
           }),
-          buildFAQPage(faqItems),
         ]}
       />
     </div>

@@ -6,7 +6,7 @@ import RelatedLinks from '@/components/RelatedLinks';
 import CitedSources, { SOURCES } from '@/components/CitedSources';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
-import { buildFAQPage, buildBreadcrumbList, FAQItem, buildWebPage, buildService } from '@/lib/schema';
+import { buildBreadcrumbList, FAQItem, buildWebPage, buildService } from '@/lib/schema';
 
 const title = 'FlyAI 解决方案 — B2B SaaS · 出海品牌 · 内容团队 · 代理商';
 const description =
@@ -55,6 +55,7 @@ const crumbs = [
 const solutions = [
   {
     name: 'B2B SaaS',
+    anchor: 'b2b-saas',
     icon: '⚙️',
     pain: 'AI 答案中工具推荐场景下品牌被竞品替代，潜在客户搜索「XX 工具推荐」时找不到自己的产品不在候选列表，产品页首段套话导致引擎不引用，SoftwareApplication Schema 缺失。',
     solution:
@@ -69,6 +70,7 @@ const solutions = [
   },
   {
     name: '出海品牌',
+    anchor: 'overseas',
     icon: '🌏',
     pain: '多语言站点实体不一致（中文叫「飞爱」英文叫「FlyAI」但引擎无法关联，hreflang 标注缺失，各语言 llms.txt 未配置，海外引擎引用率低于国内。',
     solution:
@@ -83,6 +85,7 @@ const solutions = [
   },
   {
     name: '内容团队',
+    anchor: 'content-team',
     icon: '✍️',
     pain: '内容产出量大但 AI 引用率低，FAQ 未结构化导致引擎不抽取，内链锚文本无关键词，实体命名在不同文章中不一致。',
     solution:
@@ -97,6 +100,7 @@ const solutions = [
   },
   {
     name: '代理商',
+    anchor: 'agency',
     icon: '🤝',
     pain: '客户要求 GEO 服务但自身无技术能力，需将 GEO 打包进 SEO 服务套餐，需贴牌交付物标准化交付效率低。',
     solution:
@@ -132,7 +136,7 @@ export default function SolutionsPage() {
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
           {solutions.map((s) => (
-            <article key={s.name} className="rounded-3xl border border-gray-200 p-8 shadow-sm">
+            <article key={s.name} id={s.anchor} className="scroll-mt-24 rounded-3xl border border-gray-200 p-8 shadow-sm">
               <h3 className="text-2xl font-bold">
                 <span className="mr-2" aria-hidden="true">{s.icon}</span>
                 {s.name}
@@ -228,7 +232,7 @@ export default function SolutionsPage() {
 
       <JsonLd data={[buildWebPage({ url: '/solutions', name: 'FlyAI 行业解决方案' }),
           buildService('FlyAI 行业 GEO 方案', '按 B2B SaaS、出海品牌、内容团队、代理商划分的 GEO 解决方案'),
-          buildBreadcrumbList(crumbs), buildFAQPage(faqItems)]} />
+          buildBreadcrumbList(crumbs)]} />
     </div>
   );
 }

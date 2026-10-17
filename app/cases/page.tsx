@@ -6,7 +6,7 @@ import RelatedLinks from '@/components/RelatedLinks';
 import CitedSources, { SOURCES } from '@/components/CitedSources';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
-import { buildFAQPage, buildBreadcrumbList, FAQItem, buildWebPage, buildService } from '@/lib/schema';
+import { buildBreadcrumbList, FAQItem, buildWebPage, buildService } from '@/lib/schema';
 
 const title = 'FlyAI 客户案例 — 背景 · 动作 · 可量化结果';
 const description =
@@ -212,7 +212,7 @@ export default function CasesPage() {
 
       <JsonLd data={[buildWebPage({ url: '/cases', name: 'FlyAI 客户案例' }),
           buildService('FlyAI GEO 客户案例', 'FlyAI GEO 服务在 B2B SaaS、出海品牌、内容团队等场景的落地案例'),
-          buildBreadcrumbList(crumbs), buildFAQPage(faqItems)]} />
+          buildBreadcrumbList(crumbs)]} />
     </div>
   );
 }

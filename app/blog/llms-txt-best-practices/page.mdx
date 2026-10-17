@@ -5,7 +5,7 @@ import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
 import CitedSources, { SOURCES } from '@/components/CitedSources';
 import JsonLd from '@/components/JsonLd';
-import { buildArticle, buildBreadcrumbList, buildFAQPage, FAQItem, buildWebPage } from '@/lib/schema';
+import { buildArticle, buildBreadcrumbList, FAQItem, buildWebPage } from '@/lib/schema';
 
 export const metadata = buildMetadata({
   title: 'llms.txt 最佳实践：面向生成式引擎的网站目录',
@@ -170,7 +170,6 @@ https://www.flyai66.top/blog - 博客：GEO 方法论与最佳实践`}</code>
             authorName: 'FlyAI 内容研究团队',
             keywords: ['llms.txt', 'LLM 爬虫', '生成式引擎', '网站目录', 'GEO'],
           }),
-          buildFAQPage(faqItems),
         ]}
       />
     </div>

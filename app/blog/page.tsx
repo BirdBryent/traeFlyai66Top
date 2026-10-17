@@ -7,7 +7,7 @@ import RelatedLinks from '@/components/RelatedLinks';
 import CitedSources, { SOURCES } from '@/components/CitedSources';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
-import { buildFAQPage, buildBreadcrumbList, FAQItem, buildWebPage, buildCollectionPage } from '@/lib/schema';
+import { buildBreadcrumbList, FAQItem, buildWebPage, buildCollectionPage } from '@/lib/schema';
 
 const title = 'FlyAI 博客 — GEO 方法论 · 结构化数据 · llms.txt 最佳实践';
 const description =
@@ -151,7 +151,7 @@ export default function BlogListPage() {
 
       <JsonLd data={[buildWebPage({ url: '/blog', name: 'FlyAI GEO 研究博客' }),
           buildCollectionPage('/blog', 'FlyAI GEO 研究文章集合'),
-          buildBreadcrumbList(crumbs), buildFAQPage(faqItems)]} />
+          buildBreadcrumbList(crumbs)]} />
     </div>
   );
 }

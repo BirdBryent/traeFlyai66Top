@@ -131,3 +131,24 @@ th {
     font-size: 15px;
   }
 }
+
+/* 首页两侧竖线（Peec 式）：≥1280px 宽屏时在 max-w-7xl 边界标出页面最大宽度 */
+@media (min-width: 1280px) {
+  .page-rails::before,
+  .page-rails::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #e5e7eb;
+    z-index: 20;
+    pointer-events: none;
+  }
+  .page-rails::before {
+    left: calc(50% - 640px);
+  }
+  .page-rails::after {
+    right: calc(50% - 640px);
+  }
+}

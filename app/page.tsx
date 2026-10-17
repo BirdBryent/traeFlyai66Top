@@ -1,18 +1,15 @@
 import { buildMetadata } from '@/lib/metadata';
-import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
 import RelatedLinks from '@/components/RelatedLinks';
-import CitedSources, { SOURCES } from '@/components/CitedSources';
+import { SOURCES } from '@/components/CitedSources';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
 import HomeCapabilities from '@/components/HomeCapabilities';
 import HomePainPoints from '@/components/HomePainPoints';
 import {
-  buildFAQPage,
   buildBreadcrumbList,
-  isAuthorityLink,
   FAQItem,
   buildWebPage,
   buildService,
@@ -24,6 +21,29 @@ const description =
   'FlyAI（广州飞爱智能科技有限公司）提供 GEO 生成式引擎优化服务：AI 可见性诊断、内容结构化改造、Schema/llms.txt 自动生成、12+ 生成式引擎引用与提及监测，帮助企业市场与内容团队在 DeepSeek、豆包、千问、Google AIO 的 AI 答案中获得稳定、准确、高权重的品牌引用。';
 
 export const metadata = buildMetadata({ title, description, path: '/' });
+
+const ENGINES = [
+  'DeepSeek',
+  '豆包',
+  '通义千问',
+  '文心一言',
+  'Google AIO',
+  'Bing Copilot',
+  'Perplexity',
+  'ChatGPT',
+  'Claude',
+  '讯飞星火',
+  'You.com',
+  'DuckDuckGo AI',
+];
+
+const EVIDENCE_SOURCES = [
+  SOURCES.geoPaper,
+  SOURCES.cacAiRule,
+  SOURCES.stanfordAiIndex,
+  SOURCES.googleStructuredData,
+  SOURCES.llmsTxt,
+];
 
 const homeFAQ: FAQItem[] = [
   {
@@ -55,7 +75,7 @@ const homeFAQ: FAQItem[] = [
 
 export default function HomePage() {
   return (
-    <div className="text-gray-900">
+    <div className="page-rails text-gray-900">
       <Breadcrumb items={[{ label: '首页', href: '/' }]} jsonLdOnly />
 
       <PageHero
@@ -64,7 +84,7 @@ export default function HomePage() {
           'FlyAI 生成式引擎优化（GEO）',
           '让 AI 搜索答案优先引用你的品牌',
         ] as const}
-        lead="FlyAI 通过 AI 可见性诊断、内容结构化改造、Schema.org JSON-LD 与 llms.txt 自动生成、以及全平台引用提及监测四项核心能力，帮助 B2B SaaS、出海品牌与内容团队在 DeepSeek、豆包、千问、Google AIO 等生成式引擎的答案中获得稳定、准确、高权重的品牌引用，解决「传统 SEO 做得再好但 AI 搜不到、搜不到完整信息、品牌被张冠李戴」的增长缺口。FlyAI 服务覆盖从首屏首段直达答案改造、FAQ 抽取、实体命名一致性治理，到 12+ 生成式引擎引用持续追踪的完整闭环，让你的每一页内容都能被 AI 正确理解、作为事实来源稳定引用。"
+        lead="AI 可见性诊断、内容结构化、Schema 生成与引用监测，一站式完成。"
         ctaPrimary={{ text: '免费诊断', href: '/contact' }}
         ctaSecondary={{ text: '查看产品', href: '/product' }}
         bgImage={{
@@ -73,23 +93,72 @@ export default function HomePage() {
         }}
       />
 
+      <section
+        aria-label="FlyAI 监测覆盖的生成式引擎"
+        className="mx-auto max-w-7xl px-5 pb-4 lg:px-8"
+      >
+        <div className="mx-auto max-w-4xl rounded-2xl border border-gray-200 bg-white px-6 py-5 text-center shadow-sm">
+          <p className="text-sm font-semibold text-gray-900">
+            覆盖 12+ 生成式引擎
+          </p>
+          <ul className="mt-4 grid list-none grid-cols-3 gap-x-4 gap-y-2.5 p-0 text-sm text-gray-500 md:grid-cols-6">
+            {ENGINES.map((e) => (
+              <li key={e} className="m-0">
+                {e}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       <HomeCapabilities />
 
       <HomePainPoints />
 
-      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        生成式引擎优化的实证依据来自 KDD 2024 论文 <a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《GEO: Generative Engine Optimization》</a>：其中「引文添加」「统计数据添加」「来源引用」三种改写手法在 GEO-bench 上分别带来约 41%、37%、30% 的可信度/可见度提升，而关键词堆砌无效。
-      </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.googleStructuredData, SOURCES.llmsTxt]} />
+      <section
+        aria-labelledby="evidence-heading"
+        className="mx-auto w-full max-w-4xl px-5 lg:px-8"
+      >
+        <h2 id="evidence-heading" className="text-xl font-semibold text-gray-900">
+          方法论实证依据
+        </h2>
+        <p className="mt-4 leading-relaxed text-gray-700">
+          生成式引擎优化的实证依据来自 KDD 2024 论文{' '}
+          <a
+            href={SOURCES.geoPaper.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-600 underline underline-offset-2 hover:text-brand-700"
+          >
+            《GEO: Generative Engine Optimization》
+          </a>
+          ：「引文添加」「统计数据添加」「来源引用」三种改写手法在 GEO-bench
+          上分别带来约 41%、37%、30% 的可信度/可见度提升，而关键词堆砌无效。
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-5">
+          {EVIDENCE_SOURCES.map((s) => (
+            <li key={s.url}>
+              <a
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-600 underline underline-offset-2 hover:text-brand-700"
+              >
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <RelatedLinks path="/" />
-      <FAQSection title="关于 FlyAI 生成式引擎优化（GEO）的 5 条常见问题" items={homeFAQ} />
 
       <section
         id="cta-block"
         aria-labelledby="cta-heading"
-        className="mx-auto mt-8 max-w-7xl px-5 pb-24 lg:px-8"
+        className="mx-auto max-w-7xl px-5 py-10 lg:px-8"
       >
-        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-brand-700 via-brand-600 to-brand-900 px-8 py-14 text-white shadow-xl md:px-14 md:py-16">
+        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-brand-700 via-brand-600 to-brand-900 px-8 py-14 text-center text-white shadow-xl md:px-14">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-white/10 blur-3xl"
@@ -98,100 +167,48 @@ export default function HomePage() {
             aria-hidden="true"
             className="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-white/10 blur-3xl"
           />
-          <div className="relative grid gap-10 md:grid-cols-5">
-            <div className="md:col-span-3">
-              <p className="text-xs font-semibold uppercase tracking-widest text-white/80">
-                Next step
-              </p>
-              <h2
-                id="cta-heading"
-                className="mt-3 text-3xl font-bold tracking-tight md:text-4xl"
-              >
-                立即开始 FlyAI GEO 诊断，用数据而不是感觉，量化你的 AI 引用状况
-              </h2>
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/90">
-                FlyAI <strong>免费 AI 搜索可见性诊断</strong> 接受提交 ≤ 500 个 URL
-                的站点，覆盖 100+ 维度结构化 / llms.txt / 首段直答 / 权威外链 /
-                实体一致性检查，交付 PDF + Markdown 双格式报告，并由解决方案工程师给出
-                1 小时 1v1 讲解（中国工作时间 GMT+8，提交后 2 个工作日内安排）。
-              </p>
-              <ul className="mt-5 space-y-2 text-sm text-white/85">
-                <li>✓ 无需提供站点后台账号或数据库权限，只需要官方公开 URL 清单</li>
-                <li>✓ 无论你当前使用 FlyAI SaaS 还是计划采购企业版，都可使用免费诊断</li>
-                <li>
-                  ✓ 所有提交的 URL 与业务信息均按 FlyAI <Link href="/privacy" className="underline underline-offset-2 hover:text-white/100">
-                    服务条款与数据处理协议
-                  </Link>{' '}
-                  严格处理，不外泄、不用于训练第三方模型
-                </li>
-              </ul>
-            </div>
-            <div className="relative md:col-span-2">
-              <div className="flex h-full flex-col justify-center gap-4">
-                <CTAButton
-                  href="/contact"
-                  size="lg"
-                  variant="primary"
-                  className="!bg-white !text-brand-800 hover:!bg-white/90 !shadow-lg"
-                >
-                  免费诊断
-                </CTAButton>
-                <CTAButton href="/pricing" size="lg" variant="ghost"
-                  className="!bg-white/10 !text-white ring-1 ring-white/30 hover:!bg-white/20 !shadow-lg">
-                  查看定价
-                </CTAButton>
-                <CTAButton href="/docs/quickstart" size="lg" variant="ghost"
-                  className="!bg-transparent !text-white ring-1 ring-white/25 hover:!bg-white/10">
-                  阅读文档
-                </CTAButton>
-                <p className="pt-2 text-xs text-white/70">
-                  已服务客户：[待补充：真实授权客户名称，需签署案例 MAA
-                  后方可展示]，所有数字与案例均为可追溯的真实数据。
-                </p>
-              </div>
-            </div>
+          <h2
+            id="cta-heading"
+            className="relative text-3xl font-bold tracking-tight md:text-4xl"
+          >
+            立即开始 FlyAI GEO 诊断，用数据而不是感觉，量化你的 AI 引用状况
+          </h2>
+          <div className="relative mt-8 flex flex-wrap justify-center gap-4">
+            <CTAButton
+              href="/contact"
+              size="lg"
+              variant="primary"
+              className="!bg-white !text-brand-800 hover:!bg-white/90 !shadow-lg"
+            >
+              免费诊断
+            </CTAButton>
+            <CTAButton
+              href="/pricing"
+              size="lg"
+              variant="ghost"
+              className="!bg-white/10 !text-white ring-1 ring-white/30 hover:!bg-white/20 !shadow-lg"
+            >
+              查看定价
+            </CTAButton>
           </div>
         </div>
       </section>
 
+      <FAQSection
+        title="关于 FlyAI 生成式引擎优化（GEO）的 5 条常见问题"
+        items={homeFAQ}
+      />
+
       <JsonLd
         data={[
           buildWebPage({ url: '/', name: 'FlyAI 官网首页' }),
-          buildService('FlyAI GEO 服务', 'AI 搜索可见性诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测'),
+          buildService(
+            'FlyAI GEO 服务',
+            'AI 搜索可见性诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测',
+          ),
           buildBreadcrumbList([{ label: '首页', href: '/' }]),
-          buildFAQPage(homeFAQ),
         ]}
       />
     </div>
-  );
-}
-
-function AuthorityBulletLink({
-  href,
-  label,
-}: {
-  href: string;
-  label: string;
-}) {
-  const ok = isAuthorityLink(href);
-  return (
-    <>
-      {' '}
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={
-          ok
-            ? 'font-medium text-brand-700 underline underline-offset-2 hover:text-brand-900'
-            : 'text-gray-600 underline underline-offset-2 hover:text-gray-900'
-        }
-      >
-        {label}
-      </a>
-      {ok ? (
-        <sup className="ml-0.5 text-[10px] font-semibold text-brand-600">权威</sup>
-      ) : null}
-    </>
   );
 }

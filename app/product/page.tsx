@@ -8,7 +8,6 @@ import CitedSources, { SOURCES } from '@/components/CitedSources';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
 import {
-  buildFAQPage,
   buildBreadcrumbList,
   isAuthorityLink,
   FAQItem,
@@ -282,7 +281,7 @@ export default function ProductPage() {
 
       <JsonLd data={[buildWebPage({ url: '/product', name: 'FlyAI 产品功能' }),
           buildService('FlyAI GEO 平台', '面向企业市场/增长/内容团队的 GEO 服务平台'),
-          buildBreadcrumbList(crumbs), buildFAQPage(faqItems)]} />
+          buildBreadcrumbList(crumbs)]} />
     </div>
   );
 }
