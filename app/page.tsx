@@ -84,7 +84,7 @@ export default function HomePage() {
           'FlyAI 生成式引擎优化（GEO）',
           '让 AI 搜索答案优先引用你的品牌',
         ] as const}
-        lead="AI 可见性诊断、内容结构化、Schema 生成与引用监测，一站式完成。"
+        lead="FlyAI 助力品牌提升 AI 可见性，让 AI 更容易发现、理解并引用。"
         ctaPrimary={{ text: '免费诊断', href: '/contact' }}
         ctaSecondary={{ text: '查看产品', href: '/product' }}
         bgImage={{

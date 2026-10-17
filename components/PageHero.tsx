@@ -38,7 +38,7 @@ export function PageHero({
   center = false,
 }: PageHeroProps) {
   return (
-    <header className="relative overflow-hidden">
+    <header className="relative isolate overflow-hidden">
       {bgImage && (
         <div className="pointer-events-none absolute inset-0 -z-10">
           <Image
