@@ -9,6 +9,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, buildWebPage, buildService } from '@/lib/schema';
 
 const title = 'FlyAI 定价 — 启动版 · 专业版 · 企业版 三档订阅方案';
+/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1Lines = ['FlyAI 定价', '启动版 · 专业版 · 企业版 三档订阅方案'] as const;
 const description =
   'FlyAI 提供按月订阅的透明定价：启动版适合 3 人以内内容团队试水 GEO；专业版适合 10-50 人市场/增长团队规模化运行；企业版适合 50+ 人或多品牌集团客户定制私有部署、SLA 与专属 CSM。所有价格以联系销售后的正式报价单为准，不展示任何虚假金额。';
 
@@ -109,11 +111,16 @@ export default function PricingPage() {
       <Breadcrumb items={crumbs} jsonLdOnly />
 
       <PageHero
+        center
         eyebrow="定价方案"
-        h1={title}
+        h1={h1Lines}
         lead={description}
         ctaPrimary={{ text: '联系销售', href: '/contact' }}
         ctaSecondary={{ text: '预约演示', href: '/contact' }}
+        bgImage={{
+          src: '/images/home-hero-bg.png',
+          alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格',
+        }}
       />
 
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
@@ -204,7 +211,7 @@ export default function PricingPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">计费规则与常见口径</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center">计费规则与常见口径</h2>
         <ul className="mt-6 list-disc space-y-3 pl-5 text-gray-700">
           <li><strong>计费周期：</strong>自然月（每月 1 日 00:00 至月末 23:59，GMT+8），按订阅生效日起算首月费用。</li>
           <li><strong>支付方式：</strong>支持对公转账、支付宝企业版、微信支付企业版、信用卡（Visa/Mastercard）。发票类型为增值税专用发票或普通发票。</li>
@@ -218,9 +225,11 @@ export default function PricingPage() {
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
         FlyAI 三档定价对应不同规模团队的 GEO 成熟度阶段。定价模型参考了<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a> 对生成式 AI 服务提供者的合规义务界定，以及<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a> 中企业 AI 采纳率的行业基准。
       </p>
-      <CitedSources items={[SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.geoDoi, SOURCES.miit]} />
+      <CitedSources
+        title="方法论实证依据"
+        items={[SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.geoDoi, SOURCES.miit]}
+      />
       <RelatedLinks path="/pricing" />
-      <FAQSection title="关于 FlyAI 定价与计费的常见问题" items={faqItems} />
 
       <section className="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
         <div className="rounded-[2rem] bg-gradient-to-br from-brand-700 to-brand-900 px-8 py-14 text-center text-white md:px-14">
@@ -238,6 +247,7 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
+      <FAQSection title="关于 FlyAI 定价与计费的常见问题" items={faqItems} />
 
       <JsonLd data={[buildWebPage({ url: '/pricing', name: 'FlyAI 定价与计费' }),
           buildService('FlyAI GEO 定价', '启动版 / 专业版 / 企业版三档 GEO 服务定价'),

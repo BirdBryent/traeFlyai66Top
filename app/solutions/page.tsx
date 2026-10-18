@@ -9,6 +9,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, buildWebPage, buildService } from '@/lib/schema';
 
 const title = 'FlyAI 解决方案 — B2B SaaS · 出海品牌 · 内容团队 · 代理商';
+/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1Lines = ['FlyAI 解决方案', 'B2B SaaS · 出海品牌 · 内容团队 · 代理商'] as const;
 const description =
   '针对 B2B SaaS 客户需要在 AI 答案中被作为工具推荐准确引用、出海品牌需要在多语言生成式引擎中维持实体一致性、内容团队需要规模化产出高引用内容、代理商需要将 GEO 打包进客户服务套餐四类典型场景，FlyAI 提供模块化组合方案与对应的诊断模板、数据接入方式、交付物清单。';
 
@@ -121,16 +123,21 @@ export default function SolutionsPage() {
       <Breadcrumb items={crumbs} jsonLdOnly />
 
       <PageHero
+        center
         eyebrow="解决方案"
-        h1={title}
+        h1={h1Lines}
         lead={description}
         ctaPrimary={{ text: '联系销售', href: '/contact' }}
         ctaSecondary={{ text: '查看产品', href: '/product' }}
+        bgImage={{
+          src: '/images/home-hero-bg.png',
+          alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格',
+        }}
       />
 
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">四类典型场景的 GEO 解决方案</h2>
-        <p className="mt-4 text-lg text-gray-600">
+        <h2 className="text-3xl font-bold tracking-tight text-center">四类典型场景的 GEO 解决方案</h2>
+        <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-gray-600">
           FlyAI 针对不同客户类型提供模块化组合方案，每个方案均按「典型痛点 → FlyAI 做法 → 交付物清单」三段式呈现，便于快速评估适配性。
         </p>
 
@@ -165,7 +172,7 @@ export default function SolutionsPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">方案选择决策表</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center">方案选择决策表</h2>
         <div className="mt-8 overflow-x-auto rounded-2xl border border-gray-200">
           <table className="w-full border-collapse text-left text-sm">
             <thead>
@@ -206,12 +213,18 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        不同行业落地 GEO 的路径差异显著，但底层逻辑一致：让生成式引擎在检索阶段召回你的实体，在综合阶段准确描述你的品牌。<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">GEO 论文</a> 提出的「来源引用」手法与<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a> 对内容合规的要求，共同决定了方案的设计边界。
-      </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.rag, SOURCES.geoDoi]} />
+      <CitedSources
+        title="方法论实证依据"
+        lead={
+          <>
+            不同行业落地 GEO 的路径差异显著，但底层逻辑一致：让生成式引擎在检索阶段召回你的实体，在综合阶段准确描述你的品牌。{' '}
+            <a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">GEO 论文</a> 提出的「来源引用」手法与{' '}
+            <a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a> 对内容合规的要求，共同决定了方案的设计边界。
+          </>
+        }
+        items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.rag, SOURCES.geoDoi]}
+      />
       <RelatedLinks path="/solutions" />
-      <FAQSection title="关于 FlyAI 解决方案的常见问题" items={faqItems} />
 
       <section className="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
         <div className="rounded-[2rem] bg-gradient-to-br from-brand-700 to-brand-900 px-8 py-14 text-center text-white md:px-14">
@@ -229,6 +242,8 @@ export default function SolutionsPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection title="关于 FlyAI 解决方案的常见问题" items={faqItems} />
 
       <JsonLd data={[buildWebPage({ url: '/solutions', name: 'FlyAI 行业解决方案' }),
           buildService('FlyAI 行业 GEO 方案', '按 B2B SaaS、出海品牌、内容团队、代理商划分的 GEO 解决方案'),

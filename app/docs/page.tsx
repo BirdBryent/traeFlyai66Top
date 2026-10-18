@@ -10,6 +10,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, buildWebPage, buildCollectionPage } from '@/lib/schema';
 
 const title = 'FlyAI 产品文档 — 接入步骤 · API 参考 · 字段字典';
+/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1Lines = ['FlyAI 产品文档', '接入步骤 · API 参考 · 字段字典'] as const;
 const description =
   '本产品文档覆盖从 API Key 获取、SDK 接入、REST 接口说明到结构化数据字段字典的完整链路；所有代码示例以 curl 与 TypeScript 双版本呈现，且通过 MDX 静态渲染确保生成式引擎可直接在初始 HTML 中解析参数名与返回结构。';
 
@@ -83,15 +85,20 @@ export default function DocsListPage() {
       <Breadcrumb items={crumbs} jsonLdOnly />
 
       <PageHero
+        center
         eyebrow="产品文档"
-        h1={title}
+        h1={h1Lines}
         lead={description}
         ctaPrimary={{ text: '阅读文档', href: '/docs/quickstart' }}
         ctaSecondary={{ text: '联系销售', href: '/contact' }}
+        bgImage={{
+          src: '/images/home-hero-bg.png',
+          alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格',
+        }}
       />
 
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">文档导航</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center">文档导航</h2>
         <p className="mt-4 text-lg text-gray-600">
           从快速开始到 API 参考与字段字典，FlyAI 文档覆盖接入全流程。所有页面通过 MDX 静态渲染，代码示例直接出现在首 HTML 中，便于生成式引擎解析。
         </p>
@@ -122,7 +129,7 @@ export default function DocsListPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">快速开始 3 步概览</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center">快速开始 3 步概览</h2>
         <ol className="mt-8 space-y-6">
           <li className="flex gap-4">
             <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-brand-600 font-bold text-white">1</span>
@@ -148,17 +155,21 @@ export default function DocsListPage() {
         </ol>
       </section>
 
-      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        本文档基于 FlyAI GEO 方法论编写，核心概念源自<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a> 提出的 GEO-bench 评估框架。检索增强生成（RAG）的技术原理参考<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Lewis et al., NeurIPS 2020</a>。
-      </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.geoDoi]} />
+      <CitedSources
+        title="方法论实证依据"
+        lead={
+          <>
+            本文档基于 FlyAI GEO 方法论编写，核心概念源自<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a> 提出的 GEO-bench 评估框架。检索增强生成（RAG）的技术原理参考<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Lewis et al., NeurIPS 2020</a>。
+          </>
+        }
+        items={ [SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.geoDoi] }
+      />
       <CitedSources
         title="AI 爬虫官方说明"
         id="ai-crawlers"
         items={[SOURCES.openaiBots, SOURCES.appleBot, SOURCES.anthropicBot, SOURCES.ccbot]}
       />
       <RelatedLinks path="/docs" />
-      <FAQSection title="关于 FlyAI 产品文档的常见问题" items={faqItems} />
 
       <section className="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
         <div className="rounded-[2rem] bg-gradient-to-br from-brand-700 to-brand-900 px-8 py-14 text-center text-white md:px-14">
@@ -176,6 +187,7 @@ export default function DocsListPage() {
           </div>
         </div>
       </section>
+      <FAQSection title="关于 FlyAI 产品文档的常见问题" items={faqItems} />
 
       <JsonLd data={[buildWebPage({ url: '/docs', name: 'FlyAI 产品文档' }),
           buildCollectionPage('/docs', 'FlyAI 产品文档集合'),

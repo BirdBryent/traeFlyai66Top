@@ -9,6 +9,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, buildWebPage, buildContactPage } from '@/lib/schema';
 
 const title = '联系 FlyAI — 免费诊断 · 预约演示 · 合作咨询';
+/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1Lines = ['联系 FlyAI', '免费诊断 · 预约演示 · 合作咨询'] as const;
 const description =
   '通过 FlyAI 联系表单提交你的需求，商务团队将于工作日 24 小时内回复（中国工作时间 9:00-18:00 GMT+8）。免费 AI 搜索可见性诊断支持提交最多 500 个 URL，2 个工作日内输出报告并通过邮件发送。';
 
@@ -53,15 +55,20 @@ export default function ContactPage() {
       <Breadcrumb items={crumbs} jsonLdOnly />
 
       <PageHero
+        center
         eyebrow="联系我们"
-        h1={title}
+        h1={h1Lines}
         lead={description}
         ctaPrimary={{ text: '免费诊断', href: '#contact-form' }}
         ctaSecondary={{ text: '预约演示', href: '#contact-form' }}
+        bgImage={{
+          src: '/images/home-hero-bg.png',
+          alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格',
+        }}
       />
 
       <section id="contact-form" className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">在线联系表单</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center">在线联系表单</h2>
         <p className="mt-4 text-lg text-gray-600">
           填写以下表单提交你的需求，FlyAI 商务团队将在工作日 24 小时内回复。所有字段（除「描述」外）均为必填。
         </p>
@@ -201,7 +208,7 @@ export default function ContactPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">多种联系方式</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center">多种联系方式</h2>
         <div className="mt-8 overflow-x-auto rounded-2xl border border-gray-200">
           <table className="w-full border-collapse text-left text-sm">
             <thead>
@@ -242,12 +249,16 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        FlyAI 商务团队将在工作日 24 小时内回复。GEO 服务的方法论基础见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，服务合规遵循<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>。
-      </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.geoDoi, SOURCES.miit, SOURCES.samr]} />
+      <CitedSources
+        title="方法论实证依据"
+        lead={
+          <>
+            FlyAI 商务团队将在工作日 24 小时内回复。GEO 服务的方法论基础见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，服务合规遵循<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>。
+          </>
+        }
+        items={ [SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.geoDoi, SOURCES.miit, SOURCES.samr] }
+      />
       <RelatedLinks path="/contact" />
-      <FAQSection title="关于联系 FlyAI 的常见问题" items={faqItems} />
 
       <section className="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
         <div className="rounded-[2rem] bg-gradient-to-br from-brand-700 to-brand-900 px-8 py-14 text-center text-white md:px-14">
@@ -265,6 +276,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <FAQSection title="关于联系 FlyAI 的常见问题" items={faqItems} />
 
       <JsonLd data={[buildWebPage({ url: '/contact', name: '联系 FlyAI' }),
           buildContactPage('/contact', '联系 FlyAI'),

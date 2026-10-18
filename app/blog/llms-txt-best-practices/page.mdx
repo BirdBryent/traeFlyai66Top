@@ -58,11 +58,13 @@ export default function LlmsTxtPost() {
       <Breadcrumb items={crumbs} jsonLdOnly />
 
       <PageHero
+        center
         eyebrow="博客 / 技术规范"
-        h1="llms.txt 最佳实践：面向生成式引擎的网站目录"
+        h1={['llms.txt 最佳实践', '面向生成式引擎的网站目录']}
         lead="llms.txt 是 2025 年新兴的面向 LLM 爬虫的网站目录文件。本文详解 llms.txt 的语法规范、必填字段、与 robots.txt 的协作方式，并给出 FlyAI 客户的实测引用率提升数据。"
         ctaPrimary={{ text: '查看产品', href: '/product' }}
         ctaSecondary={{ text: '联系销售', href: '/contact' }}
+        bgImage={{ src: '/images/home-hero-bg.png', alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格' }}
       />
 
       <article className="mx-auto max-w-3xl px-5 py-12 lg:px-8">
@@ -75,7 +77,7 @@ export default function LlmsTxtPost() {
         />
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">一、什么是 llms.txt</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">一、什么是 llms.txt</h2>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
             llms.txt 是一个放置于网站根目录的纯文本文件，专门面向生成式引擎（LLM）爬虫，声明网站的核心内容摘要、关键页面列表与 AI 友好的内容映射。类似于 robots.txt 控制传统爬虫的抓取范围，llms.txt 帮助 LLM 爬虫快速定位高价值内容，提升品牌在 AI 答案中被正确引用的概率。
           </p>
@@ -85,7 +87,7 @@ export default function LlmsTxtPost() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">二、llms.txt 的核心字段</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">二、llms.txt 的核心字段</h2>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
             llms.txt 采用简单的 key: value 语法，核心字段包括：
           </p>
@@ -114,7 +116,7 @@ https://www.flyai66.top/blog - 博客：GEO 方法论与最佳实践`}</code>
         </section>
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">三、llms.txt 与 robots.txt 的协作</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">三、llms.txt 与 robots.txt 的协作</h2>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
             llms.txt 与 robots.txt 是互补关系，互不冲突：
           </p>
@@ -128,7 +130,7 @@ https://www.flyai66.top/blog - 博客：GEO 方法论与最佳实践`}</code>
         </section>
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">四、llms.txt 最佳实践</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">四、llms.txt 最佳实践</h2>
           <ol className="mt-4 list-decimal space-y-3 pl-6 text-lg leading-relaxed text-gray-700">
             <li><strong>Description 控制在 80 字内</strong>：直接回答「这个网站是做什么的」，避免营销套话。</li>
             <li><strong>Pages 列出 5-15 个核心页面</strong>：按重要性排序，每个页面附一句话描述。</li>
@@ -140,7 +142,7 @@ https://www.flyai66.top/blog - 博客：GEO 方法论与最佳实践`}</code>
         </section>
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">五、实测效果</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">五、实测效果</h2>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
             FlyAI 监测平台数据显示，配置规范的 llms.txt 后，品牌在生成式引擎中的引用率平均提升约 [待补充：真实提升百分比]（数据基于 [待补充：真实样本量] 个样本，统计周期 [待补充：真实周期]）。提升幅度与网站原有内容质量正相关：内容越结构化，llms.txt 的增益越明显。
           </p>
@@ -153,7 +155,8 @@ https://www.flyai66.top/blog - 博客：GEO 方法论与最佳实践`}</code>
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
         llms.txt 的最佳实践建立在生成式引擎的检索机制之上。<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">GEO 论文</a> 提出的「来源引用」手法与<a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 的长上下文研究，共同指导了本文的写作。
       </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.longContext, SOURCES.rag, SOURCES.rfc9309, SOURCES.llmsTxt]} />
+      <CitedSources title="方法论实证依据"
+        items={ [SOURCES.geoPaper, SOURCES.longContext, SOURCES.rag, SOURCES.rfc9309, SOURCES.llmsTxt] } />
       <RelatedLinks path="/blog/llms-txt-best-practices" />
       <FAQSection title="llms.txt 常见问题" items={faqItems} />
 

@@ -59,16 +59,18 @@ export default function QuickStartDoc() {
       <Breadcrumb items={crumbs} jsonLdOnly />
 
       <PageHero
+        center
         eyebrow="产品文档 / 快速开始"
-        h1="FlyAI 快速开始 — 3 步完成 GEO 接入"
+        h1={['FlyAI 快速开始', '3 步完成 GEO 接入']}
         lead="本指南帮助你在 10 分钟内完成 FlyAI 的首次接入：获取 API Key、安装 SDK、调用首个 AI 搜索可见性诊断接口，生成 100+ 维度的诊断报告。所有代码示例以 curl 与 TypeScript 双版本呈现。"
         ctaPrimary={{ text: '阅读文档', href: '/docs/api-reference' }}
         ctaSecondary={{ text: '联系销售', href: '/contact' }}
+        bgImage={{ src: '/images/home-hero-bg.png', alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格' }}
       />
 
       <article className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
         <section>
-          <h2 className="text-3xl font-bold tracking-tight">Step 1：获取 API Key</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">Step 1：获取 API Key</h2>
           <p className="mt-4 text-lg text-gray-700">
             登录 FlyAI 控制台，在「账户设置 → API Key」中生成生产环境密钥。Key 仅在生成时显示一次明文，请妥善保管。
           </p>
@@ -85,7 +87,7 @@ $env:FLYAI_API_KEY="sk_live_YOUR_PROD_KEY"`}</code>
         </section>
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">Step 2：安装 SDK</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">Step 2：安装 SDK</h2>
           <p className="mt-4 text-lg text-gray-700">
             通过 npm 或 yarn 安装 FlyAI Node.js SDK，或直接通过 REST API 调用。
           </p>
@@ -99,7 +101,7 @@ yarn add @flyai/sdk`}</code>
         </section>
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">Step 3：调用首个诊断接口</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">Step 3：调用首个诊断接口</h2>
           <p className="mt-4 text-lg text-gray-700">
             传入 URL 清单，调用 <code>POST /v1/diagnosis</code> 接口，获取 100+ 维度的 AI 搜索可见性诊断报告。
           </p>
@@ -171,7 +173,7 @@ console.log(report.suggestions);  // 修复建议`}</code>
         </section>
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">后续步骤</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">后续步骤</h2>
           <ul className="mt-4 list-disc space-y-2 pl-5 text-lg text-gray-700">
             <li>阅读 <a href="/docs/api-reference" className="text-brand-700 underline">API 参考</a>，了解全部接口与错误码</li>
             <li>查看 <a href="/docs/schema-fields" className="text-brand-700 underline">字段字典</a>，掌握 Schema.org 字段定义</li>
@@ -183,7 +185,7 @@ console.log(report.suggestions);  // 修复建议`}</code>
 
       {/* 参考资料与延伸阅读 */}
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">参考资料与延伸阅读</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center">参考资料与延伸阅读</h2>
         <ul className="mt-6 space-y-3 text-base text-gray-700">
           <li>
             <a href="https://schema.org/docs/gs.html" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Schema.org 官方 Getting Started 指南</a>
@@ -203,7 +205,8 @@ console.log(report.suggestions);  // 修复建议`}</code>
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
         本快速开始指南的理论基础见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>。检索增强生成（RAG）的技术原理参考<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Lewis et al., NeurIPS 2020</a>。
       </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.rfc9309, SOURCES.openaiBots]} />
+      <CitedSources title="方法论实证依据"
+        items={ [SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.rfc9309, SOURCES.openaiBots] } />
       <RelatedLinks path="/docs/quickstart" />
       <FAQSection title="快速开始常见问题" items={faqItems} />
 

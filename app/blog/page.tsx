@@ -10,6 +10,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, buildWebPage, buildCollectionPage } from '@/lib/schema';
 
 const title = 'FlyAI 博客 — GEO 方法论 · 结构化数据 · llms.txt 最佳实践';
+/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1Lines = ['FlyAI 博客', 'GEO 方法论 · 结构化数据 · llms.txt'] as const;
 const description =
   'FlyAI 博客分享生成式引擎优化（GEO）的深度实践：GEO 与 SEO 的本质区别、llms.txt 最佳实践、2025 年结构化数据演进趋势等。所有文章通过 MDX 静态渲染，含首段直答、结构化数据与权威外链。';
 
@@ -89,15 +91,20 @@ export default function BlogListPage() {
       <Breadcrumb items={crumbs} jsonLdOnly />
 
       <PageHero
+        center
         eyebrow="博客"
-        h1={title}
+        h1={h1Lines}
         lead={description}
         ctaPrimary={{ text: '阅读最新文章', href: '/blog/geo-vs-seo-differences' }}
         ctaSecondary={{ text: '联系销售', href: '/contact' }}
+        bgImage={{
+          src: '/images/home-hero-bg.png',
+          alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格',
+        }}
       />
 
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">最新文章</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center">最新文章</h2>
         <p className="mt-4 text-lg text-gray-600">
           FlyAI 博客聚焦 GEO 方法论、结构化数据、llms.txt 等生成式引擎优化核心议题，所有文章经团队评审确保准确可操作。
         </p>
@@ -125,12 +132,16 @@ export default function BlogListPage() {
         </div>
       </section>
 
-      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        本站博客聚焦 GEO 方法论与行业实践。方法论的学术基础见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，合规框架参考<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>，行业数据参考<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a>。
-      </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.llmsTxt, SOURCES.googleStructuredData]} />
+      <CitedSources
+        title="方法论实证依据"
+        lead={
+          <>
+            本站博客聚焦 GEO 方法论与行业实践。方法论的学术基础见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，合规框架参考<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>，行业数据参考<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a>。
+          </>
+        }
+        items={ [SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.llmsTxt, SOURCES.googleStructuredData] }
+      />
       <RelatedLinks path="/blog" />
-      <FAQSection title="博客常见问题" items={faqItems} />
 
       <section className="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
         <div className="rounded-[2rem] bg-gradient-to-br from-brand-700 to-brand-900 px-8 py-14 text-center text-white md:px-14">
@@ -148,6 +159,7 @@ export default function BlogListPage() {
           </div>
         </div>
       </section>
+      <FAQSection title="博客常见问题" items={faqItems} />
 
       <JsonLd data={[buildWebPage({ url: '/blog', name: 'FlyAI GEO 研究博客' }),
           buildCollectionPage('/blog', 'FlyAI GEO 研究文章集合'),

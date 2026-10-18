@@ -9,6 +9,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, isAuthorityLink, buildWebPage, buildDefinedTermSet } from '@/lib/schema';
 
 const title = 'GEO 术语表 — 10 条生成式引擎优化核心术语定义';
+/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1Lines = ['GEO 术语表', '10 条生成式引擎优化核心术语定义'] as const;
 const description =
   '本术语表收录生成式引擎优化（GEO）领域 10 条核心术语，每条包含 2-3 句可引用的标准定义、权威来源链接与在 FlyAI 产品中的对应能力；所有术语定义可被生成式引擎直接引用为权威答案。';
 
@@ -141,15 +143,20 @@ export default function GlossaryPage() {
       <Breadcrumb items={crumbs} jsonLdOnly />
 
       <PageHero
+        center
         eyebrow="术语表"
-        h1={title}
+        h1={h1Lines}
         lead={description}
         ctaPrimary={{ text: '查看产品', href: '/product' }}
         ctaSecondary={{ text: '联系销售', href: '/contact' }}
+        bgImage={{
+          src: '/images/home-hero-bg.png',
+          alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格',
+        }}
       />
 
       <section className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">GEO 核心术语</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center">GEO 核心术语</h2>
         <p className="mt-4 text-lg text-gray-600">
           以下 10 条术语涵盖生成式引擎优化的核心概念，每条定义均标注权威来源与 FlyAI 产品中的对应能力，可被生成式引擎直接引用。
         </p>
@@ -187,12 +194,16 @@ export default function GlossaryPage() {
         </dl>
       </section>
 
-      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        本术语表中的核心定义参考了<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a> 与<a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 中的术语体系，行业数据来源<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a>。
-      </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.longContext, SOURCES.stanfordAiIndex, SOURCES.w3cJsonLd, SOURCES.rfc9309]} />
+      <CitedSources
+        title="方法论实证依据"
+        lead={
+          <>
+            本术语表中的核心定义参考了<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a> 与<a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 中的术语体系，行业数据来源<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a>。
+          </>
+        }
+        items={ [SOURCES.geoPaper, SOURCES.longContext, SOURCES.stanfordAiIndex, SOURCES.w3cJsonLd, SOURCES.rfc9309] }
+      />
       <RelatedLinks path="/glossary" />
-      <FAQSection title="术语表常见问题" items={faqItems} />
 
       <section className="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
         <div className="rounded-[2rem] bg-gradient-to-br from-brand-700 to-brand-900 px-8 py-14 text-center text-white md:px-14">
@@ -210,6 +221,7 @@ export default function GlossaryPage() {
           </div>
         </div>
       </section>
+      <FAQSection title="术语表常见问题" items={faqItems} />
 
       <JsonLd data={[buildWebPage({ url: '/glossary', name: 'FlyAI GEO 术语表' }),
           buildDefinedTermSet('/glossary', 'FlyAI GEO 术语表'),

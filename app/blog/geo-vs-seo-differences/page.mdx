@@ -58,11 +58,13 @@ export default function GeoVsSeoPost() {
       <Breadcrumb items={crumbs} jsonLdOnly />
 
       <PageHero
+        center
         eyebrow="博客 / GEO 方法论"
-        h1="GEO 与 SEO 的本质区别：从「被搜到」到「被引用」"
+        h1={['GEO 与 SEO 的本质区别', '从「被搜到」到「被引用」']}
         lead="2025 年生成式引擎的崛起正在重塑内容优化逻辑。本文从优化对象、核心指标、关键手段三个维度，系统对比 GEO（生成式引擎优化）与 SEO（搜索引擎优化）的本质区别，并给出企业从 SEO 向 GEO 迁移的具体路径。"
         ctaPrimary={{ text: '查看产品', href: '/product' }}
         ctaSecondary={{ text: '联系销售', href: '/contact' }}
+        bgImage={{ src: '/images/home-hero-bg.png', alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格' }}
       />
 
       <article className="mx-auto max-w-3xl px-5 py-12 lg:px-8">
@@ -75,7 +77,7 @@ export default function GeoVsSeoPost() {
         />
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">一、优化对象：从排名算法到答案生成</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">一、优化对象：从排名算法到答案生成</h2>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
             SEO 的优化对象是传统搜索引擎的<strong>排名算法</strong>。Google、百度、Bing 等搜索引擎通过爬虫抓取网页、建立倒排索引、计算关键词匹配度与链接权重，最终输出一个按相关性排序的链接列表。SEO 的一切努力——关键词布局、内链结构、外链建设、页面速度——都是为了在这个排序中获得更靠前的位置。
           </p>
@@ -88,7 +90,7 @@ export default function GeoVsSeoPost() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">二、核心指标：从点击率到引用率</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">二、核心指标：从点击率到引用率</h2>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
             SEO 的核心指标是<strong>排名（Ranking）、曝光量（Impressions）、点击率（CTR）</strong>。这些指标衡量的是用户在 SERP 上看到你的链接并点击的概率。Google Search Console 是衡量这些指标的标准工具。
           </p>
@@ -116,7 +118,7 @@ export default function GeoVsSeoPost() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">三、关键手段：从关键词到首段直答</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">三、关键手段：从关键词到首段直答</h2>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
             SEO 的关键手段是<strong>关键词布局与链接建设</strong>。通过在标题、URL、H1、正文、图片 alt 中合理布置目标关键词，并通过内链与外链提升页面权重，从而获得更高排名。
           </p>
@@ -129,7 +131,7 @@ export default function GeoVsSeoPost() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">四、企业从 SEO 向 GEO 迁移的路径</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">四、企业从 SEO 向 GEO 迁移的路径</h2>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
             企业无需放弃 SEO，而是在现有 SEO 基础上叠加 GEO 优化。FlyAI 建议按以下四步迁移：
           </p>
@@ -142,7 +144,7 @@ export default function GeoVsSeoPost() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">结语</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">结语</h2>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
             GEO 不是 SEO 的替代品，而是生成式引擎时代的必要补充。随着越来越多的用户通过 AI 答案获取信息，「被引用」将与「被搜到」同等重要。企业应尽早建立 GEO 能力，在 AI 答案中占据一席之地。
           </p>
@@ -155,7 +157,8 @@ export default function GeoVsSeoPost() {
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
         GEO 与 SEO 的本质区别在 KDD 2024 论文<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《GEO: Generative Engine Optimization》</a> 中被系统阐述。同时，<a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 解释了为何 GEO 强调首段直达答案。
       </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.longContext, SOURCES.rag, SOURCES.googleStructuredData, SOURCES.w3cJsonLd]} />
+      <CitedSources title="方法论实证依据"
+        items={ [SOURCES.geoPaper, SOURCES.longContext, SOURCES.rag, SOURCES.googleStructuredData, SOURCES.w3cJsonLd] } />
       <RelatedLinks path="/blog/geo-vs-seo-differences" />
       <FAQSection title="GEO 与 SEO 常见问题" items={faqItems} />
 

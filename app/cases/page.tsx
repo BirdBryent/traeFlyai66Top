@@ -9,6 +9,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, buildWebPage, buildService } from '@/lib/schema';
 
 const title = 'FlyAI 客户案例 — 背景 · 动作 · 可量化结果';
+/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1Lines = ['FlyAI 客户案例', '背景 · 动作 · 可量化结果'] as const;
 const description =
   '本节展示 FlyAI 典型客户交付框架，所有具体案例数据均以占位符标注待客户授权后补录，确保任何展示的品牌名与数字均可追溯并通过真实验证；读者可通过每条案例的「背景-动作-结果」结构理解 FlyAI GEO 方法论在不同行业的落地路径。';
 
@@ -121,11 +123,16 @@ export default function CasesPage() {
       <Breadcrumb items={crumbs} jsonLdOnly />
 
       <PageHero
+        center
         eyebrow="客户案例"
-        h1={title}
+        h1={h1Lines}
         lead={description}
         ctaPrimary={{ text: '申请案例报告', href: '/contact' }}
         ctaSecondary={{ text: '联系销售', href: '/contact' }}
+        bgImage={{
+          src: '/images/home-hero-bg.png',
+          alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格',
+        }}
       />
 
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
@@ -176,7 +183,7 @@ export default function CasesPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">案例数据真实性承诺</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center">案例数据真实性承诺</h2>
         <ul className="mt-6 list-disc space-y-3 pl-5 text-gray-700">
           <li><strong>不编造数据：</strong>所有公开案例中的百分比、金额、客户名均经过客户书面确认，未确认的数据一律以占位符标注。</li>
           <li><strong>MAA 授权：</strong>公开案例均已签署 MAA（Marketing Authorization Agreement），客户可随时要求下架或脱敏。</li>
@@ -186,12 +193,18 @@ export default function CasesPage() {
         </ul>
       </section>
 
-      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        以下案例框架基于 FlyAI 的 GEO 方法论沉淀。方法论的学术依据见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，行业背景参考<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a> 中的企业生成式 AI 采纳数据。
-      </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.stanfordAiIndex, SOURCES.cacAiRule, SOURCES.geoDoi]} />
+      <CitedSources
+        title="方法论实证依据"
+        lead={
+          <>
+            以下案例框架基于 FlyAI 的 GEO 方法论沉淀。方法论的学术依据见{' '}
+            <a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，行业背景参考{' '}
+            <a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a> 中的企业生成式 AI 采纳数据。
+          </>
+        }
+        items={[SOURCES.geoPaper, SOURCES.stanfordAiIndex, SOURCES.cacAiRule, SOURCES.geoDoi]}
+      />
       <RelatedLinks path="/cases" />
-      <FAQSection title="关于 FlyAI 客户案例的常见问题" items={faqItems} />
 
       <section className="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
         <div className="rounded-[2rem] bg-gradient-to-br from-brand-700 to-brand-900 px-8 py-14 text-center text-white md:px-14">
@@ -209,6 +222,7 @@ export default function CasesPage() {
           </div>
         </div>
       </section>
+      <FAQSection title="关于 FlyAI 客户案例的常见问题" items={faqItems} />
 
       <JsonLd data={[buildWebPage({ url: '/cases', name: 'FlyAI 客户案例' }),
           buildService('FlyAI GEO 客户案例', 'FlyAI GEO 服务在 B2B SaaS、出海品牌、内容团队等场景的落地案例'),

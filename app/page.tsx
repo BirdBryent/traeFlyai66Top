@@ -74,8 +74,9 @@ const homeFAQ: FAQItem[] = [
 ];
 
 export default function HomePage() {
+  // page-rails 已提到 app/layout.tsx 的 <main> 上，此处不再重复挂载
   return (
-    <div className="page-rails text-gray-900">
+    <div className="text-gray-900">
       <Breadcrumb items={[{ label: '首页', href: '/' }]} jsonLdOnly />
 
       <PageHero

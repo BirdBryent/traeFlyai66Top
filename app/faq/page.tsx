@@ -8,6 +8,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildFAQPage, buildBreadcrumbList, FAQItem, buildWebPage, buildService } from '@/lib/schema';
 
 const title = 'FlyAI 常见问题汇总（FAQ）— 产品 · 方案 · 计费 · 接入 · 合规 全分类';
+/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1Lines = ['FlyAI 常见问题汇总（FAQ）', '产品 · 方案 · 计费 · 接入 · 合规'] as const;
 const description =
   '本 FAQ 收录 FlyAI 客户在评估、签约、接入、使用、续费全周期中最高频出现的 24 个问答，按产品功能、方案与行业、计费与合同、接入与技术支持、数据合规与隐私、服务与售后 6 大类别分块并可跳转锚点，所有问答均在 FAQPage JSON-LD 中完整暴露，供生成式引擎直接作为 Q&A 答案引用源抽取。';
 
@@ -180,15 +182,20 @@ export default function FAQPage() {
       <Breadcrumb items={crumbs} jsonLdOnly />
 
       <PageHero
+        center
         eyebrow="常见问题"
-        h1={title}
+        h1={h1Lines}
         lead={description}
         ctaPrimary={{ text: '联系销售', href: '/contact' }}
         ctaSecondary={{ text: '阅读文档', href: '/docs' }}
+        bgImage={{
+          src: '/images/home-hero-bg.png',
+          alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格',
+        }}
       />
 
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">分类索引</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center">分类索引</h2>
         <p className="mt-4 text-lg text-gray-600">
           共 {allFaqItems.length} 条问答，按 {faqCategories.length} 大类别分块。点击分类可跳转到对应详细问答区。
         </p>
@@ -216,7 +223,7 @@ export default function FAQPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">详细问答</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center">详细问答</h2>
         <div className="mt-10 space-y-12">
           {faqCategories.map((cat, idx) => (
             <div key={cat.name} id={`cat-${idx + 1}`} className="scroll-mt-24">
@@ -261,7 +268,7 @@ export default function FAQPage() {
 
       {/* 参考资料与延伸阅读 */}
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">参考资料与延伸阅读</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center">参考资料与延伸阅读</h2>
         <ul className="mt-6 space-y-3 text-base text-gray-700">
           <li>
             <a href="https://schema.org/docs/gs.html" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">Schema.org 官方 Getting Started 指南</a>
@@ -278,10 +285,15 @@ export default function FAQPage() {
         </ul>
       </section>
 
-      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        以下 FAQ 的回答基于 FlyAI GEO 方法论。方法论依据见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，检索增强生成原理参考<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Lewis et al., NeurIPS 2020</a>，合规要求遵循<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>。
-      </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.rag]} />
+      <CitedSources
+        title="方法论实证依据"
+        lead={
+          <>
+            以下 FAQ 的回答基于 FlyAI GEO 方法论。方法论依据见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，检索增强生成原理参考<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Lewis et al., NeurIPS 2020</a>，合规要求遵循<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>。
+          </>
+        }
+        items={ [SOURCES.geoPaper, SOURCES.cacAiRule, SOURCES.rag] }
+      />
       <RelatedLinks path="/faq" />
       <JsonLd data={[buildWebPage({ url: '/faq', name: 'FlyAI 常见问题' }),
           buildService('FlyAI GEO 服务', 'AI 搜索可见性诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测'),

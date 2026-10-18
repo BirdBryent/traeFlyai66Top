@@ -58,11 +58,13 @@ export default function StructuredData2025Post() {
       <Breadcrumb items={crumbs} jsonLdOnly />
 
       <PageHero
+        center
         eyebrow="博客 / 结构化数据"
-        h1="2025 年结构化数据演进：从搜索引擎到生成式引擎"
+        h1={['2025 年结构化数据演进', '从搜索引擎到生成式引擎']}
         lead="结构化数据不再只是搜索引擎的排名信号，正在成为生成式引擎理解实体的基础设施。本文梳理 2025 年 Schema.org 的关键更新、JSON-LD 在 AI 答案生成中的作用机制，以及企业应优先落地的 6 种 Schema 类型。"
         ctaPrimary={{ text: '查看产品', href: '/product' }}
         ctaSecondary={{ text: '联系销售', href: '/contact' }}
+        bgImage={{ src: '/images/home-hero-bg.png', alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格' }}
       />
 
       <article className="mx-auto max-w-3xl px-5 py-12 lg:px-8">
@@ -75,7 +77,7 @@ export default function StructuredData2025Post() {
         />
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">一、结构化数据的角色转变</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">一、结构化数据的角色转变</h2>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
             过去十年，结构化数据主要服务于传统搜索引擎的富结果展示（Rich Results）——评分星标、FAQ 折叠、面包屑导航等。搜索引擎通过结构化数据更准确地理解页面内容，并在 SERP 上以更丰富的形式展示。
           </p>
@@ -85,7 +87,7 @@ export default function StructuredData2025Post() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">二、2025 年 Schema.org 关键更新</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">二、2025 年 Schema.org 关键更新</h2>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
             <a href="https://schema.org/" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">Schema.org</a> 在 2025 年持续演进，几个与 GEO 密切相关的更新包括：
           </p>
@@ -97,7 +99,7 @@ export default function StructuredData2025Post() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">三、JSON-LD 在 AI 答案生成中的作用</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">三、JSON-LD 在 AI 答案生成中的作用</h2>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
             生成式引擎在生成答案时，会综合检索到的网页内容与结构化数据。JSON-LD 提供的明确字段（如 name、description、offers、aggregateRating）会被引擎直接提取并整合进答案，而无需从自然语言中推断。这意味着：
           </p>
@@ -112,7 +114,7 @@ export default function StructuredData2025Post() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">四、企业应优先落地的 6 种 Schema 类型</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">四、企业应优先落地的 6 种 Schema 类型</h2>
           <div className="mt-6 overflow-x-auto rounded-xl border border-gray-200">
             <table className="w-full border-collapse text-left text-sm">
               <thead>
@@ -138,7 +140,7 @@ export default function StructuredData2025Post() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">五、落地建议</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">五、落地建议</h2>
           <ol className="mt-4 list-decimal space-y-3 pl-6 text-lg leading-relaxed text-gray-700">
             <li><strong>审计现有结构化数据</strong>：使用 schema.org 验证器与 Google 富结果测试扫描全站，标记缺失与错误字段。</li>
             <li><strong>优先补全 P0 类型</strong>：Organization、WebSite、SoftwareApplication 是实体根节点，必须先落地。</li>
@@ -149,7 +151,7 @@ export default function StructuredData2025Post() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-3xl font-bold tracking-tight">结语</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-center">结语</h2>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
             结构化数据正在从「可选优化项」变为「GEO 基础设施」。2025 年，企业应将结构化数据纳入技术债的优先清理清单，确保品牌实体在生成式引擎中被准确理解与引用。FlyAI 提供从自动生成到双校验的全流程工具链，帮助企业低成本落地结构化数据。
           </p>
@@ -162,7 +164,8 @@ export default function StructuredData2025Post() {
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
         结构化数据在生成式引擎中的作用机制可追溯至<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">RAG 原始论文（Lewis et al., NeurIPS 2020）</a>。<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">GEO 论文</a> 进一步量化了结构化数据对引用率的提升效果。
       </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.w3cJsonLd, SOURCES.googleStructuredData]} />
+      <CitedSources title="方法论实证依据"
+        items={ [SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.w3cJsonLd, SOURCES.googleStructuredData] } />
       <RelatedLinks path="/blog/structured-data-2025" />
       <FAQSection title="结构化数据常见问题" items={faqItems} />
 

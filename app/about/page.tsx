@@ -9,6 +9,11 @@ import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, buildWebPage, buildAboutPage } from '@/lib/schema';
 
 const title = '关于 FlyAI（广州飞爱智能科技有限公司）— 团队 · 方法论 · 公司信息';
+/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1Lines = [
+  '关于 FlyAI（广州飞爱智能科技有限公司）',
+  '团队 · 方法论 · 公司信息',
+] as const;
 const description =
   'FlyAI（广州飞爱智能科技有限公司）成立于 [待补充：真实成立年份]，是一家专注于生成式引擎优化（GEO）赛道的独立软件公司，核心团队来自 Google、百度、字节跳动的搜索产品与结构化数据方向；公司以「让每个品牌都被 AI 正确引用」为使命，向中国与海外客户交付可被重复验证的 GEO 方法论与工具链。';
 
@@ -93,16 +98,21 @@ export default function AboutPage() {
       <Breadcrumb items={crumbs} jsonLdOnly />
 
       <PageHero
+        center
         eyebrow="关于我们"
-        h1={title}
+        h1={h1Lines}
         lead={description}
         ctaPrimary={{ text: '联系销售', href: '/contact' }}
         ctaSecondary={{ text: '查看产品', href: '/product' }}
+        bgImage={{
+          src: '/images/home-hero-bg.png',
+          alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格',
+        }}
       />
 
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">FlyAI 五步法 GEO 方法论</h2>
-        <p className="mt-4 text-lg text-gray-600">
+        <h2 className="text-3xl font-bold tracking-tight text-center">FlyAI 五步法 GEO 方法论</h2>
+        <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-gray-600">
           FlyAI 将生成式引擎优化拆解为五个可重复、可量化的步骤，确保每一步都有明确的输入、输出与验收标准，帮助团队从「不知道 AI 有没有引用我」到「量化 AI 引用率并持续优化」。
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-5">
@@ -117,13 +127,16 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">核心团队</h2>
-        <p className="mt-4 text-lg text-gray-600">
+        <h2 className="text-3xl font-bold tracking-tight text-center">核心团队</h2>
+        <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-gray-600">
           FlyAI 核心团队来自 Google、百度、字节跳动、阿里巴巴的搜索产品与结构化数据方向，平均拥有 8+ 年搜索与 AI 领域经验。以下团队成员信息待正式公开前以占位符标注，待本人确认后补录真实姓名与照片。
         </p>
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((m) => (
-            <div key={m.name} className="text-center">
+            <div
+              key={m.name}
+              className="rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm"
+            >
             <div className="mx-auto h-24 w-24 rounded-full bg-gray-200" aria-hidden="true">
               <span className="sr-only">{m.name} 头像占位</span>
             </div>
@@ -136,7 +149,7 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">公司资质与主体信息</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center">公司资质与主体信息</h2>
         <div className="mt-8 overflow-x-auto rounded-2xl border border-gray-200">
           <table className="w-full border-collapse text-left text-sm">
             <tbody>
@@ -167,12 +180,22 @@ export default function AboutPage() {
         </p>
       </section>
 
-      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        FlyAI 的服务范围与合规承诺遵循<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>。GEO 方法论的学术依据见<a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，行业背景参考<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a>。
-      </p>
-      <CitedSources items={[SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.geoPaper, SOURCES.samr, SOURCES.miit]} />
+      <CitedSources
+        title="方法论实证依据"
+        lead={
+          <>
+            FlyAI 的服务范围与合规承诺遵循
+            <a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a>
+            。GEO 方法论的学术依据见
+            <a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>
+            ，行业背景参考
+            <a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a>
+            。
+          </>
+        }
+        items={[SOURCES.cacAiRule, SOURCES.stanfordAiIndex, SOURCES.geoPaper, SOURCES.samr, SOURCES.miit]}
+      />
       <RelatedLinks path="/about" />
-      <FAQSection title="关于 FlyAI 公司的常见问题" items={faqItems} />
 
       <section className="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
         <div className="rounded-[2rem] bg-gradient-to-br from-brand-700 to-brand-900 px-8 py-14 text-center text-white md:px-14">
@@ -190,6 +213,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection title="关于 FlyAI 公司的常见问题" items={faqItems} />
 
       <JsonLd data={[buildWebPage({ url: '/about', name: '关于 FlyAI' }),
           buildAboutPage('/about', '关于 FlyAI'),

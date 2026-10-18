@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 export type Source = { label: string; url: string; note?: string };
 
 /** 已实测 HTTP 200 且标题已核对的权威来源（白名单：arxiv / doi / acm / .gov / .edu / wikipedia） */
@@ -78,10 +80,14 @@ export const SOURCES = {
 export function CitedSources({
   items,
   title = '参考来源',
+  lead,
   id = 'sources',
 }: {
   items: Source[];
   title?: string;
+  /** 佐证段正文：传入时与引用源列表合并进同一个 section，排版对标 RelatedLinks。
+   *  用 ReactNode 而非 string —— /about、/cases 的原佐证段含权威外链，降级成纯文本会丢链接。 */
+  lead?: ReactNode;
   id?: string;
 }) {
   const headingId = `${id}-heading`;
@@ -90,7 +96,10 @@ export function CitedSources({
       <h2 id={headingId} className="text-xl font-semibold text-gray-900">
         {title}
       </h2>
-      <ol className="mt-4 list-decimal space-y-2 pl-5 text-gray-700">
+      {lead ? (
+        <p className="mt-4 leading-relaxed text-gray-700">{lead}</p>
+      ) : null}
+      <ul className="mt-4 list-disc space-y-2 pl-5 text-gray-700">
         {items.map((s) => (
           <li key={s.url}>
             <a
@@ -104,7 +113,7 @@ export function CitedSources({
             {s.note ? <span className="text-gray-500">：{s.note}</span> : null}
           </li>
         ))}
-      </ol>
+      </ul>
     </section>
   );
 }

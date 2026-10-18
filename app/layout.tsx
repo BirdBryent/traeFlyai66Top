@@ -99,7 +99,9 @@ export default function RootLayout({
           跳转到主内容
         </a>
         <SiteHeader />
-        <main id="main" role="main" className="min-h-[60vh] pt-11">
+        {/* page-rails 挂在 main 上而非各页面 root div：一次挂载全站生效，新增页面无需记得加。
+            伪元素是 fixed + pointer-events:none，不参与布局、不拦截点击。 */}
+        <main id="main" role="main" className="page-rails min-h-[60vh] pt-11">
           {children}
         </main>
         <SiteFooter />

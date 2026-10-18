@@ -39,7 +39,16 @@ export default function TermsPage() {
     <div className="text-gray-900">
       <Breadcrumb items={crumbs} jsonLdOnly />
 
-      <PageHero eyebrow="服务条款" h1={title} lead={description} />
+      <PageHero
+        center
+        eyebrow="服务条款"
+        h1={title}
+        lead={description}
+        bgImage={{
+          src: '/images/home-hero-bg.png',
+          alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格',
+        }}
+      />
 
       <section className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
         <p className="text-sm text-gray-500">最后更新：2025-03-01</p>

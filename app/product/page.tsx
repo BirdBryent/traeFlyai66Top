@@ -16,6 +16,11 @@ import {
 } from '@/lib/schema';
 
 const title = 'FlyAI 产品功能 — AI 搜索可见性诊断 · 内容结构化 · Schema 与 llms.txt 生成 · 引用监测';
+/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1Lines = [
+  'FlyAI 产品功能',
+  'AI 可见性诊断 · 内容结构化 · Schema · 引用监测',
+] as const;
 const description =
   'FlyAI 产品覆盖 GEO 全流程：AI 搜索可见性诊断引擎 5 分钟扫描全站抓取漏洞；内容结构化编辑器将 Markdown/富文本转为引擎友好实体标注；Schema 与 llms.txt 生成器一键对齐 schema.org 与 LLM 抓取协议；引用与提及监测面板实时追踪品牌在 12+ 生成式引擎中的被引用次数与准确度。';
 
@@ -65,22 +70,27 @@ export default function ProductPage() {
       <Breadcrumb items={crumbs} jsonLdOnly />
 
       <PageHero
+        center
         eyebrow="产品功能"
-        h1={title}
+        h1={h1Lines}
         lead={description}
         ctaPrimary={{ text: '预约演示', href: '/contact' }}
         ctaSecondary={{ text: '查看定价', href: '/pricing' }}
+        bgImage={{
+          src: '/images/home-hero-bg.png',
+          alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格',
+        }}
       />
 
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">FlyAI 四项核心产品能力</h2>
-        <p className="mt-4 text-lg text-gray-600">
+        <h2 className="text-3xl font-bold tracking-tight text-center">FlyAI 四项核心产品能力</h2>
+        <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-gray-600">
           覆盖生成式引擎优化从「发现问题」到「持续追踪」的完整闭环：每一项能力均按「典型问题 → FlyAI 做法 → 可量化结果」三段式呈现，便于团队快速评估投入产出。
         </p>
 
         <div className="mt-12 space-y-16">
           {/* 能力 1 */}
-          <article id="visibility-diagnosis" aria-labelledby="cap-1">
+          <article id="visibility-diagnosis" className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm md:p-8" aria-labelledby="cap-1">
             <h3 id="cap-1" className="text-2xl font-bold">1. AI 搜索可见性诊断引擎</h3>
             <div className="mt-6 grid gap-8 md:grid-cols-3">
               <div>
@@ -114,7 +124,7 @@ export default function ProductPage() {
           </article>
 
           {/* 能力 2 */}
-          <article id="content-structuring" aria-labelledby="cap-2">
+          <article id="content-structuring" className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm md:p-8" aria-labelledby="cap-2">
             <h3 id="cap-2" className="text-2xl font-bold">2. 内容结构化编辑器</h3>
             <div className="mt-6 grid gap-8 md:grid-cols-3">
               <div>
@@ -148,7 +158,7 @@ export default function ProductPage() {
           </article>
 
           {/* 能力 3 */}
-          <article id="schema-llms" aria-labelledby="cap-3">
+          <article id="schema-llms" className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm md:p-8" aria-labelledby="cap-3">
             <h3 id="cap-3" className="text-2xl font-bold">3. Schema.org 与 llms.txt 生成器</h3>
             <div className="mt-6 grid gap-8 md:grid-cols-3">
               <div>
@@ -182,7 +192,7 @@ export default function ProductPage() {
           </article>
 
           {/* 能力 4 */}
-          <article id="citation-monitoring" aria-labelledby="cap-4">
+          <article id="citation-monitoring" className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm md:p-8" aria-labelledby="cap-4">
             <h3 id="cap-4" className="text-2xl font-bold">4. 引用与提及监测面板</h3>
             <div className="mt-6 grid gap-8 md:grid-cols-3">
               <div>
@@ -219,8 +229,8 @@ export default function ProductPage() {
 
       {/* 能力对比表 */}
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight">四项能力 Before / After 对比</h2>
-        <div className="mt-8 overflow-x-auto">
+        <h2 className="text-3xl font-bold tracking-tight text-center">四项能力 Before / After 对比</h2>
+        <div className="mt-8 overflow-x-auto rounded-2xl border border-gray-200">
           <table className="w-full border-collapse text-left text-sm">
             <thead>
               <tr className="border-b border-gray-200 bg-gray-50">
@@ -255,12 +265,18 @@ export default function ProductPage() {
         </div>
       </section>
 
-      <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        FlyAI 的产品设计以生成式引擎的检索与综合机制为基础。<a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》</a> 系统阐述了 RAG 的检索-综合两阶段架构，而 <a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 则解释了为何首段直达答案对被引用至关重要。
-      </p>
-      <CitedSources items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.geoDoi, SOURCES.googleStructuredData, SOURCES.w3cJsonLd]} />
+      <CitedSources
+        title="方法论实证依据"
+        lead={
+          <>
+            FlyAI 的产品设计以生成式引擎的检索与综合机制为基础。{' '}
+            <a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》</a> 系统阐述了 RAG 的检索-综合两阶段架构，而{' '}
+            <a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 则解释了为何首段直达答案对被引用至关重要。
+          </>
+        }
+        items={[SOURCES.geoPaper, SOURCES.rag, SOURCES.longContext, SOURCES.geoDoi, SOURCES.googleStructuredData, SOURCES.w3cJsonLd]}
+      />
       <RelatedLinks path="/product" />
-      <FAQSection title="关于 FlyAI 产品功能的常见问题" items={faqItems} />
 
       <section className="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
         <div className="rounded-[2rem] bg-gradient-to-br from-brand-700 to-brand-900 px-8 py-14 text-center text-white md:px-14">
@@ -278,6 +294,8 @@ export default function ProductPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection title="关于 FlyAI 产品功能的常见问题" items={faqItems} />
 
       <JsonLd data={[buildWebPage({ url: '/product', name: 'FlyAI 产品功能' }),
           buildService('FlyAI GEO 平台', '面向企业市场/增长/内容团队的 GEO 服务平台'),
