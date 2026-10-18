@@ -33,8 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.mdx",
-    ".next/types/**/*.ts",
-    "../../../../../../Users/tian1qi/.cache/flyai-next/types/**/*.ts"
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "deliverables",
