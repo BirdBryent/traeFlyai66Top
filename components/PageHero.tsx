@@ -41,14 +41,18 @@ export function PageHero({
     <header className="relative isolate overflow-hidden">
       {bgImage && (
         <div className="pointer-events-none absolute inset-0 -z-10">
-          <Image
-            src={bgImage.src}
-            alt={bgImage.alt}
-            fill
-            priority
-            sizes="100vw"
-            className="h-full w-full object-cover"
-          />
+          {/* 与 .page-rails 的两侧竖线对齐：同为 max-w-7xl 居中容器，
+              <1280px 时竖线隐藏，此处也自然退化为通栏 */}
+          <div className="relative mx-auto h-full w-full max-w-7xl">
+            <Image
+              src={bgImage.src}
+              alt={bgImage.alt}
+              fill
+              priority
+              sizes="(min-width: 1280px) 1280px, 100vw"
+              className="object-cover"
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white/95" />
         </div>
       )}
