@@ -20,6 +20,7 @@ export function SiteHeader() {
         <Link
           href="/"
           aria-label="FlyAI 首页"
+          aria-current={pathname === '/' ? 'page' : undefined}
           className="touch-target flex items-center gap-2 text-[15px] font-semibold tracking-tight text-gray-900"
         >
           <span

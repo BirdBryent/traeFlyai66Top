@@ -38,16 +38,13 @@ export const siteConfig = {
     { label: '知乎', href: 'https://zhihu.com/org/flyai' },
     { label: 'LinkedIn', href: 'https://linkedin.com/company/flyai' },
   ],
+  // 主导航只保留核心转化路径 4 项；回首页由 header logo 承担。
+  // 文档 / 术语 / 博客 / 关于 一律走页脚「资源」「关于」专区（页面全部保留），不要再加回顶部导航。
   navMain: [
-    { label: '首页', href: '/' },
     { label: '产品', href: '/product' },
     { label: '方案', href: '/solutions' },
     { label: '定价', href: '/pricing' },
     { label: '案例', href: '/cases' },
-    { label: '文档', href: '/docs' },
-    { label: '术语', href: '/glossary' },
-    { label: '博客', href: '/blog' },
-    { label: '关于', href: '/about' },
   ],
   navFooter: {
     product: [
