@@ -28,6 +28,34 @@ export const AUTHORITY_DOMAINS = [
   'anthropic.com',
 ];
 
+/** 空值 / 占位文本一律不写进结构化数据，避免向 AI 引擎暴露「待补充」类脏数据 */
+function isFilled(value?: string): value is string {
+  return Boolean(
+    value && value.trim() && !value.includes('待补充') && !value.includes('0000-0000'),
+  );
+}
+
+function buildContactPoint() {
+  const { email, phone, address } = siteConfig.contact;
+  const point: Record<string, unknown> = {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    email,
+    areaServed: ['CN', 'Global'],
+    availableLanguage: ['zh-CN', 'en'],
+  };
+  if (isFilled(phone)) point.telephone = phone;
+  if (isFilled(address)) {
+    point.address = {
+      '@type': 'PostalAddress',
+      addressCountry: 'CN',
+      addressLocality: 'Guangzhou',
+      streetAddress: address,
+    };
+  }
+  return point;
+}
+
 export function buildOrganization() {
   return {
     '@context': 'https://schema.org',
@@ -43,22 +71,7 @@ export function buildOrganization() {
     },
     image: `${siteConfig.url}/og-default.jpg`,
     sameAs: siteConfig.sameAs,
-    contactPoint: [
-      {
-        '@type': 'ContactPoint',
-        contactType: 'customer service',
-        email: siteConfig.contact.email,
-        telephone: siteConfig.contact.phone,
-        address: {
-          '@type': 'PostalAddress',
-          addressCountry: 'CN',
-          addressLocality: 'Guangzhou',
-          streetAddress: siteConfig.contact.address,
-        },
-        areaServed: ['CN', 'Global'],
-        availableLanguage: ['zh-CN', 'en'],
-      },
-    ],
+    contactPoint: [buildContactPoint()],
     foundDate: '[待补充：真实成立年份]',
     // 公司 → 产品的实体关联：FlyAI GEO 是 FlyAI 旗下首个产品。
     // 与 buildProduct() 的 manufacturer 形成双向引用，便于生成式引擎建立实体层级。
