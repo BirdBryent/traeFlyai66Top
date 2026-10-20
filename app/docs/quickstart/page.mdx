@@ -8,8 +8,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildArticle, buildBreadcrumbList, FAQItem, buildWebPage } from '@/lib/schema';
 
 export const metadata = buildMetadata({
-  title: 'FlyAI 快速开始 — 3 步完成 GEO 接入',
-  description: '10 分钟完成 FlyAI 接入：获取 API Key、安装 SDK、调用首个诊断接口。本文档引导开发者完成从账号注册、环境配置到提交首批 URL 进行 AI 搜索可见性诊断的全流程，并给出常见错误排查与下一步功能模块的入口链接，帮助团队快速上手 GEO 能力。',
+  title: 'FlyAI GEO 快速开始 — 3 步完成 GEO 接入',
+  description: '10 分钟完成 FlyAI GEO 接入：获取 API Key、安装 SDK、调用首个诊断接口。本文档引导开发者完成从账号注册、环境配置到提交首批 URL 进行 AI 搜索可见性诊断的全流程，并给出常见错误排查与下一步功能模块的入口链接，帮助团队快速上手 GEO 能力。',
   path: '/docs/quickstart',
   type: 'article',
   publishedTime: '2025-10-01',
@@ -26,15 +26,15 @@ export const crumbs = [
 export const faqItems = [
   {
     question: 'API Key 生成后还能查看明文吗？',
-    answer: '不能。FlyAI API Key 仅在生成时显示一次明文，后续只能查看前 8 位掩码。若丢失需在控制台重新生成，旧 Key 立即失效。建议将 Key 存储在环境变量中，不要硬编码到代码或提交到 Git。',
+    answer: '不能。FlyAI GEO API Key 仅在生成时显示一次明文，后续只能查看前 8 位掩码。若丢失需在控制台重新生成，旧 Key 立即失效。建议将 Key 存储在环境变量中，不要硬编码到代码或提交到 Git。',
   },
   {
     question: '沙箱环境和生产环境的 API Key 是否通用？',
-    answer: '不通用。FlyAI 沙箱与生产环境完全隔离，需分别生成 API Key。沙箱 Key 以 `sk_sandbox_` 前缀开头，生产 Key 以 `sk_live_` 前缀开头。调用时需确保 Key 与环境域名匹配，否则返回 401 错误。',
+    answer: '不通用。FlyAI GEO 沙箱与生产环境完全隔离，需分别生成 API Key。沙箱 Key 以 `sk_sandbox_` 前缀开头，生产 Key 以 `sk_live_` 前缀开头。调用时需确保 Key 与环境域名匹配，否则返回 401 错误。',
   },
   {
     question: '调用诊断接口时 URL 数量有限制吗？',
-    answer: '单次请求最多支持 500 个 URL。超过 500 个 URL 的大站可分批提交，FlyAI 会自动合并为一份全站诊断报告。每个 URL 需为完整 URL（含 https://），不支持通配符。',
+    answer: '单次请求最多支持 500 个 URL。超过 500 个 URL 的大站可分批提交，FlyAI GEO 会自动合并为一份全站诊断报告。每个 URL 需为完整 URL（含 https://），不支持通配符。',
   },
   {
     question: '首次调用诊断接口前要准备什么？',
@@ -61,8 +61,8 @@ export default function QuickStartDoc() {
       <PageHero
         center
         eyebrow="产品文档 / 快速开始"
-        h1={['FlyAI 快速开始', '3 步完成 GEO 接入']}
-        lead="本指南帮助你在 10 分钟内完成 FlyAI 的首次接入：获取 API Key、安装 SDK、调用首个 AI 搜索可见性诊断接口，生成 100+ 维度的诊断报告。所有代码示例以 curl 与 TypeScript 双版本呈现。"
+        h1={['FlyAI GEO 快速开始', '3 步完成 GEO 接入']}
+        lead="本指南帮助你在 10 分钟内完成 FlyAI GEO 的首次接入：获取 API Key、安装 SDK、调用首个 AI 搜索可见性诊断接口，生成 100+ 维度的诊断报告。所有代码示例以 curl 与 TypeScript 双版本呈现。"
         ctaPrimary={{ text: '阅读文档', href: '/docs/api-reference' }}
         ctaSecondary={{ text: '联系销售', href: '/contact' }}
         bgImage={{ src: '/images/home-hero-bg.png', alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格' }}
@@ -72,7 +72,7 @@ export default function QuickStartDoc() {
         <section>
           <h2 className="text-3xl font-bold tracking-tight text-center">Step 1：获取 API Key</h2>
           <p className="mt-4 text-lg text-gray-700">
-            登录 FlyAI 控制台，在「账户设置 → API Key」中生成生产环境密钥。Key 仅在生成时显示一次明文，请妥善保管。
+            登录 FlyAI GEO 控制台，在「账户设置 → API Key」中生成生产环境密钥。Key 仅在生成时显示一次明文，请妥善保管。
           </p>
           <pre className="mt-4 overflow-x-auto rounded-xl bg-gray-900 p-4 text-sm text-gray-100">
             <code>{`# 设置环境变量（Linux / macOS）
@@ -178,7 +178,7 @@ console.log(report.suggestions);  // 修复建议`}</code>
             <li>阅读 <a href="/docs/api-reference" className="text-brand-700 underline">API 参考</a>，了解全部接口与错误码</li>
             <li>查看 <a href="/docs/schema-fields" className="text-brand-700 underline">字段字典</a>，掌握 Schema.org 字段定义</li>
             <li>在控制台配置 Webhook，实时接收诊断完成通知</li>
-            <li>联系 FlyAI 技术支持获取接入指导</li>
+            <li>联系 FlyAI GEO 技术支持获取接入指导</li>
           </ul>
         </section>
       </article>
@@ -213,11 +213,11 @@ console.log(report.suggestions);  // 修复建议`}</code>
       <JsonLd
         data={[
           buildBreadcrumbList(crumbs),
-          buildWebPage({ url: '/docs/quickstart', name: 'FlyAI 快速开始' }),
+          buildWebPage({ url: '/docs/quickstart', name: 'FlyAI GEO 快速开始' }),
           buildArticle({
-            headline: 'FlyAI 快速开始 — 3 步完成 GEO 接入',
+            headline: 'FlyAI GEO 快速开始 — 3 步完成 GEO 接入',
             url: '/docs/quickstart',
-            description: '10 分钟完成 FlyAI 接入：获取 API Key、安装 SDK、调用首个诊断接口。',
+            description: '10 分钟完成 FlyAI GEO 接入：获取 API Key、安装 SDK、调用首个诊断接口。',
             datePublished: '2025-10-01',
             dateModified: '2025-10-01',
             authorName: 'FlyAI 内容研究团队',

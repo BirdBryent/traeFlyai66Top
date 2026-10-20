@@ -25,15 +25,15 @@ export const crumbs = [
 export const faqItems = [
   {
     question: '结构化数据对生成式引擎的影响有多大？',
-    answer: '结构化数据是生成式引擎理解页面实体的关键信号。FlyAI 诊断数据显示，配置完整 JSON-LD 的页面在 AI 答案中的实体识别准确率比未配置页面高 [待补充：真实百分比]。特别是 Organization、FAQPage、BreadcrumbList 三种类型，对引用率的提升最为显著。建议企业优先落地这 6 种核心 Schema 类型。',
+    answer: '结构化数据是生成式引擎理解页面实体的关键信号。FlyAI GEO 诊断数据显示，配置完整 JSON-LD 的页面在 AI 答案中的实体识别准确率比未配置页面高 [待补充：真实百分比]。特别是 Organization、FAQPage、BreadcrumbList 三种类型，对引用率的提升最为显著。建议企业优先落地这 6 种核心 Schema 类型。',
   },
   {
     question: 'JSON-LD 和 Microdata 应该选哪个？',
-    answer: '推荐 JSON-LD。Google 明确推荐 JSON-LD 作为结构化数据的首选格式，因为它与页面内容分离、易于维护、不影响页面渲染。Microdata 需要嵌入 HTML 标签中，维护成本高且容易出错。生成式引擎对 JSON-LD 的解析支持也最完善。FlyAI 自动生成的结构化数据全部采用 JSON-LD 格式。',
+    answer: '推荐 JSON-LD。Google 明确推荐 JSON-LD 作为结构化数据的首选格式，因为它与页面内容分离、易于维护、不影响页面渲染。Microdata 需要嵌入 HTML 标签中，维护成本高且容易出错。生成式引擎对 JSON-LD 的解析支持也最完善。FlyAI GEO 自动生成的结构化数据全部采用 JSON-LD 格式。',
   },
   {
     question: 'Schema 字段填错了会有惩罚吗？',
-    answer: '不会有「惩罚」，但可能导致结构化数据被忽略。Google 的结构化数据测试工具会标记错误字段，引擎可能忽略错误的 Schema 而不影响页面整体排名。但建议使用 <a href="https://validator.schema.org/" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">schema.org 验证器</a> 与 <a href="https://search.google.com/test/rich-results" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">Google 富结果测试</a> 双校验，确保字段正确。FlyAI 内置双校验流程。',
+    answer: '不会有「惩罚」，但可能导致结构化数据被忽略。Google 的结构化数据测试工具会标记错误字段，引擎可能忽略错误的 Schema 而不影响页面整体排名。但建议使用 <a href="https://validator.schema.org/" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">schema.org 验证器</a> 与 <a href="https://search.google.com/test/rich-results" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">Google 富结果测试</a> 双校验，确保字段正确。FlyAI GEO 内置双校验流程。',
   },
   {
     question: 'JSON-LD、Microdata、RDFa 该选哪个？',
@@ -135,7 +135,7 @@ export default function StructuredData2025Post() {
             </table>
           </div>
           <p className="mt-4 text-sm text-gray-600">
-            完整字段定义见 <a href="/docs/schema-fields" className="text-brand-700 underline">FlyAI 字段字典</a>。
+            完整字段定义见 <a href="/docs/schema-fields" className="text-brand-700 underline">FlyAI GEO 字段字典</a>。
           </p>
         </section>
 
@@ -146,14 +146,14 @@ export default function StructuredData2025Post() {
             <li><strong>优先补全 P0 类型</strong>：Organization、WebSite、SoftwareApplication 是实体根节点，必须先落地。</li>
             <li><strong>使用 @id 关联实体</strong>：为核心实体设置全局唯一 @id，跨页面引用同一实体，确保实体一致性。</li>
             <li><strong>双校验后上线</strong>：每次修改后用两个验证工具校验，确保无错误。</li>
-            <li><strong>监测引用率变化</strong>：通过 FlyAI 监测平台追踪结构化数据上线后的引用率提升。</li>
+            <li><strong>监测引用率变化</strong>：通过 FlyAI GEO 监测平台追踪结构化数据上线后的引用率提升。</li>
           </ol>
         </section>
 
         <section className="mt-12">
           <h2 className="text-3xl font-bold tracking-tight text-center">结语</h2>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
-            结构化数据正在从「可选优化项」变为「GEO 基础设施」。2025 年，企业应将结构化数据纳入技术债的优先清理清单，确保品牌实体在生成式引擎中被准确理解与引用。FlyAI 提供从自动生成到双校验的全流程工具链，帮助企业低成本落地结构化数据。
+            结构化数据正在从「可选优化项」变为「GEO 基础设施」。2025 年，企业应将结构化数据纳入技术债的优先清理清单，确保品牌实体在生成式引擎中被准确理解与引用。FlyAI GEO 提供从自动生成到双校验的全流程工具链，帮助企业低成本落地结构化数据。
           </p>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
             参考资料：<a href="https://schema.org/" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">Schema.org</a>、<a href="https://json-ld.org/" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">JSON-LD 官网</a>、<a href="https://validator.schema.org/" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">Schema.org 验证器</a>。

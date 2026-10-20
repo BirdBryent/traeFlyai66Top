@@ -9,9 +9,9 @@ import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, buildWebPage, buildCollectionPage } from '@/lib/schema';
 
-const title = 'FlyAI 产品文档 — 接入步骤 · API 参考 · 字段字典';
+const title = 'FlyAI GEO 产品文档 — 接入步骤 · API 参考 · 字段字典';
 /** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
-const h1Lines = ['FlyAI 产品文档', '接入步骤 · API 参考 · 字段字典'] as const;
+const h1Lines = ['FlyAI GEO 产品文档', '接入步骤 · API 参考 · 字段字典'] as const;
 const description =
   '本产品文档覆盖从 API Key 获取、SDK 接入、REST 接口说明到结构化数据字段字典的完整链路；所有代码示例以 curl 与 TypeScript 双版本呈现，且通过 MDX 静态渲染确保生成式引擎可直接在初始 HTML 中解析参数名与返回结构。';
 
@@ -19,24 +19,24 @@ export const metadata = buildMetadata({ title, description, path: '/docs' });
 
 const faqItems: FAQItem[] = [
   {
-    question: 'FlyAI API 的速率限制是多少？',
+    question: 'FlyAI GEO API 的速率限制是多少？',
     answer:
       '按套餐不同：启动版不开放 API；专业版 REST API 默认速率为 60 次/分钟、1000 次/天；企业版可协商提升至 600 次/分钟、不限量/天。所有 API 响应头包含 X-RateLimit-Limit、X-RateLimit-Remaining、X-RateLimit-Reset 字段。详细接口规范见 [API 参考](/docs/api-reference)。',
   },
   {
     question: '返回字段中的 confidence 分数是什么含义？',
     answer:
-      'confidence 是 FlyAI 诊断引擎对「该页面在生成式引擎中被正确引用的概率」的评分，取值 0-1。评分维度包括首段直答质量、结构化数据完整性、实体一致性、权威外链数量、历史引用率。≥ 0.8 良好，0.5-0.8 需优化，< 0.5 存在阻断级问题。字段定义见 [字段字典](/docs/schema-fields)。',
+      'confidence 是 FlyAI GEO 诊断引擎对「该页面在生成式引擎中被正确引用的概率」的评分，取值 0-1。评分维度包括首段直答质量、结构化数据完整性、实体一致性、权威外链数量、历史引用率。≥ 0.8 良好，0.5-0.8 需优化，< 0.5 存在阻断级问题。字段定义见 [字段字典](/docs/schema-fields)。',
   },
   {
     question: 'Webhook 签名算法是什么？',
     answer:
-      'FlyAI Webhook 使用 HMAC-SHA256 签名，签名密钥在控制台「Webhook 配置」中生成。请求头 X-FlyAI-Signature 格式为 sha256=<hex>，客户端需用相同密钥对 body 计算 HMAC-SHA256 比对。建议同时校验 X-FlyAI-Timestamp（5 分钟内有效）防重放。示例见 [API 参考 Webhook 章节](/docs/api-reference)。',
+      'FlyAI GEO Webhook 使用 HMAC-SHA256 签名，签名密钥在控制台「Webhook 配置」中生成。请求头 X-FlyAI-Signature 格式为 sha256=<hex>，客户端需用相同密钥对 body 计算 HMAC-SHA256 比对。建议同时校验 X-FlyAI-Timestamp（5 分钟内有效）防重放。示例见 [API 参考 Webhook 章节](/docs/api-reference)。',
   },
   {
     question: '沙箱环境和生产环境是否隔离？',
     answer:
-      '完全隔离。FlyAI 为每个客户提供独立的沙箱（Sandbox）与生产（Production）环境，二者数据、配额、API Key、域名物理隔离。沙箱用于开发联调，配额宽松不保证 SLA；生产用于线上业务，受 SLA 保障。沙箱 API 调用不计入生产配额。',
+      '完全隔离。FlyAI GEO 为每个客户提供独立的沙箱（Sandbox）与生产（Production）环境，二者数据、配额、API Key、域名物理隔离。沙箱用于开发联调，配额宽松不保证 SLA；生产用于线上业务，受 SLA 保障。沙箱 API 调用不计入生产配额。',
   },
   {
     question: '怎么确认站点已经被 AI 爬虫抓取过？',
@@ -59,7 +59,7 @@ const docsList = [
   {
     href: '/docs/quickstart',
     title: '快速开始',
-    desc: '3 步完成 FlyAI 接入：获取 API Key、安装 SDK、调用首个诊断接口。适合首次接入的开发同学。',
+    desc: '3 步完成 FlyAI GEO 接入：获取 API Key、安装 SDK、调用首个诊断接口。适合首次接入的开发同学。',
     tag: '入门',
     readTime: '约 5 分钟',
   },
@@ -100,7 +100,7 @@ export default function DocsListPage() {
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
         <h2 className="text-3xl font-bold tracking-tight text-center">文档导航</h2>
         <p className="mt-4 text-lg text-gray-600">
-          从快速开始到 API 参考与字段字典，FlyAI 文档覆盖接入全流程。所有页面通过 MDX 静态渲染，代码示例直接出现在首 HTML 中，便于生成式引擎解析。
+          从快速开始到 API 参考与字段字典，FlyAI GEO 文档覆盖接入全流程。所有页面通过 MDX 静态渲染，代码示例直接出现在首 HTML 中，便于生成式引擎解析。
         </p>
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">
@@ -135,7 +135,7 @@ export default function DocsListPage() {
             <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-brand-600 font-bold text-white">1</span>
             <div>
               <h3 className="font-semibold">获取 API Key</h3>
-              <p className="mt-1 text-gray-600">登录 FlyAI 控制台，在「账户设置 → API Key」中生成生产环境密钥。妥善保管，勿提交到 Git 仓库。</p>
+              <p className="mt-1 text-gray-600">登录 FlyAI GEO 控制台，在「账户设置 → API Key」中生成生产环境密钥。妥善保管，勿提交到 Git 仓库。</p>
             </div>
           </li>
           <li className="flex gap-4">
@@ -175,7 +175,7 @@ export default function DocsListPage() {
         <div className="rounded-[2rem] bg-gradient-to-br from-brand-700 to-brand-900 px-8 py-14 text-center text-white md:px-14">
           <h2 className="text-3xl font-bold md:text-4xl">需要更详细的接入支持？联系技术团队</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90">
-            FlyAI 技术支持团队为专业版及以上客户提供接入指导与 1v1 技术答疑。
+            FlyAI GEO 技术支持团队为专业版及以上客户提供接入指导与 1v1 技术答疑。
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <CTAButton href="/docs/quickstart" size="lg" variant="primary" className="!bg-white !text-brand-800 hover:!bg-white/90">
@@ -187,10 +187,10 @@ export default function DocsListPage() {
           </div>
         </div>
       </section>
-      <FAQSection title="关于 FlyAI 产品文档的常见问题" items={faqItems} />
+      <FAQSection title="关于 FlyAI GEO 产品文档的常见问题" items={faqItems} />
 
-      <JsonLd data={[buildWebPage({ url: '/docs', name: 'FlyAI 产品文档' }),
-          buildCollectionPage('/docs', 'FlyAI 产品文档集合'),
+      <JsonLd data={[buildWebPage({ url: '/docs', name: 'FlyAI GEO 产品文档' }),
+          buildCollectionPage('/docs', 'FlyAI GEO 产品文档集合'),
           buildBreadcrumbList(crumbs)]} />
     </div>
   );

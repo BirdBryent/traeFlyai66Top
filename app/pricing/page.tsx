@@ -6,13 +6,13 @@ import RelatedLinks from '@/components/RelatedLinks';
 import CitedSources, { SOURCES } from '@/components/CitedSources';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
-import { buildBreadcrumbList, FAQItem, buildWebPage, buildService } from '@/lib/schema';
+import { buildBreadcrumbList, FAQItem, buildWebPage } from '@/lib/schema';
 
-const title = 'FlyAI 定价 — 启动版 · 专业版 · 企业版 三档订阅方案';
+const title = 'FlyAI GEO 定价 — 启动版 · 专业版 · 企业版 三档订阅方案';
 /** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
-const h1Lines = ['FlyAI 定价', '启动版 · 专业版 · 企业版 三档订阅方案'] as const;
+const h1Lines = ['FlyAI GEO 定价', '启动版 · 专业版 · 企业版 三档订阅方案'] as const;
 const description =
-  'FlyAI 提供按月订阅的透明定价：启动版适合 3 人以内内容团队试水 GEO；专业版适合 10-50 人市场/增长团队规模化运行；企业版适合 50+ 人或多品牌集团客户定制私有部署、SLA 与专属 CSM。所有价格以联系销售后的正式报价单为准，不展示任何虚假金额。';
+  'FlyAI GEO 提供按月订阅的透明定价：启动版适合 3 人以内内容团队试水 GEO；专业版适合 10-50 人市场/增长团队规模化运行；企业版适合 50+ 人或多品牌集团客户定制私有部署、SLA 与专属 CSM。所有价格以联系销售后的正式报价单为准，不展示任何虚假金额。';
 
 export const metadata = buildMetadata({ title, description, path: '/pricing' });
 
@@ -20,17 +20,17 @@ const faqItems: FAQItem[] = [
   {
     question: '可以先免费试用再付费吗？',
     answer:
-      '可以。FlyAI 为所有新客户提供 [免费 AI 搜索可见性诊断](/contact)（提交 ≤ 500 个 URL，2 个工作日内交付 100+ 维度报告），以及启动版 14 天功能试用（不含企业版私有部署与专属 CSM）。试用期间产生的诊断报告、Schema 生成结果与引用监测基线数据均归客户所有，不要求绑定支付方式。试用结束后可选择任一付费套餐继续使用，数据无缝保留。具体试用范围以 [联系销售](/contact) 出具的试用协议为准。',
+      '可以。FlyAI GEO 为所有新客户提供 [免费 AI 搜索可见性诊断](/contact)（提交 ≤ 500 个 URL，2 个工作日内交付 100+ 维度报告），以及启动版 14 天功能试用（不含企业版私有部署与专属 CSM）。试用期间产生的诊断报告、Schema 生成结果与引用监测基线数据均归客户所有，不要求绑定支付方式。试用结束后可选择任一付费套餐继续使用，数据无缝保留。具体试用范围以 [联系销售](/contact) 出具的试用协议为准。',
   },
   {
     question: '诊断额度当月用不完可以结转到下个月吗？',
     answer:
-      '诊断额度按自然月计费，当月未使用的额度原则上不结转。FlyAI 采用「用则扣、不用则废」的配额机制，与主流 SaaS 订阅模式一致。企业版客户可在合同中与销售协商额度结转条款（通常按合同金额的一定比例结转，最长不超过 3 个月）。详细配额规则请 [联系销售](/contact) 获取最新版《FlyAI 计费与配额说明》。',
+      '诊断额度按自然月计费，当月未使用的额度原则上不结转。FlyAI GEO 采用「用则扣、不用则废」的配额机制，与主流 SaaS 订阅模式一致。企业版客户可在合同中与销售协商额度结转条款（通常按合同金额的一定比例结转，最长不超过 3 个月）。详细配额规则请 [联系销售](/contact) 获取最新版《FlyAI GEO 计费与配额说明》。',
   },
   {
     question: '企业版的私有部署支持哪些云？',
     answer:
-      '企业版私有部署支持以下云环境（以正式合同为准）：① 阿里云（华东 1/2、华北 2 等地域）；② 腾讯云（广州、上海、北京等地域）；③ 华为云（北京四、上海一等）；④ AWS（us-east-1、ap-southeast-1 等）；⑤ 自建 IDC / OpenStack。私有部署需要客户提供 Kubernetes 集群（v1.22+）与对象存储（S3 兼容或阿里云 OSS / 腾讯云 COS），FlyAI 提供部署文档与 8 小时远程实施支持。若需专属实施工程师驻场，可在合同中单独约定。',
+      '企业版私有部署支持以下云环境（以正式合同为准）：① 阿里云（华东 1/2、华北 2 等地域）；② 腾讯云（广州、上海、北京等地域）；③ 华为云（北京四、上海一等）；④ AWS（us-east-1、ap-southeast-1 等）；⑤ 自建 IDC / OpenStack。私有部署需要客户提供 Kubernetes 集群（v1.22+）与对象存储（S3 兼容或阿里云 OSS / 腾讯云 COS），FlyAI GEO 提供部署文档与 8 小时远程实施支持。若需专属实施工程师驻场，可在合同中单独约定。',
   },
   {
     question: '是否支持年付折扣？',
@@ -40,12 +40,12 @@ const faqItems: FAQItem[] = [
   {
     question: '从启动版升级到专业版需要做数据迁移吗？',
     answer:
-      '不需要手动迁移。FlyAI 所有套餐共享同一套账户体系与数据存储，升级时只需在控制台「套餐管理」中切换，历史诊断报告、Schema 项目、llms.txt 版本、引用监测快照与团队成员账号均自动保留，无任何数据丢失。升级立即生效，新额度按剩余天数比例折算。降级同理（从专业版降到启动版），超出启动版配额的功能将在降级后只读，不删除数据。',
+      '不需要手动迁移。FlyAI GEO 所有套餐共享同一套账户体系与数据存储，升级时只需在控制台「套餐管理」中切换，历史诊断报告、Schema 项目、llms.txt 版本、引用监测快照与团队成员账号均自动保留，无任何数据丢失。升级立即生效，新额度按剩余天数比例折算。降级同理（从专业版降到启动版），超出启动版配额的功能将在降级后只读，不删除数据。',
   },
   {
     question: '如果对服务效果不满意可以退款吗？',
     answer:
-      'FlyAI 提供「首月不满意全额退款」承诺：订阅生效后 30 自然日内，若客户认为诊断报告或服务未达到 [联系销售](/contact) 出具的《服务计划说明书》中约定的交付标准，可书面提出退款申请，FlyAI 将在 5 个工作日内退还已支付的首月订阅费用。退款不影响客户已获得的诊断报告与数据所有权。该承诺不适用于：① 因客户未提供必要 URL 清单或访问权限导致服务无法交付的情况；② 客户主动要求的定制开发费用；③ 企业版合同中另行约定的 SLA 条款。',
+      'FlyAI GEO 提供「首月不满意全额退款」承诺：订阅生效后 30 自然日内，若客户认为诊断报告或服务未达到 [联系销售](/contact) 出具的《服务计划说明书》中约定的交付标准，可书面提出退款申请，FlyAI GEO 将在 5 个工作日内退还已支付的首月订阅费用。退款不影响客户已获得的诊断报告与数据所有权。该承诺不适用于：① 因客户未提供必要 URL 清单或访问权限导致服务无法交付的情况；② 客户主动要求的定制开发费用；③ 企业版合同中另行约定的 SLA 条款。',
   },
 ];
 
@@ -223,7 +223,7 @@ export default function PricingPage() {
       </section>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        FlyAI 三档定价对应不同规模团队的 GEO 成熟度阶段。定价模型参考了<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a> 对生成式 AI 服务提供者的合规义务界定，以及<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a> 中企业 AI 采纳率的行业基准。
+        FlyAI GEO 三档定价对应不同规模团队的 GEO 成熟度阶段。定价模型参考了<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a> 对生成式 AI 服务提供者的合规义务界定，以及<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a> 中企业 AI 采纳率的行业基准。
       </p>
       <CitedSources
         title="方法论实证依据"
@@ -247,10 +247,9 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
-      <FAQSection title="关于 FlyAI 定价与计费的常见问题" items={faqItems} />
+      <FAQSection title="关于 FlyAI GEO 定价与计费的常见问题" items={faqItems} />
 
-      <JsonLd data={[buildWebPage({ url: '/pricing', name: 'FlyAI 定价与计费' }),
-          buildService('FlyAI GEO 定价', '启动版 / 专业版 / 企业版三档 GEO 服务定价'),
+      <JsonLd data={[buildWebPage({ url: '/pricing', name: 'FlyAI GEO 定价与计费', aboutProduct: true }),
           buildBreadcrumbList(crumbs)]} />
     </div>
   );

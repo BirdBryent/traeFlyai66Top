@@ -31,7 +31,7 @@ const faqItems: FAQItem[] = [
   {
     question: 'FlyAI 博客文章的数据来源是什么？',
     answer:
-      'FlyAI 博客文章中的数据来自三个渠道：① FlyAI 监测平台对 12+ 生成式引擎的真实引用数据（脱敏后）；② 公开学术论文与行业报告（均标注来源链接）；③ FlyAI 客户案例（经客户签署 MAA 后方可引用）。所有数据均标注来源，不编造未经验证的数字。',
+      'FlyAI 博客文章中的数据来自三个渠道：① FlyAI GEO 监测平台对 12+ 生成式引擎的真实引用数据（脱敏后）；② 公开学术论文与行业报告（均标注来源链接）；③ FlyAI 客户案例（经客户签署 MAA 后方可引用）。所有数据均标注来源，不编造未经验证的数字。',
   },
   {
     question: '如何订阅 FlyAI 博客更新？',
@@ -69,7 +69,7 @@ const posts = [
     href: '/blog/llms-txt-best-practices',
     title: 'llms.txt 最佳实践：面向生成式引擎的网站目录',
     excerpt:
-      'llms.txt 是 2025 年新兴的面向 LLM 爬虫的网站目录文件。本文详解 llms.txt 的语法规范、必填字段、与 robots.txt 的协作方式，并给出 FlyAI 客户的实测引用率提升数据。',
+      'llms.txt 是 2025 年新兴的面向 LLM 爬虫的网站目录文件。本文详解 llms.txt 的语法规范、必填字段、与 robots.txt 的协作方式，并给出 FlyAI GEO 客户的实测引用率提升数据。',
     date: '2025-10-08',
     readTime: '约 10 分钟',
     tag: '技术规范',
@@ -147,7 +147,7 @@ export default function BlogListPage() {
         <div className="rounded-[2rem] bg-gradient-to-br from-brand-700 to-brand-900 px-8 py-14 text-center text-white md:px-14">
           <h2 className="text-3xl font-bold md:text-4xl">将 GEO 方法论落地到你的业务</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90">
-            从博客了解方法论，到 FlyAI 工具链落地实践，只需一次演示。
+            从博客了解方法论，到 FlyAI GEO 工具链落地实践，只需一次演示。
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <CTAButton href="/product" size="lg" variant="primary" className="!bg-white !text-brand-800 hover:!bg-white/90">

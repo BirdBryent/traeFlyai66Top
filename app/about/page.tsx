@@ -1,4 +1,5 @@
 import { buildMetadata } from '@/lib/metadata';
+import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
@@ -15,7 +16,7 @@ const h1Lines = [
   '团队 · 方法论 · 公司信息',
 ] as const;
 const description =
-  'FlyAI（广州飞爱智能科技有限公司）成立于 [待补充：真实成立年份]，是一家专注于生成式引擎优化（GEO）赛道的独立软件公司，核心团队来自 Google、百度、字节跳动的搜索产品与结构化数据方向；公司以「让每个品牌都被 AI 正确引用」为使命，向中国与海外客户交付可被重复验证的 GEO 方法论与工具链。';
+  'FlyAI（广州飞爱智能科技有限公司）成立于 [待补充：真实成立年份]，是一家专注 AI 搜索可见性的独立软件公司，旗下首个产品为 FlyAI GEO——面向生成式引擎优化（GEO）的一体化平台。核心团队来自 Google、百度、字节跳动的搜索产品与结构化数据方向；公司以「让每个品牌都被 AI 正确引用」为使命，向中国与海外客户交付可被重复验证的 GEO 方法论与工具链。';
 
 export const metadata = buildMetadata({ title, description, path: '/about' });
 
@@ -110,10 +111,39 @@ export default function AboutPage() {
         }}
       />
 
+      {/* 实体层级锚点：FlyAI（公司）→ FlyAI GEO（旗下首个产品） */}
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight text-center">FlyAI 五步法 GEO 方法论</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center">FlyAI 旗下产品</h2>
         <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-gray-600">
-          FlyAI 将生成式引擎优化拆解为五个可重复、可量化的步骤，确保每一步都有明确的输入、输出与验收标准，帮助团队从「不知道 AI 有没有引用我」到「量化 AI 引用率并持续优化」。
+          FlyAI 以公司主体运营，产品线从生成式引擎优化起步。当前已发布首个产品 FlyAI GEO，后续产品会同步更新在本页与产品页。
+        </p>
+        <article className="mx-auto mt-10 max-w-4xl rounded-3xl border border-gray-200 bg-white p-6 shadow-sm md:p-8">
+          <div className="flex flex-wrap items-center gap-3">
+            <h3 className="text-2xl font-bold">FlyAI GEO</h3>
+            <span className="rounded-full border border-brand-100 bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700">
+              旗下首个产品
+            </span>
+          </div>
+          <p className="mt-3 leading-relaxed text-gray-700">
+            FlyAI GEO 是面向生成式引擎优化（GEO）的一体化平台：AI 搜索可见性诊断、内容结构化改造、
+            Schema 与 llms.txt 生成、12+ 生成式引擎的引用与提及监测。适用于 B2B SaaS、出海品牌、
+            内容团队与代理商四类场景。
+          </p>
+          <p className="mt-5">
+            <Link
+              href="/product"
+              className="inline-flex items-center text-sm font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700"
+            >
+              查看 FlyAI GEO 产品功能 →
+            </Link>
+          </p>
+        </article>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
+        <h2 className="text-3xl font-bold tracking-tight text-center">FlyAI GEO 五步法方法论</h2>
+        <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-gray-600">
+          FlyAI GEO 将生成式引擎优化拆解为五个可重复、可量化的步骤，确保每一步都有明确的输入、输出与验收标准，帮助团队从「不知道 AI 有没有引用我」到「量化 AI 引用率并持续优化」。
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-5">
           {fiveSteps.map((s) => (
@@ -214,10 +244,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <FAQSection title="关于 FlyAI 公司的常见问题" items={faqItems} />
+      <FAQSection title="关于 FlyAI 公司与 FlyAI GEO 的常见问题" items={faqItems} />
 
-      <JsonLd data={[buildWebPage({ url: '/about', name: '关于 FlyAI' }),
-          buildAboutPage('/about', '关于 FlyAI'),
+      <JsonLd data={[buildWebPage({ url: '/about', name: '关于 FlyAI（公司）', aboutProduct: true }),
+          buildAboutPage('/about', '关于 FlyAI（公司）'),
           buildBreadcrumbList(crumbs)]} />
     </div>
   );

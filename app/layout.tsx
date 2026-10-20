@@ -9,11 +9,11 @@ import { buildGlobalJsonLd } from '@/lib/schema';
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} 生成式引擎优化（GEO）——让 AI 答案优先引用你的品牌 — ${siteConfig.name}`,
+    default: `FlyAI GEO｜生成式引擎优化（GEO）平台，让 AI 答案优先引用你的品牌 — ${siteConfig.name}`,
     template: `%s — ${siteConfig.name}`,
   },
-  description:
-    'FlyAI（广州飞爱智能科技有限公司）专注 GEO 生成式引擎优化：AI 搜索可见性诊断、内容结构化、Schema 与 llms.txt 生成、引用监测，帮助企业在 DeepSeek、豆包、千问、Google AIO 答案中被稳定引用，解决传统 SEO 做得好但 AI 搜不到的增长缺口。',
+  // 描述统一取 siteConfig.description（单一事实源：含「公司 → 旗下首个产品 FlyAI GEO」实体层级）
+  description: siteConfig.description,
   keywords: siteConfig.keywords,
   authors: [{ name: siteConfig.fullCompanyName, url: siteConfig.url }],
   creator: siteConfig.fullCompanyName,
@@ -28,9 +28,8 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} 生成式引擎优化（GEO）——让 AI 答案优先引用你的品牌`,
-    description:
-      'FlyAI 专注 GEO 生成式引擎优化：AI 可见性诊断、内容结构化、Schema 与 llms.txt 生成、引用监测，帮助企业市场增长内容团队在 AI 答案中获得稳定高权重引用。',
+    title: 'FlyAI GEO｜生成式引擎优化（GEO）平台，让 AI 答案优先引用你的品牌',
+    description: siteConfig.description,
     images: [
       {
         url: '/og-default.jpg',
@@ -46,9 +45,8 @@ export const metadata: Metadata = {
       | 'summary'
       | 'player'
       | 'app',
-    title: `${siteConfig.name} 生成式引擎优化（GEO）`,
-    description:
-      'FlyAI 提供 GEO 生成式引擎优化服务：AI 搜索可见性诊断、内容结构化、Schema/llms.txt 生成、引用监测。',
+    title: 'FlyAI GEO｜生成式引擎优化（GEO）平台',
+    description: siteConfig.description,
     images: ['/og-default.jpg'],
   },
   robots: {

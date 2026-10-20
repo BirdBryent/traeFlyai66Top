@@ -8,8 +8,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildArticle, buildBreadcrumbList, FAQItem, buildWebPage } from '@/lib/schema';
 
 export const metadata = buildMetadata({
-  title: 'FlyAI 字段字典 — 30+ Schema.org 字段解释表',
-  description: 'FlyAI 结构化数据字段字典：覆盖 Organization、WebSite、SoftwareApplication、FAQPage、BreadcrumbList、Article 六种类型的 30+ 字段，含字段名、类型、是否必填、说明与示例值，对齐 schema.org 官方规范。',
+  title: 'FlyAI GEO 字段字典 — 30+ Schema.org 字段解释表',
+  description: 'FlyAI GEO 结构化数据字段字典：覆盖 Organization、WebSite、SoftwareApplication、FAQPage、BreadcrumbList、Article 六种类型的 30+ 字段，含字段名、类型、是否必填、说明与示例值，对齐 schema.org 官方规范。',
   path: '/docs/schema-fields',
   type: 'article',
   publishedTime: '2025-10-01',
@@ -26,14 +26,14 @@ export const crumbs = [
 export const faqItems = [
   {
     question: 'Schema.org 字段缺失会影响 GEO 效果吗？',
-    answer: '会。结构化数据是生成式引擎理解页面实体的关键信号。必填字段缺失会导致引擎无法正确识别实体类型与属性，进而影响引用率。FlyAI 诊断报告会标记所有缺失字段，建议优先修复 Organization、WebSite、SoftwareApplication 的必填字段。',
+    answer: '会。结构化数据是生成式引擎理解页面实体的关键信号。必填字段缺失会导致引擎无法正确识别实体类型与属性，进而影响引用率。FlyAI GEO 诊断报告会标记所有缺失字段，建议优先修复 Organization、WebSite、SoftwareApplication 的必填字段。',
   },
   {
     question: 'JSON-LD 中可以使用外部 ID（@id）吗？',
-    answer: '可以。建议为核心实体设置 @id（如 https://www.flyai66.top/#organization），便于跨页面实体对齐与知识图谱关联。FlyAI 自动生成的 JSON-LD 默认包含 @id 字段。',
+    answer: '可以。建议为核心实体设置 @id（如 https://www.flyai66.top/#organization），便于跨页面实体对齐与知识图谱关联。FlyAI GEO 自动生成的 JSON-LD 默认包含 @id 字段。',
   },
   {
-    question: 'FlyAI 支持自定义 Schema 类型吗？',
+    question: 'FlyAI GEO 支持自定义 Schema 类型吗？',
     answer: '支持。除内置的 6 种常用类型外，企业版客户可通过自定义模板扩展其他 Schema.org 类型（如 Product、Service、Event 等）。自定义模板需在控制台配置，遵循 Schema.org 官方规范。',
   },
   {
@@ -78,7 +78,7 @@ export const siteFields = [
 
 export const appFields = [
   { name: '@type', type: 'string', required: true, desc: 'Schema 类型', example: '"SoftwareApplication"' },
-  { name: 'name', type: 'string', required: true, desc: '软件名称', example: '"FlyAI GEO Platform"' },
+  { name: 'name', type: 'string', required: true, desc: '软件名称', example: '"FlyAI GEO"' },
   { name: 'applicationCategory', type: 'string', required: true, desc: '应用分类', example: '"BusinessApplication"' },
   { name: 'operatingSystem', type: 'string', required: false, desc: '操作系统', example: '"Web"' },
   { name: 'offers', type: 'Offer', required: false, desc: '定价信息', example: '{"@type":"Offer","price":"0"}' },
@@ -91,7 +91,7 @@ export const faqFields = [
   { name: 'mainEntity', type: 'Question[]', required: true, desc: '问答列表', example: '[{"@type":"Question",...}]' },
   { name: 'mainEntity[].name', type: 'string', required: true, desc: '问题文本', example: '"FlyAI 是什么？"' },
   { name: 'mainEntity[].acceptedAnswer', type: 'Answer', required: true, desc: '答案', example: '{"@type":"Answer","text":"..."}' },
-  { name: 'mainEntity[].acceptedAnswer.text', type: 'string', required: true, desc: '答案文本', example: '"FlyAI 是 GEO SaaS 平台..."' },
+  { name: 'mainEntity[].acceptedAnswer.text', type: 'string', required: true, desc: '答案文本', example: '"FlyAI GEO 是 GEO 一体化平台..."' },
 ];
 
 export const breadcrumbFields = [
@@ -150,8 +150,8 @@ export default function SchemaFieldsDoc() {
       <PageHero
         center
         eyebrow="产品文档 / 字段字典"
-        h1={['FlyAI 字段字典', '30+ Schema.org 字段解释表']}
-        lead="本字段字典覆盖 FlyAI 常用的六种 Schema.org 类型共 30+ 字段，每个字段标注类型、是否必填、说明与示例值。所有字段遵循 Schema.org 官方规范，可直接用于 JSON-LD 实现。"
+        h1={['FlyAI GEO 字段字典', '30+ Schema.org 字段解释表']}
+        lead="本字段字典覆盖 FlyAI GEO 常用的六种 Schema.org 类型共 30+ 字段，每个字段标注类型、是否必填、说明与示例值。所有字段遵循 Schema.org 官方规范，可直接用于 JSON-LD 实现。"
         ctaPrimary={{ text: '查看 API', href: '/docs/api-reference' }}
         ctaSecondary={{ text: '联系销售', href: '/contact' }}
         bgImage={{ src: '/images/home-hero-bg.png', alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格' }}
@@ -159,7 +159,7 @@ export default function SchemaFieldsDoc() {
 
       <article className="mx-auto max-w-5xl px-5 py-12 lg:px-8">
         <p className="text-lg text-gray-700">
-          结构化数据（Structured Data）是生成式引擎理解页面实体的关键信号。FlyAI 自动生成符合 <a href="https://schema.org" className="text-brand-700 underline" target="_blank" rel="noopener noreferrer">Schema.org</a> 规范的 JSON-LD，以下为常用字段说明。
+          结构化数据（Structured Data）是生成式引擎理解页面实体的关键信号。FlyAI GEO 自动生成符合 <a href="https://schema.org" className="text-brand-700 underline" target="_blank" rel="noopener noreferrer">Schema.org</a> 规范的 JSON-LD，以下为常用字段说明。
         </p>
 
         <section className="mt-12">
@@ -229,9 +229,9 @@ export default function SchemaFieldsDoc() {
       <JsonLd
         data={[
           buildBreadcrumbList(crumbs),
-          buildWebPage({ url: '/docs/schema-fields', name: 'FlyAI 字段字典' }),
+          buildWebPage({ url: '/docs/schema-fields', name: 'FlyAI GEO 字段字典' }),
           buildArticle({
-            headline: 'FlyAI 字段字典 — 30+ Schema.org 字段解释表',
+            headline: 'FlyAI GEO 字段字典 — 30+ Schema.org 字段解释表',
             url: '/docs/schema-fields',
             description: '30+ Schema.org 字段解释表',
             datePublished: '2025-10-01',

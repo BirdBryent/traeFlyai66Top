@@ -2,7 +2,7 @@ export const siteConfig = {
   name: 'FlyAI',
   fullCompanyName: '广州飞爱智能科技有限公司',
   description:
-    'FlyAI（广州飞爱智能科技有限公司）专注 GEO 生成式引擎优化服务：AI 搜索可见性诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测，帮助企业市场/增长/内容团队在 DeepSeek、豆包、千问、Google AIO 等生成式引擎答案中获得稳定引用。',
+    'FlyAI（广州飞爱智能科技有限公司）是一家专注 AI 搜索可见性的公司，旗下首个产品 FlyAI GEO 提供 GEO 生成式引擎优化服务：AI 搜索可见性诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测，帮助企业市场/增长/内容团队在 DeepSeek、豆包、千问、Google AIO 等生成式引擎答案中获得稳定引用。',
   url: 'https://www.flyai66.top',
   ogImage: '/og-default.jpg',
   locale: 'zh_CN',
@@ -12,6 +12,7 @@ export const siteConfig = {
   },
   keywords: [
     'FlyAI',
+    'FlyAI GEO',
     'GEO',
     '生成式引擎优化',
     'AI 搜索可见性',
@@ -70,8 +71,10 @@ export const siteConfig = {
       { label: '服务条款', href: '/#terms' },
     ],
   },
+  // 产品实体：FlyAI GEO（旗下首个产品）。FlyAI 是公司名，不要用公司名指代产品。
   softwareApplication: {
-    name: 'FlyAI GEO Platform',
+    name: 'FlyAI GEO',
+    alternateName: 'FlyAI GEO Platform',
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Web',
     featureList: [

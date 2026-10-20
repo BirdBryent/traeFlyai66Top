@@ -6,7 +6,7 @@ import JsonLd from '@/components/JsonLd';
 import { buildWebPage, buildBreadcrumbList } from '@/lib/schema';
 
 const title = '服务条款';
-const description = '欢迎使用 FlyAI。访问与使用本站即表示你同意以下条款。';
+const description = '欢迎使用 FlyAI。本条款适用于 FlyAI（广州飞爱智能科技有限公司）官网及旗下产品 FlyAI GEO 提供的服务。访问与使用本站即表示你同意以下条款。';
 
 export const metadata = buildMetadata({ title, description, path: '/terms' });
 

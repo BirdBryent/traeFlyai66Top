@@ -6,13 +6,13 @@ import RelatedLinks from '@/components/RelatedLinks';
 import CitedSources, { SOURCES } from '@/components/CitedSources';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
-import { buildBreadcrumbList, FAQItem, buildWebPage, buildService } from '@/lib/schema';
+import { buildBreadcrumbList, FAQItem, buildWebPage } from '@/lib/schema';
 
-const title = 'FlyAI 客户案例 — 背景 · 动作 · 可量化结果';
+const title = 'FlyAI GEO 客户案例 — 背景 · 动作 · 可量化结果';
 /** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
-const h1Lines = ['FlyAI 客户案例', '背景 · 动作 · 可量化结果'] as const;
+const h1Lines = ['FlyAI GEO 客户案例', '背景 · 动作 · 可量化结果'] as const;
 const description =
-  '本节展示 FlyAI 典型客户交付框架，所有具体案例数据均以占位符标注待客户授权后补录，确保任何展示的品牌名与数字均可追溯并通过真实验证；读者可通过每条案例的「背景-动作-结果」结构理解 FlyAI GEO 方法论在不同行业的落地路径。';
+  '本节展示 FlyAI GEO 典型客户交付框架，所有具体案例数据均以占位符标注待客户授权后补录，确保任何展示的品牌名与数字均可追溯并通过真实验证；读者可通过每条案例的「背景-动作-结果」结构理解 FlyAI GEO 方法论在不同行业的落地路径。';
 
 export const metadata = buildMetadata({ title, description, path: '/cases' });
 
@@ -25,7 +25,7 @@ const faqItems: FAQItem[] = [
   {
     question: '我可以参考同行业的案例吗？',
     answer:
-      '可以。FlyAI 根据客户行业（B2B SaaS、跨境电商、媒体、教育、金融等）对案例进行分类，你可以在 [客户案例页](/cases) 按行业筛选。若官网未展示你所在行业的案例，可 [联系销售](/contact) 获取同行业参考案例（需签署 NDA）。案例参考仅用于理解 FlyAI GEO 方法论的落地路径，不构成对你的效果承诺，实际结果因站点基础、行业竞争、内容质量等因素而异。',
+      '可以。FlyAI GEO 根据客户行业（B2B SaaS、跨境电商、媒体、教育、金融等）对案例进行分类，你可以在 [客户案例页](/cases) 按行业筛选。若官网未展示你所在行业的案例，可 [联系销售](/contact) 获取同行业参考案例（需签署 NDA）。案例参考仅用于理解 FlyAI GEO 方法论的落地路径，不构成对你的效果承诺，实际结果因站点基础、行业竞争、内容质量等因素而异。',
   },
   {
     question: '未脱敏的案例在哪里可以看？',
@@ -197,7 +197,7 @@ export default function CasesPage() {
         title="方法论实证依据"
         lead={
           <>
-            以下案例框架基于 FlyAI 的 GEO 方法论沉淀。方法论的学术依据见{' '}
+            以下案例框架基于 FlyAI GEO 方法论沉淀。方法论的学术依据见{' '}
             <a href={SOURCES.geoPaper.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">KDD 2024 GEO 论文</a>，行业背景参考{' '}
             <a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a> 中的企业生成式 AI 采纳数据。
           </>
@@ -222,10 +222,9 @@ export default function CasesPage() {
           </div>
         </div>
       </section>
-      <FAQSection title="关于 FlyAI 客户案例的常见问题" items={faqItems} />
+      <FAQSection title="关于 FlyAI GEO 客户案例的常见问题" items={faqItems} />
 
-      <JsonLd data={[buildWebPage({ url: '/cases', name: 'FlyAI 客户案例' }),
-          buildService('FlyAI GEO 客户案例', 'FlyAI GEO 服务在 B2B SaaS、出海品牌、内容团队等场景的落地案例'),
+      <JsonLd data={[buildWebPage({ url: '/cases', name: 'FlyAI GEO 客户案例', aboutProduct: true }),
           buildBreadcrumbList(crumbs)]} />
     </div>
   );

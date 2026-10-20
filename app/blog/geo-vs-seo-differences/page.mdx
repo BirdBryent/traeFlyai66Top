@@ -25,15 +25,15 @@ export const crumbs = [
 export const faqItems = [
   {
     question: 'GEO 会完全取代 SEO 吗？',
-    answer: '不会。GEO 与 SEO 是互补关系：SEO 解决「被搜到」（用户在 SERP 上看到你的链接并点击），GEO 解决「被引用」（AI 答案中正确提及你的品牌与产品）。未来用户获取信息的渠道将同时包含传统搜索与生成式引擎，企业需要双管齐下。FlyAI 的工具链同时支持 SEO 与 GEO 双轨优化。',
+    answer: '不会。GEO 与 SEO 是互补关系：SEO 解决「被搜到」（用户在 SERP 上看到你的链接并点击），GEO 解决「被引用」（AI 答案中正确提及你的品牌与产品）。未来用户获取信息的渠道将同时包含传统搜索与生成式引擎，企业需要双管齐下。FlyAI GEO 的工具链同时支持 SEO 与 GEO 双轨优化。',
   },
   {
     question: '中小企业有必要做 GEO 吗？',
-    answer: '有必要，且越早做成本越低。生成式引擎对结构化数据与首段直答的依赖，使得中小企业有机会在 AI 答案中与大企业平等竞争——只要你的内容结构清晰、实体一致、首段直答，就可能被引用。FlyAI 启动版套餐专为中小企业设计，以低门槛完成基础 GEO 改造。',
+    answer: '有必要，且越早做成本越低。生成式引擎对结构化数据与首段直答的依赖，使得中小企业有机会在 AI 答案中与大企业平等竞争——只要你的内容结构清晰、实体一致、首段直答，就可能被引用。FlyAI GEO 启动版套餐专为中小企业设计，以低门槛完成基础 GEO 改造。',
   },
   {
     question: 'GEO 优化的见效周期是多久？',
-    answer: 'GEO 优化通常 4-12 周可见引用率提升。其中结构化数据与 llms.txt 的修复最快（1-2 周引擎重新抓取后即可生效），首段直答与权威外链建设需 4-8 周，实体一致性与内容矩阵需 8-12 周。FlyAI 监测平台以周为单位追踪引用率变化，确保优化效果可量化。',
+    answer: 'GEO 优化通常 4-12 周可见引用率提升。其中结构化数据与 llms.txt 的修复最快（1-2 周引擎重新抓取后即可生效），首段直答与权威外链建设需 4-8 周，实体一致性与内容矩阵需 8-12 周。FlyAI GEO 监测平台以周为单位追踪引用率变化，确保优化效果可量化。',
   },
   {
     question: 'GEO 会取代 SEO 吗？',
@@ -123,7 +123,7 @@ export default function GeoVsSeoPost() {
             SEO 的关键手段是<strong>关键词布局与链接建设</strong>。通过在标题、URL、H1、正文、图片 alt 中合理布置目标关键词，并通过内链与外链提升页面权重，从而获得更高排名。
           </p>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
-            GEO 的关键手段是<strong>首段直答、结构化数据、实体一致性</strong>。生成式引擎偏好直接回答问题的首段内容、机器可读的 JSON-LD 结构化数据、以及跨页面一致的实体命名。例如，当用户问「GEO 工具哪个好」时，引擎更倾向于引用首段直接回答「FlyAI 是一款...」的页面，而非需要阅读全文才能找到答案的页面。
+            GEO 的关键手段是<strong>首段直答、结构化数据、实体一致性</strong>。生成式引擎偏好直接回答问题的首段内容、机器可读的 JSON-LD 结构化数据、以及跨页面一致的实体命名。例如，当用户问「GEO 工具哪个好」时，引擎更倾向于引用首段直接回答「FlyAI GEO 是一款...」的页面，而非需要阅读全文才能找到答案的页面。
           </p>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
             结构化数据的重要性在 GEO 时代进一步提升。根据 <a href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">Google 结构化数据文档</a>，JSON-LD 是推荐的结构化数据格式，帮助引擎准确识别实体类型与属性。<a href="https://schema.org/" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">Schema.org</a> 提供了标准化的词汇表，覆盖 Organization、Product、Article 等数千种实体类型。
@@ -133,13 +133,13 @@ export default function GeoVsSeoPost() {
         <section className="mt-12">
           <h2 className="text-3xl font-bold tracking-tight text-center">四、企业从 SEO 向 GEO 迁移的路径</h2>
           <p className="mt-4 text-lg leading-relaxed text-gray-700">
-            企业无需放弃 SEO，而是在现有 SEO 基础上叠加 GEO 优化。FlyAI 建议按以下四步迁移：
+            企业无需放弃 SEO，而是在现有 SEO 基础上叠加 GEO 优化。FlyAI GEO 建议按以下四步迁移：
           </p>
           <ol className="mt-4 list-decimal space-y-3 pl-6 text-lg leading-relaxed text-gray-700">
-            <li><strong>诊断现状</strong>：使用 FlyAI 诊断工具扫描全站，输出 AI 搜索可见性报告，识别首段直答缺失、结构化数据不完整、实体不一致等阻断级问题。</li>
+            <li><strong>诊断现状</strong>：使用 FlyAI GEO 诊断工具扫描全站，输出 AI 搜索可见性报告，识别首段直答缺失、结构化数据不完整、实体不一致等阻断级问题。</li>
             <li><strong>结构化改造</strong>：为核心页面生成 JSON-LD（Organization、WebSite、SoftwareApplication、FAQPage、BreadcrumbList、Article），生成 llms.txt 文件。</li>
             <li><strong>首段直答改写</strong>：针对高价值查询，将页面首段改写为直接回答问题的格式，确保 80 字内给出核心结论。</li>
-            <li><strong>持续监测</strong>：通过 FlyAI 监测平台追踪 12+ 生成式引擎的引用率变化，持续优化。</li>
+            <li><strong>持续监测</strong>：通过 FlyAI GEO 监测平台追踪 12+ 生成式引擎的引用率变化，持续优化。</li>
           </ol>
         </section>
 

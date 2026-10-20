@@ -21,7 +21,8 @@ export function SiteFooter() {
               {siteConfig.fullCompanyName}
             </p>
             <p className="mt-3 max-w-sm leading-relaxed text-gray-500">
-              面向 B2B SaaS、出海品牌、企业市场增长与内容团队的 GEO（生成式引擎优化）服务平台，
+              FlyAI 专注 AI 搜索可见性，旗下首个产品 FlyAI GEO 是面向 B2B SaaS、出海品牌、
+              企业市场增长与内容团队的 GEO（生成式引擎优化）平台，
               让生成式引擎正确理解并稳定引用你的品牌内容。
             </p>
 
@@ -67,7 +68,8 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold text-gray-900">产品</h3>
+            <h3 className="mb-1 text-sm font-semibold text-gray-900">产品</h3>
+            <p className="mb-3 text-xs text-gray-500">FlyAI GEO（旗下首个产品）</p>
             <ul className="space-y-2 list-none pl-0 text-left">
               {siteConfig.navFooter.product.map((i) => (
                 <li key={i.href}>

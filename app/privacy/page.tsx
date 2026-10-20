@@ -8,7 +8,7 @@ import { toAbsolute } from '@/lib/related-links';
 
 const title = '隐私政策';
 const description =
-  'FlyAI（广州飞爱智能科技有限公司）尊重并保护你的隐私。我们仅在提供服务所必需的范围内收集与使用数据。';
+  'FlyAI（广州飞爱智能科技有限公司）尊重并保护你的隐私。本政策适用于 FlyAI 及其旗下产品 FlyAI GEO 提供的服务，我们仅在提供服务所必需的范围内收集与使用数据。';
 
 export const metadata = buildMetadata({ title, description, path: '/privacy' });
 

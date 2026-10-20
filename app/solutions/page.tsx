@@ -6,13 +6,13 @@ import RelatedLinks from '@/components/RelatedLinks';
 import CitedSources, { SOURCES } from '@/components/CitedSources';
 import CTAButton from '@/components/CTAButton';
 import JsonLd from '@/components/JsonLd';
-import { buildBreadcrumbList, FAQItem, buildWebPage, buildService } from '@/lib/schema';
+import { buildBreadcrumbList, FAQItem, buildWebPage } from '@/lib/schema';
 
-const title = 'FlyAI 解决方案 — B2B SaaS · 出海品牌 · 内容团队 · 代理商';
+const title = 'FlyAI GEO 解决方案 — B2B SaaS · 出海品牌 · 内容团队 · 代理商';
 /** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
-const h1Lines = ['FlyAI 解决方案', 'B2B SaaS · 出海品牌 · 内容团队 · 代理商'] as const;
+const h1Lines = ['FlyAI GEO 解决方案', 'B2B SaaS · 出海品牌 · 内容团队 · 代理商'] as const;
 const description =
-  '针对 B2B SaaS 客户需要在 AI 答案中被作为工具推荐准确引用、出海品牌需要在多语言生成式引擎中维持实体一致性、内容团队需要规模化产出高引用内容、代理商需要将 GEO 打包进客户服务套餐四类典型场景，FlyAI 提供模块化组合方案与对应的诊断模板、数据接入方式、交付物清单。';
+  '针对 B2B SaaS 客户需要在 AI 答案中被作为工具推荐准确引用、出海品牌需要在多语言生成式引擎中维持实体一致性、内容团队需要规模化产出高引用内容、代理商需要将 GEO 打包进客户服务套餐四类典型场景，FlyAI GEO 提供模块化组合方案与对应的诊断模板、数据接入方式、交付物清单。';
 
 export const metadata = buildMetadata({ title, description, path: '/solutions' });
 
@@ -25,7 +25,7 @@ const faqItems: FAQItem[] = [
   {
     question: '出海多语言站点需要多套 llms.txt 吗？',
     answer:
-      '建议为每种语言维护一份独立的 llms.txt，放在对应语言子目录根路径（如 /en/llms.txt、/ja/llms.txt），根目录 llms.txt 作为主索引指向各语言版本。FlyAI 生成器支持多语言模板，自动为 zh-CN、en-US、ja-JP 等生成对应 llms.txt，并在「重要页面」段分别列出各语言核心页面 URL。详见 [产品文档多语言 GEO 指南](/docs/schema-fields)。',
+      '建议为每种语言维护一份独立的 llms.txt，放在对应语言子目录根路径（如 /en/llms.txt、/ja/llms.txt），根目录 llms.txt 作为主索引指向各语言版本。FlyAI GEO 生成器支持多语言模板，自动为 zh-CN、en-US、ja-JP 等生成对应 llms.txt，并在「重要页面」段分别列出各语言核心页面 URL。详见 [产品文档多语言 GEO 指南](/docs/schema-fields)。',
   },
   {
     question: '内容团队 10 人规模大概需要什么套餐？',
@@ -35,7 +35,7 @@ const faqItems: FAQItem[] = [
   {
     question: '代理商有返利或贴牌（OEM）模式吗？',
     answer:
-      '有。FlyAI 为代理商提供两种合作模式：① 渠道返利模式：代理商以折扣价采购 FlyAI 套餐加价转售，FlyAI 提供产品、技术支持与品牌物料；② 贴牌（OEM）模式：代理商可使用自有品牌包装 FlyAI 产品，在企业版私有部署基础上替换 Logo、域名与文档。两种模式均需签署渠道合作协议，具体返利比例与 OEM 授权费请 [联系渠道合作团队](mailto:partner@flyai66.top) 获取渠道手册。',
+      '有。FlyAI GEO 为代理商提供两种合作模式：① 渠道返利模式：代理商以折扣价采购 FlyAI GEO 套餐加价转售，FlyAI GEO 提供产品、技术支持与品牌物料；② 贴牌（OEM）模式：代理商可使用自有品牌包装 FlyAI GEO 产品，在企业版私有部署基础上替换 Logo、域名与文档。两种模式均需签署渠道合作协议，具体返利比例与 OEM 授权费请 [联系渠道合作团队](mailto:partner@flyai66.top) 获取渠道手册。',
   },
   {
     question: '出海品牌和国内站的 GEO 做法有什么不同？',
@@ -61,7 +61,7 @@ const solutions = [
     icon: '⚙️',
     pain: 'AI 答案中工具推荐场景下品牌被竞品替代，潜在客户搜索「XX 工具推荐」时找不到自己的产品不在候选列表，产品页首段套话导致引擎不引用，SoftwareApplication Schema 缺失。',
     solution:
-      'FlyAI 为 B2B SaaS 客户提供：① SoftwareApplication + Product Schema 自动生成与字段填充；② 功能对比页首段直答改造（产品名 + 品类 + 核心差异化 3 要素）；③ 术语定义页建设（让引擎把品牌与 GEO 实体绑定）；④ 「工具推荐」类关键词引用监测。',
+      'FlyAI GEO 为 B2B SaaS 客户提供：① SoftwareApplication + Product Schema 自动生成与字段填充；② 功能对比页首段直答改造（产品名 + 品类 + 核心差异化 3 要素）；③ 术语定义页建设（让引擎把品牌与 GEO 实体绑定）；④ 「工具推荐」类关键词引用监测。',
     deliverables: [
       'SoftwareApplication / Product JSON-LD（全产品页覆盖）',
       '功能对比表（Before/After 结构化表格）',
@@ -76,7 +76,7 @@ const solutions = [
     icon: '🌏',
     pain: '多语言站点实体不一致（中文叫「飞爱」英文叫「FlyAI」但引擎无法关联，hreflang 标注缺失，各语言 llms.txt 未配置，海外引擎引用率低于国内。',
     solution:
-      'FlyAI 为出海品牌提供：① 多语言 llms.txt 自动生成（zh-CN / en-US / ja-JP 等）；② 实体命名一致性治理（中英日多语言品牌名映射表）；③ hreflang 标注检查与修复；④ Google AIO / Bing Copilot / Perplexity 海外引擎引用监测。',
+      'FlyAI GEO 为出海品牌提供：① 多语言 llms.txt 自动生成（zh-CN / en-US / ja-JP 等）；② 实体命名一致性治理（中英日多语言品牌名映射表）；③ hreflang 标注检查与修复；④ Google AIO / Bing Copilot / Perplexity 海外引擎引用监测。',
     deliverables: [
       '多语言 llms.txt（每语言一份）',
       '实体命名一致性映射表 + 全站扫描报告',
@@ -91,7 +91,7 @@ const solutions = [
     icon: '✍️',
     pain: '内容产出量大但 AI 引用率低，FAQ 未结构化导致引擎不抽取，内链锚文本无关键词，实体命名在不同文章中不一致。',
     solution:
-      'FlyAI 为内容团队提供：① 内容结构化编辑器（Markdown/富文本一键转引擎友好格式）；② FAQ 自动抽取为 FAQPage JSON-LD；③ 实体命名一致性检查（全站批量扫描）；④ 内链锚文本实体化建议。',
+      'FlyAI GEO 为内容团队提供：① 内容结构化编辑器（Markdown/富文本一键转引擎友好格式）；② FAQ 自动抽取为 FAQPage JSON-LD；③ 实体命名一致性检查（全站批量扫描）；④ 内链锚文本实体化建议。',
     deliverables: [
       '内容结构化编辑器额度（按月）',
       'FAQ 抽取工具（自动 JSON-LD）',
@@ -106,7 +106,7 @@ const solutions = [
     icon: '🤝',
     pain: '客户要求 GEO 服务但自身无技术能力，需将 GEO 打包进 SEO 服务套餐，需贴牌交付物标准化交付效率低。',
     solution:
-      'FlyAI 为代理商提供：① 渠道返利模式（折扣价采购加价转售）；② 贴牌 OEM 模式（自有品牌包装）；③ 标准化交付物模板（诊断报告 / Schema / llms.txt）；④ 代理商培训与认证体系。',
+      'FlyAI GEO 为代理商提供：① 渠道返利模式（折扣价采购加价转售）；② 贴牌 OEM 模式（自有品牌包装）；③ 标准化交付物模板（诊断报告 / Schema / llms.txt）；④ 代理商培训与认证体系。',
     deliverables: [
       '渠道折扣价（按年度采购量阶梯）',
       '白标 OEM 授权（企业版私有部署）',
@@ -138,7 +138,7 @@ export default function SolutionsPage() {
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
         <h2 className="text-3xl font-bold tracking-tight text-center">四类典型场景的 GEO 解决方案</h2>
         <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-gray-600">
-          FlyAI 针对不同客户类型提供模块化组合方案，每个方案均按「典型痛点 → FlyAI 做法 → 交付物清单」三段式呈现，便于快速评估适配性。
+          FlyAI GEO 针对不同客户类型提供模块化组合方案，每个方案均按「典型痛点 → FlyAI GEO 做法 → 交付物清单」三段式呈现，便于快速评估适配性。
         </p>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
@@ -154,7 +154,7 @@ export default function SolutionsPage() {
                   <p className="mt-2 text-gray-700">{s.pain}</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-brand-700">FlyAI 做法</h4>
+                  <h4 className="font-semibold text-brand-700">FlyAI GEO 做法</h4>
                   <p className="mt-2 text-gray-700">{s.solution}</p>
                 </div>
                 <div>
@@ -230,7 +230,7 @@ export default function SolutionsPage() {
         <div className="rounded-[2rem] bg-gradient-to-br from-brand-700 to-brand-900 px-8 py-14 text-center text-white md:px-14">
           <h2 className="text-3xl font-bold md:text-4xl">不确定你的场景适合哪种方案？联系销售获取定制建议</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90">
-            FlyAI 解决方案专家将在 1 个工作日内根据你的行业、团队规模与 GEO 目标，推荐最合适的方案与套餐组合。
+            FlyAI GEO 解决方案专家将在 1 个工作日内根据你的行业、团队规模与 GEO 目标，推荐最合适的方案与套餐组合。
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <CTAButton href="/contact" size="lg" variant="primary" className="!bg-white !text-brand-800 hover:!bg-white/90">
@@ -243,10 +243,9 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <FAQSection title="关于 FlyAI 解决方案的常见问题" items={faqItems} />
+      <FAQSection title="关于 FlyAI GEO 解决方案的常见问题" items={faqItems} />
 
-      <JsonLd data={[buildWebPage({ url: '/solutions', name: 'FlyAI 行业解决方案' }),
-          buildService('FlyAI 行业 GEO 方案', '按 B2B SaaS、出海品牌、内容团队、代理商划分的 GEO 解决方案'),
+      <JsonLd data={[buildWebPage({ url: '/solutions', name: 'FlyAI GEO 行业解决方案', aboutProduct: true }),
           buildBreadcrumbList(crumbs)]} />
     </div>
   );

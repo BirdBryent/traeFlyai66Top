@@ -12,17 +12,16 @@ import {
   isAuthorityLink,
   FAQItem,
   buildWebPage,
-  buildService,
 } from '@/lib/schema';
 
-const title = 'FlyAI 产品功能 — AI 搜索可见性诊断 · 内容结构化 · Schema 与 llms.txt 生成 · 引用监测';
+const title = 'FlyAI GEO 产品功能 — AI 搜索可见性诊断 · 内容结构化 · Schema 与 llms.txt 生成 · 引用监测';
 /** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
 const h1Lines = [
-  'FlyAI 产品功能',
+  'FlyAI GEO 产品功能',
   'AI 可见性诊断 · 内容结构化 · Schema · 引用监测',
 ] as const;
 const description =
-  'FlyAI 产品覆盖 GEO 全流程：AI 搜索可见性诊断引擎 5 分钟扫描全站抓取漏洞；内容结构化编辑器将 Markdown/富文本转为引擎友好实体标注；Schema 与 llms.txt 生成器一键对齐 schema.org 与 LLM 抓取协议；引用与提及监测面板实时追踪品牌在 12+ 生成式引擎中的被引用次数与准确度。';
+  'FlyAI GEO 是 FlyAI（广州飞爱智能科技有限公司）旗下首个产品，覆盖 GEO 全流程：AI 搜索可见性诊断引擎 5 分钟扫描全站抓取漏洞；内容结构化编辑器将 Markdown/富文本转为引擎友好实体标注；Schema 与 llms.txt 生成器一键对齐 schema.org 与 LLM 抓取协议；引用与提及监测面板实时追踪品牌在 12+ 生成式引擎中的被引用次数与准确度。';
 
 export const metadata = buildMetadata({ title, description, path: '/product' });
 
@@ -61,7 +60,7 @@ const faqItems: FAQItem[] = [
 
 const crumbs = [
   { label: '首页', href: '/' },
-  { label: '产品功能', href: '/product' },
+  { label: 'FlyAI GEO 产品', href: '/product' },
 ];
 
 export default function ProductPage() {
@@ -83,9 +82,16 @@ export default function ProductPage() {
       />
 
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight text-center">FlyAI 四项核心产品能力</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center">FlyAI GEO 四项核心产品能力</h2>
         <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-gray-600">
-          覆盖生成式引擎优化从「发现问题」到「持续追踪」的完整闭环：每一项能力均按「典型问题 → FlyAI 做法 → 可量化结果」三段式呈现，便于团队快速评估投入产出。
+          覆盖生成式引擎优化从「发现问题」到「持续追踪」的完整闭环：每一项能力均按「典型问题 → FlyAI GEO 做法 → 可量化结果」三段式呈现，便于团队快速评估投入产出。
+        </p>
+        <p className="mx-auto mt-3 max-w-3xl text-center text-sm text-gray-500">
+          FlyAI GEO 由{' '}
+          <Link href="/about" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">
+            FlyAI（广州飞爱智能科技有限公司）
+          </Link>{' '}
+          研发与运营，是 FlyAI 旗下首个产品。
         </p>
 
         <div className="mt-12 space-y-16">
@@ -103,7 +109,7 @@ export default function ProductPage() {
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-brand-700">FlyAI 做法</h4>
+                <h4 className="font-semibold text-brand-700">FlyAI GEO 做法</h4>
                 <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-700">
                   <li>输入 ≤ 500 个 URL 清单，5 分钟内完成全站扫描</li>
                   <li>模拟 12+ 生成式引擎的抓取与综合路径</li>
@@ -137,7 +143,7 @@ export default function ProductPage() {
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-brand-700">FlyAI 做法</h4>
+                <h4 className="font-semibold text-brand-700">FlyAI GEO 做法</h4>
                 <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-700">
                   <li>导入 Markdown / 富文本，一键生成首段直答改写建议</li>
                   <li>实体命名一致性检查 + 全站批量替换建议</li>
@@ -171,7 +177,7 @@ export default function ProductPage() {
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-brand-700">FlyAI 做法</h4>
+                <h4 className="font-semibold text-brand-700">FlyAI GEO 做法</h4>
                 <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-700">
                   <li>支持 5+1 类 Schema：Organization / WebSite / SoftwareApplication / FAQPage / BreadcrumbList / Article</li>
                   <li>一键生成符合 [Google 结构化数据规范](https://developers.google.com/search/docs/appearance/structured-data) 的 JSON-LD</li>
@@ -205,7 +211,7 @@ export default function ProductPage() {
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-brand-700">FlyAI 做法</h4>
+                <h4 className="font-semibold text-brand-700">FlyAI GEO 做法</h4>
                 <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-700">
                   <li>覆盖 12+ 生成式引擎（DeepSeek/豆包/千问/Google AIO/Perplexity 等）</li>
                   <li>按关键词、按页面记录答案原文与引用位置</li>
@@ -269,7 +275,7 @@ export default function ProductPage() {
         title="方法论实证依据"
         lead={
           <>
-            FlyAI 的产品设计以生成式引擎的检索与综合机制为基础。{' '}
+            FlyAI GEO 的产品设计以生成式引擎的检索与综合机制为基础。{' '}
             <a href={SOURCES.rag.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》</a> 系统阐述了 RAG 的检索-综合两阶段架构，而{' '}
             <a href={SOURCES.longContext.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《Lost in the Middle》</a> 则解释了为何首段直达答案对被引用至关重要。
           </>
@@ -282,7 +288,7 @@ export default function ProductPage() {
         <div className="rounded-[2rem] bg-gradient-to-br from-brand-700 to-brand-900 px-8 py-14 text-center text-white md:px-14">
           <h2 className="text-3xl font-bold md:text-4xl">预约产品演示，30 分钟看清楚 GEO 全流程</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90">
-            FlyAI 解决方案工程师将基于你的站点 URL 清单，现场演示诊断报告、内容结构化编辑器、Schema 生成器与引用监测面板的真实操作。
+            FlyAI GEO 解决方案工程师将基于你的站点 URL 清单，现场演示诊断报告、内容结构化编辑器、Schema 生成器与引用监测面板的真实操作。
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <CTAButton href="/contact" size="lg" variant="primary" className="!bg-white !text-brand-800 hover:!bg-white/90">
@@ -295,10 +301,9 @@ export default function ProductPage() {
         </div>
       </section>
 
-      <FAQSection title="关于 FlyAI 产品功能的常见问题" items={faqItems} />
+      <FAQSection title="关于 FlyAI GEO 产品功能的常见问题" items={faqItems} />
 
-      <JsonLd data={[buildWebPage({ url: '/product', name: 'FlyAI 产品功能' }),
-          buildService('FlyAI GEO 平台', '面向企业市场/增长/内容团队的 GEO 服务平台'),
+      <JsonLd data={[buildWebPage({ url: '/product', name: 'FlyAI GEO 产品功能', aboutProduct: true }),
           buildBreadcrumbList(crumbs)]} />
     </div>
   );

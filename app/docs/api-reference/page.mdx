@@ -8,8 +8,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildArticle, buildBreadcrumbList, FAQItem, buildWebPage } from '@/lib/schema';
 
 export const metadata = buildMetadata({
-  title: 'FlyAI API 参考 — 诊断 · 结构化 · Schema · 监测 四组接口',
-  description: 'FlyAI REST API 完整参考：诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测四组接口，含请求参数、响应结构、错误码、curl 与 TypeScript 示例。',
+  title: 'FlyAI GEO API 参考 — 诊断 · 结构化 · Schema · 监测 四组接口',
+  description: 'FlyAI GEO REST API 完整参考：诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测四组接口，含请求参数、响应结构、错误码、curl 与 TypeScript 示例。',
   path: '/docs/api-reference',
   type: 'article',
   publishedTime: '2025-10-01',
@@ -25,8 +25,8 @@ export const crumbs = [
 
 export const faqItems = [
   {
-    question: 'FlyAI API 支持哪些编程语言的 SDK？',
-    answer: 'FlyAI 官方提供 Node.js（TypeScript）SDK，其他语言可通过 REST API 直接调用。社区贡献的 Python、Go、Java SDK 可在 GitHub（https://github.com/FlyAI）查看。SDK 与 REST API 功能完全一致。',
+    question: 'FlyAI GEO API 支持哪些编程语言的 SDK？',
+    answer: 'FlyAI GEO 提供 Node.js（TypeScript）SDK，其他语言可通过 REST API 直接调用。社区贡献的 Python、Go、Java SDK 可在 GitHub（https://github.com/FlyAI）查看。SDK 与 REST API 功能完全一致。',
   },
   {
     question: 'API 请求超时时间是多少？',
@@ -34,7 +34,7 @@ export const faqItems = [
   },
   {
     question: '如何处理 API 错误？',
-    answer: 'FlyAI API 使用标准 HTTP 状态码：200 成功、400 参数错误、401 认证失败、403 权限不足、429 限流、500 服务器错误。响应体含 error.code 与 error.message 字段，客户端应根据 code 做差异化处理。',
+    answer: 'FlyAI GEO API 使用标准 HTTP 状态码：200 成功、400 参数错误、401 认证失败、403 权限不足、429 限流、500 服务器错误。响应体含 error.code 与 error.message 字段，客户端应根据 code 做差异化处理。',
   },
   {
     question: '接口是同步还是异步？',
@@ -104,8 +104,8 @@ export default function ApiReferenceDoc() {
       <PageHero
         center
         eyebrow="产品文档 / API 参考"
-        h1={['FlyAI API 参考', '诊断 · 结构化 · Schema · 监测 四组接口']}
-        lead="FlyAI REST API 覆盖诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测四组接口。所有接口使用 JSON 请求与响应，通过 Bearer Token 认证，遵循 RESTful 设计规范。"
+        h1={['FlyAI GEO API 参考', '诊断 · 结构化 · Schema · 监测 四组接口']}
+        lead="FlyAI GEO REST API 覆盖诊断、内容结构化、Schema 与 llms.txt 生成、引用与提及监测四组接口。所有接口使用 JSON 请求与响应，通过 Bearer Token 认证，遵循 RESTful 设计规范。"
         ctaPrimary={{ text: '阅读文档', href: '/docs/schema-fields' }}
         ctaSecondary={{ text: '联系销售', href: '/contact' }}
         bgImage={{ src: '/images/home-hero-bg.png', alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格' }}
@@ -263,11 +263,11 @@ export default function ApiReferenceDoc() {
       <JsonLd
         data={[
           buildBreadcrumbList(crumbs),
-          buildWebPage({ url: '/docs/api-reference', name: 'FlyAI API 参考' }),
+          buildWebPage({ url: '/docs/api-reference', name: 'FlyAI GEO API 参考' }),
           buildArticle({
-            headline: 'FlyAI API 参考 — 诊断 · 结构化 · Schema · 监测',
+            headline: 'FlyAI GEO API 参考 — 诊断 · 结构化 · Schema · 监测',
             url: '/docs/api-reference',
-            description: 'FlyAI REST API 四组接口完整参考',
+            description: 'FlyAI GEO REST API 四组接口完整参考',
             datePublished: '2025-10-01',
             dateModified: '2025-10-01',
             authorName: 'FlyAI 内容研究团队',
