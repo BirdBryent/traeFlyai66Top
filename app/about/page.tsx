@@ -10,11 +10,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, buildWebPage, buildAboutPage } from '@/lib/schema';
 
 const title = '关于 FlyAI（广州飞爱智能科技有限公司）— 团队 · 方法论 · 公司信息';
-/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
-const h1Lines = [
-  '关于 FlyAI（广州飞爱智能科技有限公司）',
-  '团队 · 方法论 · 公司信息',
-] as const;
+/** H1 展示用：单行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1 = '关于 FlyAI（广州飞爱智能科技有限公司）';
 const description =
   'FlyAI（广州飞爱智能科技有限公司）成立于 [待补充：真实成立年份]，是一家专注 AI 搜索可见性的独立软件公司，旗下首个产品为 FlyAI GEO——面向生成式引擎优化（GEO）的一体化平台。核心团队来自 Google、百度、字节跳动的搜索产品与结构化数据方向；公司以「让每个品牌都被 AI 正确引用」为使命，向中国与海外客户交付可被重复验证的 GEO 方法论与工具链。';
 
@@ -101,7 +98,7 @@ export default function AboutPage() {
       <PageHero
         center
         eyebrow="关于我们"
-        h1={h1Lines}
+        h1={h1}
         lead={description}
         ctaPrimary={{ text: '联系销售', href: '/contact' }}
         ctaSecondary={{ text: '查看产品', href: '/product' }}

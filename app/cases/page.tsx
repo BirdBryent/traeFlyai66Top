@@ -9,8 +9,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, buildWebPage } from '@/lib/schema';
 
 const title = 'FlyAI GEO 客户案例 — 背景 · 动作 · 可量化结果';
-/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
-const h1Lines = ['FlyAI GEO 客户案例', '背景 · 动作 · 可量化结果'] as const;
+/** H1 展示用：单行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1 = 'FlyAI GEO 客户案例';
 const description =
   '本节展示 FlyAI GEO 典型客户交付框架，所有具体案例数据均以占位符标注待客户授权后补录，确保任何展示的品牌名与数字均可追溯并通过真实验证；读者可通过每条案例的「背景-动作-结果」结构理解 FlyAI GEO 方法论在不同行业的落地路径。';
 
@@ -125,7 +125,7 @@ export default function CasesPage() {
       <PageHero
         center
         eyebrow="客户案例"
-        h1={h1Lines}
+        h1={h1}
         lead={description}
         ctaPrimary={{ text: '申请案例报告', href: '/contact' }}
         ctaSecondary={{ text: '联系销售', href: '/contact' }}

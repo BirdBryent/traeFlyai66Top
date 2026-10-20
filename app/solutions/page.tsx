@@ -9,8 +9,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, buildWebPage } from '@/lib/schema';
 
 const title = 'FlyAI GEO 解决方案 — B2B SaaS · 出海品牌 · 内容团队 · 代理商';
-/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
-const h1Lines = ['FlyAI GEO 解决方案', 'B2B SaaS · 出海品牌 · 内容团队 · 代理商'] as const;
+/** H1 展示用：单行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1 = 'FlyAI GEO 解决方案';
 const description =
   '针对 B2B SaaS 客户需要在 AI 答案中被作为工具推荐准确引用、出海品牌需要在多语言生成式引擎中维持实体一致性、内容团队需要规模化产出高引用内容、代理商需要将 GEO 打包进客户服务套餐四类典型场景，FlyAI GEO 提供模块化组合方案与对应的诊断模板、数据接入方式、交付物清单。';
 
@@ -125,7 +125,7 @@ export default function SolutionsPage() {
       <PageHero
         center
         eyebrow="解决方案"
-        h1={h1Lines}
+        h1={h1}
         lead={description}
         ctaPrimary={{ text: '联系销售', href: '/contact' }}
         ctaSecondary={{ text: '查看产品', href: '/product' }}

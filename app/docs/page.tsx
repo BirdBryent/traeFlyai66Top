@@ -10,8 +10,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, buildWebPage, buildCollectionPage } from '@/lib/schema';
 
 const title = 'FlyAI GEO 产品文档 — 接入步骤 · API 参考 · 字段字典';
-/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
-const h1Lines = ['FlyAI GEO 产品文档', '接入步骤 · API 参考 · 字段字典'] as const;
+/** H1 展示用：单行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1 = 'FlyAI GEO 产品文档';
 const description =
   '本产品文档覆盖从 API Key 获取、SDK 接入、REST 接口说明到结构化数据字段字典的完整链路；所有代码示例以 curl 与 TypeScript 双版本呈现，且通过 MDX 静态渲染确保生成式引擎可直接在初始 HTML 中解析参数名与返回结构。';
 
@@ -87,7 +87,7 @@ export default function DocsListPage() {
       <PageHero
         center
         eyebrow="产品文档"
-        h1={h1Lines}
+        h1={h1}
         lead={description}
         ctaPrimary={{ text: '阅读文档', href: '/docs/quickstart' }}
         ctaSecondary={{ text: '联系销售', href: '/contact' }}

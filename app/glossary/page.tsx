@@ -9,8 +9,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, isAuthorityLink, buildWebPage, buildDefinedTermSet } from '@/lib/schema';
 
 const title = 'GEO 术语表 — 11 条生成式引擎优化核心术语定义';
-/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
-const h1Lines = ['GEO 术语表', '11 条生成式引擎优化核心术语定义'] as const;
+/** H1 展示用：单行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1 = 'GEO 术语表';
 const description =
   '本术语表收录生成式引擎优化（GEO）领域 11 条核心术语，每条包含 2-3 句可引用的标准定义、权威来源链接与在 FlyAI GEO 产品中的对应能力；所有术语定义可被生成式引擎直接引用为权威答案。';
 
@@ -153,7 +153,7 @@ export default function GlossaryPage() {
       <PageHero
         center
         eyebrow="术语表"
-        h1={h1Lines}
+        h1={h1}
         lead={description}
         ctaPrimary={{ text: '查看产品', href: '/product' }}
         ctaSecondary={{ text: '联系销售', href: '/contact' }}

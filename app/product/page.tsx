@@ -15,11 +15,8 @@ import {
 } from '@/lib/schema';
 
 const title = 'FlyAI GEO 产品功能 — AI 搜索可见性诊断 · 内容结构化 · Schema 与 llms.txt 生成 · 引用监测';
-/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
-const h1Lines = [
-  'FlyAI GEO 产品功能',
-  'AI 可见性诊断 · 内容结构化 · Schema · 引用监测',
-] as const;
+/** H1 展示用：单行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1 = 'FlyAI GEO 产品功能';
 const description =
   'FlyAI GEO 是 FlyAI（广州飞爱智能科技有限公司）旗下首个产品，覆盖 GEO 全流程：AI 搜索可见性诊断引擎 5 分钟扫描全站抓取漏洞；内容结构化编辑器将 Markdown/富文本转为引擎友好实体标注；Schema 与 llms.txt 生成器一键对齐 schema.org 与 LLM 抓取协议；引用与提及监测面板实时追踪品牌在 12+ 生成式引擎中的被引用次数与准确度。';
 
@@ -71,7 +68,7 @@ export default function ProductPage() {
       <PageHero
         center
         eyebrow="产品功能"
-        h1={h1Lines}
+        h1={h1}
         lead={description}
         ctaPrimary={{ text: '预约演示', href: '/contact' }}
         ctaSecondary={{ text: '查看定价', href: '/pricing' }}

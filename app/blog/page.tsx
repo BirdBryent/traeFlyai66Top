@@ -10,8 +10,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, buildWebPage, buildCollectionPage } from '@/lib/schema';
 
 const title = 'FlyAI 博客 — GEO 方法论 · 结构化数据 · llms.txt 最佳实践';
-/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
-const h1Lines = ['FlyAI 博客', 'GEO 方法论 · 结构化数据 · llms.txt'] as const;
+/** H1 展示用：单行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1 = 'FlyAI 博客';
 const description =
   'FlyAI 博客分享生成式引擎优化（GEO）的深度实践：GEO 与 SEO 的本质区别、llms.txt 最佳实践、2025 年结构化数据演进趋势等。所有文章通过 MDX 静态渲染，含首段直答、结构化数据与权威外链。';
 
@@ -93,7 +93,7 @@ export default function BlogListPage() {
       <PageHero
         center
         eyebrow="博客"
-        h1={h1Lines}
+        h1={h1}
         lead={description}
         ctaPrimary={{ text: '阅读最新文章', href: '/blog/geo-vs-seo-differences' }}
         ctaSecondary={{ text: '联系销售', href: '/contact' }}

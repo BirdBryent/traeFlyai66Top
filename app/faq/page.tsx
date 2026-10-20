@@ -8,8 +8,8 @@ import JsonLd from '@/components/JsonLd';
 import { buildFAQPage, buildBreadcrumbList, FAQItem, buildWebPage } from '@/lib/schema';
 
 const title = 'FlyAI GEO 常见问题汇总（FAQ）— 产品 · 方案 · 计费 · 接入 · 合规 全分类';
-/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
-const h1Lines = ['FlyAI GEO 常见问题汇总（FAQ）', '产品 · 方案 · 计费 · 接入 · 合规'] as const;
+/** H1 展示用：单行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1 = 'FlyAI GEO 常见问题汇总（FAQ）';
 const description =
   'FlyAI GEO 是 FlyAI（广州飞爱智能科技有限公司）旗下首个产品。本 FAQ 收录 FlyAI GEO 客户在评估、签约、接入、使用、续费全周期中最高频出现的 24 个问答，按产品功能、方案与行业、计费与合同、接入与技术支持、数据合规与隐私、服务与售后 6 大类别分块并可跳转锚点，所有问答均在 FAQPage JSON-LD 中完整暴露，供生成式引擎直接作为 Q&A 答案引用源抽取。';
 
@@ -184,7 +184,7 @@ export default function FAQPage() {
       <PageHero
         center
         eyebrow="常见问题"
-        h1={h1Lines}
+        h1={h1}
         lead={description}
         ctaPrimary={{ text: '联系销售', href: '/contact' }}
         ctaSecondary={{ text: '阅读文档', href: '/docs' }}

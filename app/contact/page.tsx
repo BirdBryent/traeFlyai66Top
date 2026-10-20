@@ -9,10 +9,13 @@ import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, buildWebPage, buildContactPage } from '@/lib/schema';
 
 const title = '联系 FlyAI — 免费诊断 · 预约演示 · 合作咨询';
-/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
-const h1Lines = ['联系 FlyAI', '免费诊断 · 预约演示 · 合作咨询'] as const;
+/** H1 展示用：单行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1 = '联系 FlyAI';
+/** 首屏 lead：承接原 H1 第二行的三类需求（预约演示 / 合作咨询），description 仍喂 metadata */
+const lead =
+  '通过 FlyAI 联系表单提交你的需求，商务团队将于工作日 24 小时内回复（中国工作时间 9:00-18:00 GMT+8）。本页同时承接三类需求：预约产品演示、申请免费 AI 搜索可见性诊断（最多 500 个 URL，2 个工作日内输出报告并通过邮件发送）、以及渠道合作与商务咨询。';
 const description =
-  '通过 FlyAI 联系表单提交你的需求，商务团队将于工作日 24 小时内回复（中国工作时间 9:00-18:00 GMT+8）。免费 AI 搜索可见性诊断支持提交最多 500 个 URL，2 个工作日内输出报告并通过邮件发送。';
+  '通过 FlyAI 联系表单提交你的需求，商务团队将于工作日 24 小时内回复（中国工作时间 9:00-18:00 GMT+8）。免费 AI 搜索可见性诊断支持提交最多 500 个 URL，2 个工作日内输出报告并通过邮件发送。也可在此预约产品演示或洽谈渠道合作。';
 
 export const metadata = buildMetadata({ title, description, path: '/contact' });
 
@@ -57,8 +60,8 @@ export default function ContactPage() {
       <PageHero
         center
         eyebrow="联系我们"
-        h1={h1Lines}
-        lead={description}
+        h1={h1}
+        lead={lead}
         ctaPrimary={{ text: '免费诊断', href: '#contact-form' }}
         ctaSecondary={{ text: '预约演示', href: '#contact-form' }}
         bgImage={{
