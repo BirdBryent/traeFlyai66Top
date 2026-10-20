@@ -80,6 +80,7 @@ export default function HomePage() {
 
       <PageHero
         center
+        eyebrow="FlyAI 旗下首个产品 · FlyAI GEO"
         h1={[
           'FlyAI GEO 生成式引擎优化平台',
           '让 AI 搜索答案优先引用你的品牌',
@@ -95,12 +96,9 @@ export default function HomePage() {
 
       <section
         aria-label="FlyAI 监测覆盖的生成式引擎"
-        className="mx-auto max-w-7xl px-5 pb-4 lg:px-8"
+        className="mx-auto max-w-7xl px-5 pb-8 pt-6 lg:px-8 lg:pt-8"
       >
         <div className="mx-auto max-w-4xl">
-          <p className="mx-auto mb-3 w-fit rounded-full border border-brand-100 bg-brand-50 px-4 py-1.5 text-center text-xs font-medium tracking-wide text-brand-700">
-            FlyAI 旗下首个产品 · FlyAI GEO
-          </p>
           <div className="rounded-2xl border border-gray-200 bg-white px-6 py-5 text-center shadow-sm">
             <p className="text-sm font-semibold text-gray-900">
               覆盖 12+ 生成式引擎

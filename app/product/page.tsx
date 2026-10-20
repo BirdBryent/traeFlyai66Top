@@ -1,5 +1,4 @@
 import { buildMetadata } from '@/lib/metadata';
-import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQSection from '@/components/FAQSection';
@@ -81,14 +80,7 @@ export default function ProductPage() {
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
         <h2 className="text-3xl font-bold tracking-tight text-center">FlyAI GEO 四项核心产品能力</h2>
         <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-gray-600">
-          覆盖生成式引擎优化从「发现问题」到「持续追踪」的完整闭环：每一项能力均按「典型问题 → FlyAI GEO 做法 → 可量化结果」三段式呈现，便于团队快速评估投入产出。
-        </p>
-        <p className="mx-auto mt-3 max-w-3xl text-center text-sm text-gray-500">
-          FlyAI GEO 由{' '}
-          <Link href="/about" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">
-            FlyAI（广州飞爱智能科技有限公司）
-          </Link>{' '}
-          研发与运营，是 FlyAI 旗下首个产品。
+          作为 FlyAI 旗下首个产品，FlyAI GEO 覆盖生成式引擎优化从「发现问题」到「持续追踪」的完整闭环：每一项能力均按「典型问题 → FlyAI GEO 做法 → 可量化结果」三段式呈现，便于团队快速评估投入产出。
         </p>
 
         <div className="mt-12 space-y-16">
@@ -111,7 +103,7 @@ export default function ProductPage() {
                   <li>输入 ≤ 500 个 URL 清单，5 分钟内完成全站扫描</li>
                   <li>模拟 12+ 生成式引擎的抓取与综合路径</li>
                   <li>输出 100+ 维度诊断报告 + 修复优先级排序</li>
-                  <li>对照 [schema.org 官方校验器](https://validator.schema.org/) 自动校验结构化数据</li>
+                  <li>对照 schema.org 官方校验器自动校验结构化数据</li>
                 </ul>
               </div>
               <div>
@@ -177,7 +169,7 @@ export default function ProductPage() {
                 <h4 className="font-semibold text-brand-700">FlyAI GEO 做法</h4>
                 <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-700">
                   <li>支持 5+1 类 Schema：Organization / WebSite / SoftwareApplication / FAQPage / BreadcrumbList / Article</li>
-                  <li>一键生成符合 [Google 结构化数据规范](https://developers.google.com/search/docs/appearance/structured-data) 的 JSON-LD</li>
+                  <li>一键生成符合 Google 结构化数据规范的 JSON-LD</li>
                   <li>llms.txt 四段式模板自动填充（摘要 / 重要页面 / AI 阅读笔记 / 限制说明）</li>
                   <li>多语言站点自动生成 zh-CN / en 双份 llms.txt</li>
                 </ul>
@@ -188,7 +180,7 @@ export default function ProductPage() {
                   <li>JSON-LD 校验通过率 100%（schema.org + Google 双校验）</li>
                   <li>llms.txt 自动同步 sitemap URL 清单</li>
                   <li>Schema 类型覆盖率按页面类型达标</li>
-                  <li>上线后 [Google Search Console](https://search.google.com/search-console) 增强报告可观测</li>
+                  <li>上线后 Google Search Console 增强报告可观测</li>
                 </ul>
               </div>
             </div>
@@ -238,8 +230,8 @@ export default function ProductPage() {
             <thead>
               <tr className="border-b border-gray-200 bg-gray-50">
                 <th className="px-4 py-3 font-semibold">能力模块</th>
-                <th className="px-4 py-3 font-semibold">Before（接入 FlyAI 前）</th>
-                <th className="px-4 py-3 font-semibold">After（接入 FlyAI 后）</th>
+                <th className="px-4 py-3 font-semibold">Before（接入 FlyAI GEO 前）</th>
+                <th className="px-4 py-3 font-semibold">After（接入 FlyAI GEO 后）</th>
               </tr>
             </thead>
             <tbody>
