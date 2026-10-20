@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import clsx from './clsx';
 
-type Variant = 'primary' | 'secondary' | 'ghost';
+type Variant = 'primary' | 'secondary' | 'ghost' | 'soft';
 type Size = 'sm' | 'md' | 'lg';
 
 const ALLOWED = [
@@ -15,6 +15,7 @@ const ALLOWED = [
   '查看产品',
   '下载白皮书',
   '立即开始',
+  '订阅',
 ];
 
 type CTAPropsBase = {
@@ -59,6 +60,8 @@ const variants: Record<Variant, string> = {
     'bg-gray-900 text-white hover:bg-black focus-visible:ring-gray-400',
   ghost:
     'bg-transparent text-gray-900 hover:bg-gray-100 focus-visible:ring-gray-300',
+  /** 浅灰底 + 轻微 hover 加深，用于同一组按钮里需要弱化的次级选项 */
+  soft: 'bg-gray-300 text-gray-900 hover:bg-gray-400 focus-visible:ring-gray-400',
 };
 
 const sizes: Record<Size, string> = {

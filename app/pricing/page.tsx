@@ -9,10 +9,13 @@ import JsonLd from '@/components/JsonLd';
 import { buildBreadcrumbList, FAQItem, buildWebPage } from '@/lib/schema';
 
 const title = 'FlyAI GEO 定价 — 启动版 · 专业版 · 企业版 三档订阅方案';
-/** H1 展示用：拆两行；title 字符串仍原样喂给 metadata，不动 SEO */
-const h1Lines = ['FlyAI GEO 定价', '启动版 · 专业版 · 企业版 三档订阅方案'] as const;
+/** H1 展示用：单行；title 字符串仍原样喂给 metadata，不动 SEO */
+const h1 = 'FlyAI GEO 定价';
+/** 首屏 lead：与 description 分开，前者是页面首段文案，后者仍是 metadata 用的完整描述 */
+const lead =
+  'FlyAI GEO 按站点数、监测关键词数与月度诊断 URL 数分档定价，所有套餐支持对公转账、微信支付、支付宝，可开具增值税专用发票，按年付享 8 折。';
 const description =
-  'FlyAI GEO 提供按月订阅的透明定价：启动版适合 3 人以内内容团队试水 GEO；专业版适合 10-50 人市场/增长团队规模化运行；企业版适合 50+ 人或多品牌集团客户定制私有部署、SLA 与专属 CSM。所有价格以联系销售后的正式报价单为准，不展示任何虚假金额。';
+  'FlyAI GEO 按站点数、监测关键词数与月度诊断 URL 数分档定价：启动版 ¥999/月（1 站点 · 50 关键词 · 500 URL/月），专业版 ¥2,999/月（5 站点 · 300 关键词 · 1,500 URL/月，按启动版单价折算价值 ¥5,690/月，套餐省 47%），企业版联系销售（站点与关键词不限、支持私有部署与 SLA）。支持对公转账、微信支付、支付宝，可开具增值税专用发票，按年付享 8 折。';
 
 export const metadata = buildMetadata({ title, description, path: '/pricing' });
 
@@ -35,7 +38,7 @@ const faqItems: FAQItem[] = [
   {
     question: '是否支持年付折扣？',
     answer:
-      '支持年付，年付客户可享受一定比例的订阅费用折扣（具体折扣比例以 [联系销售](/contact) 出具的正式报价单为准）。年付客户还可获得：① 额外诊断额度（按月度额度的 10% 叠加）；② 优先接入新功能内测；③ 专属客户成功经理（CSM）季度复盘。年付与月付可随时切换，已支付的月付费用按比例抵扣年付金额。',
+      '支持。按年付费统一享 8 折：启动版 ¥9,590/年（折合 ¥799/月，较月付省下 2.4 个月费用）、专业版 ¥28,790/年（折合 ¥2,399/月）。年付客户还可获得：① 额外诊断额度（按月度额度的 10% 叠加）；② 优先接入新功能内测；③ 专属客户成功经理（CSM）季度复盘。年付与月付可随时切换，已支付的月付费用按比例抵扣年付金额，差额按剩余天数折算。企业版年付折扣与 SLA 一并写入合同，请 [联系销售](/contact) 定制。',
   },
   {
     question: '从启动版升级到专业版需要做数据迁移吗？',
@@ -57,29 +60,35 @@ const crumbs = [
 const plans = [
   {
     name: '启动版',
-    tagline: '适合 3 人以内内容团队试水 GEO',
+    price: '¥999',
+    unit: '/ 月',
+    yearly: '年付 ¥9,590／年（8 折，折合 ¥799/月）',
+    tagline: '适合单站点起步验证：1 个站点 · 50 个关键词',
     features: [
-      '每月诊断额度：[联系销售获取报价] URL',
-      '内容结构化编辑器：[联系销售获取报价] 篇/月',
-      'Schema 与 llms.txt 生成器：站点数 [联系销售获取报价]',
-      '引用与提及监测：关键词 [联系销售获取报价] 个',
+      '站点数：1 个',
+      '监测关键词数：50 个',
+      '月度诊断 URL 数：500 个',
+      '内容结构化编辑器：30 篇/月',
       '支持引擎：国内 5 + 海外 5',
       '刷新频率：日频',
-      '团队成员：[联系销售获取报价] 个席位',
+      '团队成员：3 个席位',
       '技术支持：工单（48 小时响应）',
     ],
   },
   {
     name: '专业版',
-    tagline: '适合 10-50 人市场/增长团队规模化运行',
+    price: '¥2,999',
+    unit: '/ 月',
+    yearly: '年付 ¥28,790／年（8 折，折合 ¥2,399/月）',
+    tagline: '适合多站点规模化监测：5 个站点 · 300 个关键词',
     features: [
-      '每月诊断额度：[联系销售获取报价] URL',
-      '内容结构化编辑器：[联系销售获取报价] 篇/月',
-      'Schema 与 llms.txt 生成器：站点数 [联系销售获取报价]',
-      '引用与提及监测：关键词 [联系销售获取报价] 个',
+      '站点数：5 个',
+      '监测关键词数：300 个',
+      '月度诊断 URL 数：1,500 个',
+      '内容结构化编辑器：300 篇/月',
       '支持引擎：国内 8 + 海外 12+（实时监测可选）',
       '刷新频率：日频 + 周频',
-      '团队成员：[联系销售获取报价] 个席位',
+      '团队成员：20 个席位',
       '技术支持：工单 + 在线聊天（8 小时响应）',
       'API 访问：REST + SDK',
       '专属 CSM：季度复盘',
@@ -87,12 +96,15 @@ const plans = [
   },
   {
     name: '企业版',
-    tagline: '适合 50+ 人或多品牌集团定制私有部署',
+    price: '联系销售',
+    unit: '',
+    yearly: '按合同约定，含私有部署与 SLA',
+    tagline: '适合多品牌集团：站点不限、支持私有部署',
     features: [
-      '诊断额度：按合同约定（不限量可议）',
+      '站点数：不限',
+      '监测关键词数：不限',
+      '月度诊断 URL 数：按合同约定（不限量可议）',
       '内容结构化编辑器：不限量',
-      'Schema 与 llms.txt 生成器：站点数不限',
-      '引用与提及监测：关键词不限',
       '支持引擎：全量 12+ 引擎 + 自定义',
       '刷新频率：实时 / 日频 / 周频',
       '团队成员：不限席位',
@@ -113,10 +125,8 @@ export default function PricingPage() {
       <PageHero
         center
         eyebrow="定价方案"
-        h1={h1Lines}
-        lead={description}
-        ctaPrimary={{ text: '联系销售', href: '/contact' }}
-        ctaSecondary={{ text: '预约演示', href: '/contact' }}
+        h1={h1}
+        lead={lead}
         bgImage={{
           src: '/images/home-hero-bg.png',
           alt: 'FlyAI 页面主视觉：蓝紫色科技渐变背景，象征生成式引擎优化的 AI 智能网格',
@@ -124,12 +134,7 @@ export default function PricingPage() {
       />
 
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <h2 className="text-center text-3xl font-bold tracking-tight md:text-4xl">三档透明定价，按需选择</h2>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-gray-600">
-          所有套餐按月订阅，可随时升级或降级。表格中所有额度与价格以「[联系销售获取报价]」占位，避免展示任何未经确认的金额；最终以 FlyAI 销售团队出具的正式报价单与合同为准。
-        </p>
-
-        <div className="mt-12 grid gap-8 lg:grid-cols-3">
+        <div className="grid gap-8 lg:grid-cols-3">
           {plans.map((plan, idx) => (
             <div
               key={plan.name}
@@ -140,18 +145,30 @@ export default function PricingPage() {
                   : 'border-gray-200')
               }
             >
-              {idx === 1 && (
-                <span className="mb-4 inline-block w-fit rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white">
-                  推荐
-                </span>
-              )}
-              <h3 className="text-2xl font-bold">{plan.name}</h3>
-              <p className="mt-2 text-sm text-gray-500">{plan.tagline}</p>
-              <div className="my-6">
-                <span className="text-3xl font-bold">[联系销售获取报价]</span>
-                <span className="text-gray-500"> / 月</span>
+              <div className="flex items-center gap-2">
+                <h3 className="text-2xl font-bold">{plan.name}</h3>
+                {idx === 1 && (
+                  <span className="rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white">
+                    推荐
+                  </span>
+                )}
               </div>
-              <ul className="flex-1 space-y-3 text-sm">
+              <p className="mt-2 min-h-[2.5rem] text-sm text-gray-500">{plan.tagline}</p>
+              <div className="my-6">
+                <span className="text-3xl font-bold">{plan.price}</span>
+                {plan.unit && <span className="text-gray-500"> {plan.unit}</span>}
+                <p className="mt-2 min-h-[1rem] text-xs text-gray-500">{plan.yearly}</p>
+              </div>
+              <CTAButton
+                href="/contact"
+                size="lg"
+                variant={idx === 1 ? 'primary' : 'soft'}
+                className="w-full"
+              >
+                {idx === 2 ? '联系销售' : '订阅'}
+              </CTAButton>
+              <p className="mt-6 text-sm font-semibold text-gray-900">包含：</p>
+              <ul className="mt-3 flex-1 space-y-3 text-sm">
                 {plan.features.map((f) => (
                   <li key={f} className="flex gap-2">
                     <span className="text-brand-600">✓</span>
@@ -159,14 +176,6 @@ export default function PricingPage() {
                   </li>
                 ))}
               </ul>
-              <CTAButton
-                href="/contact"
-                size="lg"
-                variant={idx === 1 ? 'primary' : 'secondary'}
-                className="mt-8 w-full"
-              >
-                联系销售
-              </CTAButton>
             </div>
           ))}
         </div>
@@ -183,11 +192,15 @@ export default function PricingPage() {
             </thead>
             <tbody>
               {[
-                ['目标团队规模', '3 人以内', '10-50 人', '50+ 人 / 多品牌'],
-                ['每月诊断 URL 额度', '[联系销售获取报价]', '[联系销售获取报价]', '按合同约定'],
-                ['内容结构化编辑器额度', '[联系销售获取报价] 篇/月', '[联系销售获取报价] 篇/月', '不限量'],
-                ['Schema / llms.txt 站点数', '[联系销售获取报价]', '[联系销售获取报价]', '不限'],
-                ['引用监测关键词数', '[联系销售获取报价]', '[联系销售获取报价]', '不限'],
+                ['站点数', '1 个', '5 个', '不限'],
+                ['监测关键词数', '50 个', '300 个', '不限'],
+                ['月度诊断 URL 数', '500 个', '1,500 个', '按合同约定（不限量可议）'],
+                ['内容结构化编辑器额度', '30 篇/月', '300 篇/月', '不限量'],
+                ['月付价格', '¥999 / 月', '¥2,999 / 月', '联系销售'],
+                ['年付价格（8 折）', '¥9,590 / 年', '¥28,790 / 年', '联系销售'],
+                ['按单项单价折算价值', '¥999 / 月', '¥5,690 / 月', '按合同约定'],
+                ['套餐折扣', '标准价', '5.3 折（省 47%）', '议价'],
+                ['团队成员席位', '3 个', '20 个', '不限'],
                 ['支持引擎数量', '国内 5 + 海外 5', '国内 8 + 海外 12+', '全量 12+ + 自定义'],
                 ['API 与 SDK', '不支持', '支持', '支持 + Webhook'],
                 ['私有部署', '不支持', '不支持', '支持（阿里云/腾讯云/AWS/IDC）'],
@@ -206,7 +219,7 @@ export default function PricingPage() {
           </table>
         </div>
         <p className="mt-4 text-xs text-gray-500">
-          注：表格中所有「[联系销售获取报价]」均为占位符，不代表任何具体金额；实际额度与价格请 [联系销售](/contact) 获取正式报价单。FlyAI 不展示任何未经确认的数字，所有合同以书面签署版本为准。
+          注：启动版 ¥999/月、专业版 ¥2,999/月为中文站公开标准价，自 2026 年 10 月起生效；年付按 8 折计算（启动版 ¥9,590/年、专业版 ¥28,790/年）。「按单项单价折算价值」= 用启动版 ¥999 分摊出的单价（诊断 URL ¥0.70/个、监测关键词 ¥5/个、内容结构化 ¥6.8/篇、站点 ¥120/个、席位 ¥25/个）乘以各档配额得出，用于说明套餐打包的折扣幅度，非单独售价。企业版额度与价格按合同约定，请 [联系销售](/contact) 获取正式报价单。
         </p>
       </section>
 
@@ -214,7 +227,9 @@ export default function PricingPage() {
         <h2 className="text-3xl font-bold tracking-tight text-center">计费规则与常见口径</h2>
         <ul className="mt-6 list-disc space-y-3 pl-5 text-gray-700">
           <li><strong>计费周期：</strong>自然月（每月 1 日 00:00 至月末 23:59，GMT+8），按订阅生效日起算首月费用。</li>
-          <li><strong>支付方式：</strong>支持对公转账、支付宝企业版、微信支付企业版、信用卡（Visa/Mastercard）。发票类型为增值税专用发票或普通发票。</li>
+          <li><strong>支付方式：</strong>支持对公转账（企业银行账户）、微信支付、支付宝；可开具<strong>增值税专用发票</strong>（服务类，税率 6%，可用于进项抵扣），也可开具增值税普通发票。开票信息在控制台「账户设置」中提交，发票于到账后 5 个工作日内开出。</li>
+          <li><strong>年付折扣：</strong>按年付费享 <strong>8 折</strong>——启动版 ¥9,590/年（折合 ¥799/月）、专业版 ¥28,790/年（折合 ¥2,399/月），相当于每年省下 2.4 个月费用；年付与月付可随时切换，差额按剩余天数折算。</li>
+          <li><strong>套餐折扣口径：</strong>各档配额若按启动版的单项单价（诊断 URL ¥0.70/个、监测关键词 ¥5/个、内容结构化 ¥6.8/篇、站点 ¥120/个、席位 ¥25/个）单独折算，专业版价值为 ¥5,690/月；套餐打包价 ¥2,999/月，相当于 <strong>5.3 折</strong>，配额越大单价越低。</li>
           <li><strong>升级与降级：</strong>随时可在控制台切换，立即生效；已支付费用按剩余天数比例折算，多退少补。</li>
           <li><strong>取消订阅：</strong>可在套餐到期前随时取消，取消后服务持续到当期结束，不自动续费。</li>
           <li><strong>数据所有权：</strong>客户提交的 URL 清单、诊断报告、Schema 项目、引用监测数据均归客户所有，FlyAI 不用于训练第三方模型，合同终止后 30 天内可导出全部数据。</li>
@@ -223,7 +238,7 @@ export default function PricingPage() {
       </section>
 
       <p className="mx-auto max-w-4xl px-5 text-base leading-relaxed text-gray-700 lg:px-8">
-        FlyAI GEO 三档定价对应不同规模团队的 GEO 成熟度阶段。定价模型参考了<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a> 对生成式 AI 服务提供者的合规义务界定，以及<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a> 中企业 AI 采纳率的行业基准。
+        FlyAI GEO 三档定价按站点数、监测关键词数与月度诊断 URL 数划分，对应不同阶段的 GEO 投入规模：启动版适合单站点验证，专业版覆盖多站点规模化监测，企业版面向多品牌集团与私有部署。定价模型参考了<a href={SOURCES.cacAiRule.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">《生成式人工智能服务管理暂行办法》</a> 对生成式 AI 服务提供者的合规义务界定，以及<a href={SOURCES.stanfordAiIndex.url} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline underline-offset-2 hover:text-brand-700">Stanford 2025 AI Index Report</a> 中企业 AI 采纳率的行业基准。
       </p>
       <CitedSources
         title="方法论实证依据"
@@ -235,7 +250,7 @@ export default function PricingPage() {
         <div className="rounded-[2rem] bg-gradient-to-br from-brand-700 to-brand-900 px-8 py-14 text-center text-white md:px-14">
           <h2 className="text-3xl font-bold md:text-4xl">不确定选哪个套餐？联系销售获取定制方案</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90">
-            FlyAI 销售团队将在 1 个工作日内根据你的团队规模、行业与 GEO 目标，推荐最合适的套餐与额度，并出具正式报价单。
+            FlyAI 销售团队将在 1 个工作日内根据你的站点数量、监测关键词规模、行业与 GEO 目标，推荐最合适的套餐与额度，并出具正式报价单。
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <CTAButton href="/contact" size="lg" variant="primary" className="!bg-white !text-brand-800 hover:!bg-white/90">

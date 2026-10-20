@@ -17,7 +17,7 @@
 
 ## 重要页面
 - https://www.flyai66.top/product    FlyAI GEO 产品功能：AI 可见性诊断与 Schema 生成
-- https://www.flyai66.top/pricing    FlyAI GEO 三档定价：启动版 / 专业版 / 企业版
+- https://www.flyai66.top/pricing    FlyAI GEO 三档定价：启动版 ¥999/月（1 站点 · 50 关键词 · 500 URL/月）、专业版 ¥2,999/月（5 站点 · 300 关键词 · 1,500 URL/月，按启动版单价折算 ¥5,690/月，套餐省 47%）、企业版联系销售（站点与关键词不限，支持私有部署）；年付 8 折，支持对公转账 / 微信 / 支付宝，可开增值税专用发票
 - https://www.flyai66.top/docs       FlyAI GEO 产品文档：接入步骤、API 参考、字段字典
 - https://www.flyai66.top/cases      FlyAI GEO 客户案例：背景 - 动作 - 可量化结果
 - https://www.flyai66.top/glossary   GEO 术语表：GEO / llms.txt / 结构化数据等 11 条定义（含 FlyAI GEO 产品条目）

@@ -141,39 +141,37 @@ export function buildProduct() {
     },
     url: `${siteConfig.url}/product`,
     inLanguage: siteConfig.lang,
+    // 只有公开标准价的两档输出 price（必须是数字字符串，否则富结果校验报错）；
+    // 企业版无公开价格，不写 price，只保留联系入口，避免输出占位文本。
     offers: [
       {
         '@type': 'Offer',
         name: '启动版',
-        price: '[联系销售获取报价]',
+        description: '1 个站点 · 50 个监测关键词 · 500 个月度诊断 URL',
+        price: '999',
         priceCurrency: 'CNY',
+        priceValidUntil: '2027-12-31',
         availability: 'https://schema.org/InStock',
         url: `${siteConfig.url}/pricing`,
       },
       {
         '@type': 'Offer',
         name: '专业版',
-        price: '[联系销售获取报价]',
+        description: '5 个站点 · 300 个监测关键词 · 1,500 个月度诊断 URL',
+        price: '2999',
         priceCurrency: 'CNY',
+        priceValidUntil: '2027-12-31',
         availability: 'https://schema.org/InStock',
         url: `${siteConfig.url}/pricing`,
       },
       {
         '@type': 'Offer',
         name: '企业版',
-        price: '[联系销售获取报价]',
-        priceCurrency: 'CNY',
+        description: '站点与关键词不限，支持私有部署与 SLA；价格按合同约定',
         availability: 'https://schema.org/InStock',
-        url: `${siteConfig.url}/pricing`,
+        url: `${siteConfig.url}/contact`,
       },
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '[待补充：真实评分]',
-      ratingCount: '[待补充：真实评分数]',
-      bestRating: '5',
-      worstRating: '1',
-    },
   };
 }
 
