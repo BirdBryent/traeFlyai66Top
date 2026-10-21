@@ -12,6 +12,7 @@ export const metadata = buildMetadata({
   description: 'llms.txt 是 2025 年新兴的面向 LLM 爬虫的网站目录文件。本文详解 llms.txt 的语法规范、必填字段、与 robots.txt 的协作方式，以及实测引用率提升数据。',
   path: '/blog/llms-txt-best-practices',
   type: 'article',
+  image: '/og-llms-txt.jpg',
   publishedTime: '2025-10-08',
   modifiedTime: '2026-10-15',
 });
@@ -71,8 +72,8 @@ export default function LlmsTxtPost() {
         <p className="text-xs text-gray-500">发布于 2025-10-08 · 约 10 分钟阅读</p>
 
         <img
-          src="/og-default.jpg"
-          alt="llms.txt 文件被 AI 爬虫读取的示意图，展示网站目录文件如何帮助生成式引擎理解网站结构"
+          src="/og-llms-txt.jpg"
+          alt="文章封面：FlyAI GEO，标题「llms.txt 最佳实践」，副题：面向生成式引擎的网站目录——语法、必填字段与 robots.txt 协作"
           className="mt-6 w-full rounded-2xl"
         />
 
@@ -172,6 +173,7 @@ https://www.flyai66.top/blog - 博客：GEO 方法论与最佳实践`}</code>
             dateModified: '2025-10-08',
             authorName: 'FlyAI 内容研究团队',
             keywords: ['llms.txt', 'LLM 爬虫', '生成式引擎', '网站目录', 'GEO'],
+            image: '/og-llms-txt.jpg',
           }),
         ]}
       />

@@ -12,6 +12,7 @@ export const metadata = buildMetadata({
   description: '结构化数据不再只是搜索引擎的排名信号，正在成为生成式引擎理解实体的基础设施。本文梳理 2025 年 Schema.org 的关键更新、JSON-LD 在 AI 答案生成中的作用机制，以及企业应优先落地的 6 种 Schema 类型。',
   path: '/blog/structured-data-2025',
   type: 'article',
+  image: '/og-structured-data.jpg',
   publishedTime: '2025-09-28',
   modifiedTime: '2026-10-15',
 });
@@ -71,8 +72,8 @@ export default function StructuredData2025Post() {
         <p className="text-xs text-gray-500">发布于 2025-09-28 · 约 14 分钟阅读</p>
 
         <img
-          src="/og-default.jpg"
-          alt="结构化数据实体关系图，展示 Organization、WebSite、SoftwareApplication、FAQPage、BreadcrumbList、Article 六种 Schema 类型及其关联"
+          src="/og-structured-data.jpg"
+          alt="文章封面：FlyAI GEO，标题「2025 年结构化数据演进」，副题：从搜索引擎排名信号，到生成式引擎理解实体的基础设施"
           className="mt-6 w-full rounded-2xl"
         />
 
@@ -181,6 +182,7 @@ export default function StructuredData2025Post() {
             dateModified: '2025-09-28',
             authorName: 'FlyAI 内容研究团队',
             keywords: ['结构化数据', 'Schema.org', 'JSON-LD', 'GEO', '生成式引擎'],
+            image: '/og-structured-data.jpg',
           }),
         ]}
       />

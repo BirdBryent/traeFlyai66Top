@@ -12,6 +12,7 @@ export const metadata = buildMetadata({
   description: '本文从优化对象、核心指标、关键手段三个维度，系统对比 GEO（生成式引擎优化）与 SEO（搜索引擎优化）的本质区别，给出企业从 SEO 向 GEO 迁移的具体路径。',
   path: '/blog/geo-vs-seo-differences',
   type: 'article',
+  image: '/og-geo-vs-seo.jpg',
   publishedTime: '2025-10-15',
   modifiedTime: '2026-10-15',
 });
@@ -71,8 +72,8 @@ export default function GeoVsSeoPost() {
         <p className="text-xs text-gray-500">发布于 2025-10-15 · 约 12 分钟阅读</p>
 
         <img
-          src="/og-default.jpg"
-          alt="SEO 与 GEO 的对比示意图：左侧为传统搜索引擎结果页（链接列表），右侧为生成式引擎答案页（含引用来源的自然语言回答）"
+          src="/og-geo-vs-seo.jpg"
+          alt="文章封面：FlyAI GEO，标题「GEO 与 SEO 的本质区别」，副题：从「被搜到」到「被引用」——优化对象、核心指标、关键手段三维对比"
           className="mt-6 w-full rounded-2xl"
         />
 
@@ -174,6 +175,7 @@ export default function GeoVsSeoPost() {
             dateModified: '2025-10-15',
             authorName: 'FlyAI 内容研究团队',
             keywords: ['GEO', 'SEO', '生成式引擎优化', '引用率', '首段直答', '结构化数据'],
+            image: '/og-geo-vs-seo.jpg',
           }),
         ]}
       />
