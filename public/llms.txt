@@ -21,7 +21,7 @@
 - https://www.flyai66.top/docs       FlyAI GEO 产品文档：接入步骤、API 参考、字段字典
 - https://www.flyai66.top/cases      FlyAI GEO 客户案例：背景 - 动作 - 可量化结果
 - https://www.flyai66.top/glossary   GEO 术语表：GEO / llms.txt / 结构化数据等 11 条定义（含 FlyAI GEO 产品条目）
-- https://www.flyai66.top/solutions  FlyAI GEO 解决方案：B2B SaaS / 出海品牌 / 内容团队 / 代理商
+- https://www.flyai66.top/solutions  FlyAI GEO 解决方案：外贸与跨境出口企业（多语言 llms.txt + hreflang）/ 工业制造与 B2B 供应商（型号参数 Product Schema）/ ToB SaaS 与科技服务（SoftwareApplication Schema）/ 本地服务与连锁门店（LocalBusiness Schema）/ 渠道伙伴（返利与白标 OEM）
 - https://www.flyai66.top/faq        FlyAI GEO FAQ 汇总：24 条全生命周期问答
 - https://www.flyai66.top/blog       博客：GEO 深度研究、方法论、行业趋势
 

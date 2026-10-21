@@ -10,33 +10,34 @@ type PainCase = {
   cta: { text: string; href: string };
 };
 
+/** 与 /solutions 前三类客户一一对应（外贸 → 工业制造 → ToB SaaS），改分类时两边同步 */
 const PAINS: PainCase[] = [
   {
     id: 'a',
-    category: 'B2B SaaS',
-    title: '品牌在 AI 答案中被张冠李戴',
-    icon: '⚙️',
-    symptom: 'AI 答案前 3 位没有你，甚至把核心功能说成竞品的。',
-    fix: '实体官方基线 + 引用准确率监测 + 权威外链锚点',
-    cta: { text: '查看 B2B SaaS 方案', href: '/solutions#b2b-saas' },
+    category: '外贸与跨境出口企业',
+    title: '海外买家在 AI 里搜不到你的工厂',
+    icon: '🌏',
+    symptom: '搜「XX manufacturer / supplier」，答案里全是平台页和同行目录站。',
+    fix: '跨语言 Manufacturer / Supplier 实体基线 + 多语言 llms.txt + hreflang',
+    cta: { text: '查看外贸跨境方案', href: '/solutions#overseas' },
   },
   {
     id: 'b',
-    category: '出海品牌',
-    title: '多语言 AI 答案中实体不一致',
-    icon: '🌏',
-    symptom: '中文站被正确引用，英文/日文站却被说成别家公司。',
-    fix: '跨语言 Organization 基类 + 多语言 llms.txt + hreflang',
-    cta: { text: '查看 出海品牌 方案', href: '/solutions#overseas' },
+    category: '工业制造与 B2B 供应商',
+    title: '型号参数锁在 PDF 里，AI 引用不到',
+    icon: '🏭',
+    symptom: '采购问「XX 材质哪家能做」，答案被贸易商截流，官网不在候选。',
+    fix: '型号 Product + additionalProperty 结构化 + 供应商推荐类问答监测',
+    cta: { text: '查看工业制造方案', href: '/solutions#manufacturing' },
   },
   {
     id: 'c',
-    category: '内容团队',
-    title: '投入巨大但 AI 引用 0 提升',
-    icon: '✍️',
-    symptom: '半年几十万字原创内容，AI 引用的还是三四年前的旧文。',
-    fix: '存量高意图内容翻新 + Entity Linking 定义页体系',
-    cta: { text: '查看 内容团队 方案', href: '/solutions#content-team' },
+    category: 'ToB SaaS 与科技服务',
+    title: 'AI 推荐工具时，候选列表里没有你',
+    icon: '⚙️',
+    symptom: '问「有什么 GEO / 协同工具类产品」，被列为候选的是竞品。',
+    fix: 'SoftwareApplication Schema + 功能对比页首段直答 + 竞品同框监测',
+    cta: { text: '查看 ToB SaaS 方案', href: '/solutions#b2b-saas' },
   },
 ];
 
@@ -52,7 +53,7 @@ export function HomePainPoints() {
           id="pain-heading"
           className="text-3xl font-bold tracking-tight md:text-4xl"
         >
-          三类典型客户困境，各有对应解法
+          典型客户困境，各有对应解法
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-gray-600">
           搜索引擎排名靠前，DeepSeek / 千问 / Google AIO 却不引用你——这是启用 FlyAI 前最常见的真实处境。
@@ -63,31 +64,36 @@ export function HomePainPoints() {
         {PAINS.map((c) => (
           <article
             key={c.id}
-            className="flex flex-col items-center gap-3 rounded-3xl border border-gray-200 bg-white p-7 text-center shadow-sm transition hover:border-brand-200"
+            className="flex h-full flex-col rounded-3xl border border-gray-200 bg-white p-7 shadow-sm transition hover:border-brand-200"
           >
-            <p className="text-xs font-semibold uppercase tracking-wider text-brand-600">
+            <h3 className="flex items-center gap-1.5 text-base font-semibold text-gray-900">
+              <span aria-hidden="true">{c.icon}</span>
               {c.category}
-            </p>
-            <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
-              <span aria-hidden="true" className="text-base">
-                {c.icon}
-              </span>
-              {c.title}
             </h3>
-            <p className="text-sm leading-relaxed text-gray-600">{c.symptom}</p>
-            <p className="rounded-lg bg-brand-50 px-4 py-2.5 text-sm leading-relaxed text-brand-900">
-              <span className="font-semibold">解法：</span>
-              {c.fix}
+            <p className="mt-3 text-sm leading-relaxed text-gray-600">
+              困境：{c.title}，{c.symptom}
             </p>
+            <p className="mt-2 text-sm leading-relaxed text-gray-600">解法：{c.fix}</p>
             <Link
               href={c.cta.href}
-              className="mt-auto pt-2 text-sm font-medium text-brand-700 underline underline-offset-2 transition hover:text-brand-900"
+              className="mt-auto pt-4 text-sm font-medium text-brand-700 underline underline-offset-2 transition hover:text-brand-900"
             >
               {c.cta.text} →
             </Link>
           </article>
         ))}
       </div>
+
+      <p className="mt-10 text-center text-sm text-gray-600">
+        FlyAI GEO 共覆盖五类客户：外贸与跨境出口 · 工业制造与 B2B 供应商 · ToB SaaS
+        与科技服务 · 本地服务与连锁门店 · 渠道伙伴（代理商 / 代运营）
+        <Link
+          href="/solutions"
+          className="ml-1 font-medium text-brand-700 underline underline-offset-2 transition hover:text-brand-900"
+        >
+          查看全部方案 →
+        </Link>
+      </p>
     </section>
   );
 }

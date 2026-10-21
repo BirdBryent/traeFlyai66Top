@@ -16,6 +16,7 @@ const ALLOWED = [
   '下载白皮书',
   '立即开始',
   '订阅',
+  '查看案例',
 ];
 
 type CTAPropsBase = {

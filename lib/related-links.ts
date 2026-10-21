@@ -15,13 +15,18 @@ export function toAbsolute(path: string): string {
 export const relatedLinks: Record<string, RelatedLink[]> = {
   '/': [
     { path: '/product', anchor: 'AI 搜索可见性诊断包含哪些检测项', note: '产品功能' },
+    {
+      path: '/solutions',
+      anchor: '按客户类型划分的 GEO 解决方案',
+      note: '外贸跨境 / 工业制造 / ToB SaaS / 本地服务 / 渠道伙伴',
+    },
     { path: '/pricing', anchor: 'GEO 服务三档定价与计费方式', note: '启动版 / 专业版 / 企业版' },
     { path: '/blog/geo-vs-seo-differences', anchor: 'GEO 与 SEO 的本质区别', note: '方法论长文' },
     { path: '/glossary', anchor: 'GEO 术语表：LLM 引用、llms.txt、结构化数据', note: '10 条定义' },
     { path: '/about', anchor: '关于 FlyAI 的公司主体与服务范围' },
   ],
   '/product': [
-    { path: '/solutions', anchor: '按行业划分的 GEO 解决方案', note: 'B2B SaaS / 出海 / 内容团队' },
+    { path: '/solutions', anchor: '按客户类型划分的 GEO 解决方案', note: '外贸跨境 / 工业制造 / ToB SaaS / 本地服务 / 渠道伙伴' },
     { path: '/docs/schema-fields', anchor: 'Schema.org 字段字典（30+ 字段）' },
     { path: '/blog/structured-data-2025', anchor: '2025 年结构化数据演进与落地优先序' },
     { path: '/faq', anchor: 'GEO 服务 24 条常见问题', note: '评估期必读' },
